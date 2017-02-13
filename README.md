@@ -11,7 +11,7 @@ tags identifying what the file is.
 ### With a file on disk
 
 If you have an actual file on disk, you can get the most information possible
-(a superset all other methods):
+(a superset of all other methods):
 
 ```python
 >>> identify.tags_from_path('/path/to/file.py')
@@ -50,7 +50,7 @@ When using a file on disk, the checks performed are:
 >>> identify.tags_from_interpreter('bash')
 {'shell', 'bash'}
 >>> identify.tags_from_interpreter('some-unrecognized-thing')
-{}
+set()
 ```
 
 
