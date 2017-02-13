@@ -1,6 +1,10 @@
 identify
 ========
 
+[![Build Status](https://travis-ci.org/chriskuehl/identify.svg?branch=master)](https://travis-ci.org/chriskuehl/identify)
+[![Coverage Status](https://coveralls.io/repos/github/chriskuehl/identify/badge.svg?branch=master)](https://coveralls.io/github/chriskuehl/identify?branch=master)
+[![PyPI version](https://badge.fury.io/py/identify.svg)](https://pypi.python.org/pypi/identify)
+
 File identification library for Python.
 
 Given a file (or some information about a file), return a set of standardized
