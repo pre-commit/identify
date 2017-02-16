@@ -70,6 +70,12 @@ def test_tags_from_path_binary(tmpdir):
 
 @pytest.mark.parametrize(('filename', 'expected'), (
     ('test.py', {'text', 'python'}),
+    ('test.mk', {'text', 'makefile'}),
+    ('Makefile', {'text', 'makefile'}),
+    ('Dockerfile', {'text', 'dockerfile'}),
+    ('Dockerfile.xenial', {'text', 'dockerfile'}),
+    ('xenial.Dockerfile', {'text', 'dockerfile'}),
+    ('test.weird-unrecognized-extension', set()),
     ('test', set()),
     ('', set()),
 ))
