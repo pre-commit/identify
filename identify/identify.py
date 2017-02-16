@@ -9,6 +9,7 @@ import shlex
 import string
 
 from identify import extensions
+from identify import interpreters
 
 
 printable = frozenset(string.printable)
@@ -67,11 +68,17 @@ def tags_from_filename(filename):
 
 
 def tags_from_interpreter(interpreter):
-    # TODO: fully implement
-    if interpreter == 'python':
-        return {'python'}
-    else:
-        return set()
+    if '/' in interpreter:
+        _, interpreter = interpreter.rsplit('/', 1)
+
+    # Try "python3.5.2" => "python3.5" => "python3" until one matches.
+    while interpreter:
+        if interpreter in interpreters.INTERPRETERS:
+            return interpreters.INTERPRETERS[interpreter]
+        else:
+            interpreter, _, _ = interpreter.rpartition('.')
+
+    return set()
 
 
 def is_text(bytesio):

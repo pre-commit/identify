@@ -85,6 +85,9 @@ def test_tags_from_filename(filename, expected):
 
 @pytest.mark.parametrize(('interpreter', 'expected'), (
     ('python', {'python'}),
+    ('python3', {'python3', 'python'}),
+    ('python3.5.2', {'python3', 'python'}),
+    ('/usr/bin/python3.5.2', {'python3', 'python'}),
     ('something-random', set()),
     ('', set()),
 ))
