@@ -88,6 +88,7 @@ def test_tags_from_filename(filename, expected):
     ('python3', {'python3', 'python'}),
     ('python3.5.2', {'python3', 'python'}),
     ('/usr/bin/python3.5.2', {'python3', 'python'}),
+    ('/usr/bin/herpderpderpderpderp', set()),
     ('something-random', set()),
     ('', set()),
 ))
