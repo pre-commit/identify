@@ -8,6 +8,8 @@ import os.path
 import shlex
 import string
 
+from identify import extensions
+
 
 printable = frozenset(string.printable)
 
@@ -50,11 +52,18 @@ def tags_from_path(path):
 
 
 def tags_from_filename(filename):
-    # TODO: fully implement
-    if filename.endswith('.py'):
-        return {'text', 'python'}
-    else:
-        return set()
+    _, ext = os.path.splitext(filename)
+    if len(ext) > 0:
+        ext = ext[1:]
+        if ext in extensions.EXTENSIONS:
+            return extensions.EXTENSIONS[ext]
+
+    # Allow e.g. "Dockerfile.xenial" to match "Dockerfile"
+    for part in {filename} | set(filename.split('.')):
+        if part in extensions.NAMES:
+            return extensions.NAMES[part]
+
+    return set()
 
 
 def tags_from_interpreter(interpreter):
