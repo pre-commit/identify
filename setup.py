@@ -17,4 +17,5 @@ setup(
     ],
     install_requires=[],
     packages=find_packages(exclude=('tests*', 'testing*')),
+    entry_points={'console_scripts': ['identify-cli=identify.cli:main']},
 )
