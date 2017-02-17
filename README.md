@@ -57,6 +57,33 @@ When using a file on disk, the checks performed are:
 set()
 ```
 
+### As a cli
+
+```
+$ identify-cli --help
+usage: identify-cli [-h] [--filename-only] path
+
+positional arguments:
+  path
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --filename-only
+```
+
+```bash
+$ identify-cli setup.py; echo $?
+["file", "non-executable", "python", "text"]
+0
+identify setup.py --filename-only; echo $?
+["python", "text"]
+0
+$ identify-cli wat.wat; echo $?
+wat.wat does not exist.
+1
+$ identify-cli wat.wat --filename-only; echo $?
+1
+```
 
 ## How it works
 
