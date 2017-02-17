@@ -75,6 +75,8 @@ def test_tags_from_path_binary(tmpdir):
     ('Dockerfile', {'text', 'dockerfile'}),
     ('Dockerfile.xenial', {'text', 'dockerfile'}),
     ('xenial.Dockerfile', {'text', 'dockerfile'}),
+    ('mod/test.py', {'text', 'python'}),
+    ('mod/Dockerfile', {'text', 'dockerfile'}),
     ('test.weird-unrecognized-extension', set()),
     ('test', set()),
     ('', set()),

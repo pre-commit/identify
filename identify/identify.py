@@ -53,6 +53,7 @@ def tags_from_path(path):
 
 
 def tags_from_filename(filename):
+    _, filename = os.path.split(filename)
     _, ext = os.path.splitext(filename)
     if len(ext) > 0:
         ext = ext[1:]
