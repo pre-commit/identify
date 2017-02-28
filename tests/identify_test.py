@@ -77,6 +77,11 @@ def test_tags_from_path_binary(tmpdir):
     ('xenial.Dockerfile', {'text', 'dockerfile'}),
     ('mod/test.py', {'text', 'python'}),
     ('mod/Dockerfile', {'text', 'dockerfile'}),
+
+    # full filename tests should take precedence over extension tests
+    ('test.cfg', {'text'}),
+    ('setup.cfg', {'text', 'ini'}),
+
     ('test.weird-unrecognized-extension', set()),
     ('test', set()),
     ('', set()),

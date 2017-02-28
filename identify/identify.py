@@ -55,15 +55,16 @@ def tags_from_path(path):
 def tags_from_filename(filename):
     _, filename = os.path.split(filename)
     _, ext = os.path.splitext(filename)
-    if len(ext) > 0:
-        ext = ext[1:]
-        if ext in extensions.EXTENSIONS:
-            return extensions.EXTENSIONS[ext]
 
     # Allow e.g. "Dockerfile.xenial" to match "Dockerfile"
     for part in {filename} | set(filename.split('.')):
         if part in extensions.NAMES:
             return extensions.NAMES[part]
+
+    if len(ext) > 0:
+        ext = ext[1:]
+        if ext in extensions.EXTENSIONS:
+            return extensions.EXTENSIONS[ext]
 
     return set()
 
