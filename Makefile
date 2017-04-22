@@ -5,7 +5,7 @@ minimal: venv
 
 .PHONY: venv
 venv: .venv.touch
-	tox -e venv $(REBUILD_FLAG)
+	tox --notest -e venv $(REBUILD_FLAG)
 
 .PHONY: test
 test: .venv.tox.touch
