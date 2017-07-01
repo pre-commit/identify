@@ -15,6 +15,12 @@ from identify import interpreters
 printable = frozenset(string.printable)
 
 
+ALL_TAGS = set()
+ALL_TAGS.update(*extensions.EXTENSIONS.values())
+ALL_TAGS.update(*extensions.NAMES.values())
+ALL_TAGS.update(*interpreters.INTERPRETERS.values())
+
+
 def tags_from_path(path):
     if not os.path.lexists(path):
         raise ValueError('{} does not exist.'.format(path))
