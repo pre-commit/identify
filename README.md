@@ -50,7 +50,7 @@ When using a file on disk, the checks performed are:
 
 ```python
 >>> identify.tags_from_interpreter('python3.5')
-{'python', 'python3', 'python3.5'}
+{'python', 'python3'}
 >>> identify.tags_from_interpreter('bash')
 {'shell', 'bash'}
 >>> identify.tags_from_interpreter('some-unrecognized-thing')
