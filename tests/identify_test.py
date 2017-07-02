@@ -11,6 +11,11 @@ import pytest
 from identify import identify
 
 
+def test_all_tags_includes_basic_ones():
+    assert 'file' in identify.ALL_TAGS
+    assert 'directory' in identify.ALL_TAGS
+
+
 def test_tags_from_path_does_not_exist(tmpdir):
     x = tmpdir.join('foo')
     with pytest.raises(ValueError):
