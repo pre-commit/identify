@@ -24,6 +24,7 @@ ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.NAMES.values())
 ALL_TAGS.update(*interpreters.INTERPRETERS.values())
+ALL_TAGS = frozenset(ALL_TAGS)
 
 
 def tags_from_path(path):
