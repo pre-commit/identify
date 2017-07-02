@@ -2,8 +2,6 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import io
-import os
 import os.path
 import shlex
 import string
@@ -106,7 +104,7 @@ def is_text(bytesio):
 def file_is_text(path):
     if not os.path.lexists(path):
         raise ValueError('{} does not exist.'.format(path))
-    with io.open(path, 'rb') as f:
+    with open(path, 'rb') as f:
         return is_text(f)
 
 
@@ -138,5 +136,5 @@ def parse_shebang_from_file(path):
     if not os.access(path, os.X_OK):
         return ()
 
-    with io.open(path, 'rb') as f:
+    with open(path, 'rb') as f:
         return parse_shebang(f)
