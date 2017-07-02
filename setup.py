@@ -8,7 +8,7 @@ from setuptools import setup
 
 setup(
     name='identify',
-    version='0.0.3',
+    version='0.0.4',
     classifiers=[
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
