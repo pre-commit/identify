@@ -1,10 +1,15 @@
 language: python
-dist: trusty
-sudo: false
-install: pip install tox coveralls
-script: make test
-after_success:
-    - coveralls
+matrix:
+    include:
+        -   env: TOXENV=py27
+        -   env: TOXENV=py35
+            python: 3.5
+        -   env: TOXENV=py36
+            python: 3.6
+        -   env: TOXENV=pypy
+install: pip install coveralls tox
+script: tox
+after_success: coveralls
 cache:
     directories:
         - $HOME/.cache/pip
