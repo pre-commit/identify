@@ -14,8 +14,15 @@ from identify import interpreters
 
 printable = frozenset(string.printable)
 
+DIRECTORY = 'directory'
+SYMLINK = 'symlink'
+FILE = 'file'
+EXECUTABLE = 'executable'
+NON_EXECUTABLE = 'non-executable'
+TEXT = 'text'
+BINARY = 'binary'
 
-ALL_TAGS = set()
+ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.NAMES.values())
 ALL_TAGS.update(*interpreters.INTERPRETERS.values())
@@ -25,17 +32,17 @@ def tags_from_path(path):
     if not os.path.lexists(path):
         raise ValueError('{} does not exist.'.format(path))
     if os.path.isdir(path):
-        return {'directory'}
+        return {DIRECTORY}
     if os.path.islink(path):
-        return {'symlink'}
+        return {SYMLINK}
 
-    tags = {'file'}
+    tags = {FILE}
 
     executable = os.access(path, os.X_OK)
     if executable:
-        tags.add('executable')
+        tags.add(EXECUTABLE)
     else:
-        tags.add('non-executable')
+        tags.add(NON_EXECUTABLE)
 
     # As an optimization, if we're able to read tags from the filename, then we
     # don't peek at the file contents.
@@ -49,12 +56,12 @@ def tags_from_path(path):
                 tags.update(tags_from_interpreter(shebang[0]))
 
         if file_is_text(path):
-            tags.add('text')
+            tags.add(TEXT)
         else:
-            tags.add('binary')
+            tags.add(BINARY)
 
-    assert {'text', 'binary'} & tags, tags
-    assert {'executable', 'non-executable'} & tags, tags
+    assert {TEXT, BINARY} & tags, tags
+    assert {EXECUTABLE, NON_EXECUTABLE} & tags, tags
     return tags
 
 
