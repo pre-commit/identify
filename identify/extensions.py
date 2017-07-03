@@ -27,6 +27,7 @@ EXTENSIONS = {
     'eps': {'binary', 'eps'},
     'erb': {'text', 'erb'},
     'exe': {'binary'},
+    'eyaml': {'text': 'yaml'},
     'feature': {'text', 'gherkin'},
     'fish': {'text', 'fish'},
     'gemspec': {'text', 'ruby'},
