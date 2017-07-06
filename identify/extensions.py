@@ -123,7 +123,7 @@ NAMES = {
     '.gitattributes': {'text', 'gitattributes'},
     '.gitignore': {'text', 'gitignore'},
     '.gitmodules': {'text', 'gitmodules'},
-    '.jshintrc': {'text', 'js', 'jshintrc'},
+    '.jshintrc': {'text', 'json', 'jshintrc'},
     '.mailmap': {'text', 'mailmap'},
     '.npmignore': {'text', 'npmignore'},
     'AUTHORS': EXTENSIONS['txt'],
