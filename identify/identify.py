@@ -82,8 +82,7 @@ def tags_from_filename(filename):
 
 
 def tags_from_interpreter(interpreter):
-    if '/' in interpreter:
-        _, interpreter = interpreter.rsplit('/', 1)
+    _, _, interpreter = interpreter.rpartition('/')
 
     # Try "python3.5.2" => "python3.5" => "python3" until one matches.
     while interpreter:
