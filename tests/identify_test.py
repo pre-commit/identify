@@ -87,6 +87,9 @@ def test_tags_from_path_binary(tmpdir):
     ('test.cfg', {'text'}),
     ('setup.cfg', {'text', 'ini'}),
 
+    # Filename matches should still include extensions if applicable
+    ('README.md', {'text', 'markdown', 'plain-text'}),
+
     ('test.weird-unrecognized-extension', set()),
     ('test', set()),
     ('', set()),
