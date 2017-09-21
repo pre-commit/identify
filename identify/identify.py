@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import os.path
+import re
 import shlex
 import string
 
@@ -11,6 +12,7 @@ from identify import interpreters
 
 
 printable = frozenset(string.printable)
+WS_RE = re.compile(r'\s+')
 
 DIRECTORY = 'directory'
 SYMLINK = 'symlink'
@@ -118,6 +120,18 @@ def file_is_text(path):
         return is_text(f)
 
 
+def _shebang_split(line):
+    try:
+        # shebangs aren't supposed to be quoted, though some tools such as
+        # setuptools will write them with quotes so we'll best-guess parse
+        # with shlex first
+        return shlex.split(line)
+    except ValueError:
+        # failing that, we'll do a more "traditional" shebang parsing which
+        # just involves splitting by whitespace
+        return WS_RE.split(line)
+
+
 def parse_shebang(bytesio):
     """Parse the shebang from a file opened for reading binary."""
     if bytesio.read(2) != b'#!':
@@ -133,7 +147,7 @@ def parse_shebang(bytesio):
         if c not in printable:
             return ()
 
-    cmd = tuple(shlex.split(first_line))
+    cmd = tuple(_shebang_split(first_line.strip()))
     if cmd[0] == '/usr/bin/env':
         cmd = cmd[1:]
     return cmd
