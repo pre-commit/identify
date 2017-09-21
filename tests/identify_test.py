@@ -147,6 +147,12 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b'#!/usr/bin/env python', ('python',)),
         (b'#! /usr/bin/python', ('/usr/bin/python',)),
         (b'#!/usr/bin/foo  python', ('/usr/bin/foo', 'python')),
+        # despite this being invalid, setuptools will write shebangs like this
+        (b'#!"/path/with spaces/x" y', ('/path/with spaces/x', 'y')),
+        # this is apparently completely ok to embed quotes
+        (b"#!/path'with/quotes    y", ("/path'with/quotes", 'y')),
+        # Don't regress on leading/trailing ws
+        (b"#! /path'with/quotes y ", ("/path'with/quotes", 'y')),
         (b'\xf9\x93\x01\x42\xcd', ()),
         (b'#!\xf9\x93\x01\x42\xcd', ()),
         (b'#!\x00\x00\x00\x00', ()),
