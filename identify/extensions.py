@@ -91,7 +91,7 @@ EXTENSIONS = {
     's': {'text', 'asm'},
     'scss': {'text', 'scss'},
     'sh': {'text', 'shell'},
-    'sls': {'text', 'yaml'},
+    'sls': {'text', 'salt'},
     'so': {'binary'},
     'spec': {'text', 'spec'},
     'sql': {'text', 'sql'},
