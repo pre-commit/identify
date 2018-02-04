@@ -3,7 +3,6 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import os.path
-import re
 import shlex
 import string
 
@@ -12,7 +11,6 @@ from identify import interpreters
 
 
 printable = frozenset(string.printable)
-WS_RE = re.compile(r'\s+')
 
 DIRECTORY = 'directory'
 SYMLINK = 'symlink'
@@ -129,7 +127,7 @@ def _shebang_split(line):
     except ValueError:
         # failing that, we'll do a more "traditional" shebang parsing which
         # just involves splitting by whitespace
-        return WS_RE.split(line)
+        return line.split()
 
 
 def parse_shebang(bytesio):
