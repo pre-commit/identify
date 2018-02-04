@@ -136,7 +136,7 @@ def parse_shebang(bytesio):
         return ()
     first_line = bytesio.readline()
     try:
-        first_line = first_line.decode('US-ASCII')
+        first_line = first_line.decode('UTF-8')
     except UnicodeDecodeError:
         return ()
 
