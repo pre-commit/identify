@@ -104,6 +104,7 @@ EXTENSIONS = {
     'thrift': {'text', 'thrift'},
     'tiff': {'binary', 'image', 'tiff'},
     'toml': {'text', 'toml'},
+    'tf': {'text', 'terraform'},
     'ts': {'text', 'ts'},
     'ttf': {'binary', 'ttf'},
     'txt': {'text', 'plain-text'},
