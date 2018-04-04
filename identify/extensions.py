@@ -99,6 +99,7 @@ EXTENSIONS = {
     'swf': {'binary', 'swf'},
     'swift': {'text', 'swift'},
     'swiftdeps': {'text', 'swiftdeps'},
+    'tac': {'text', 'twisted', 'python'},
     'tar': {'binary', 'tar'},
     'tgz': {'binary', 'gzip'},
     'thrift': {'text', 'thrift'},
