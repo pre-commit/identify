@@ -38,6 +38,8 @@ EXTENSIONS = {
     'gradle': {'text', 'groovy'},
     'groovy': {'text', 'groovy'},
     'gyb': {'text', 'gyb'},
+    'gyp': {'text', 'gyp', 'python'},
+    'gypi': {'text', 'gyp', 'python'},
     'gz': {'binary', 'gzip'},
     'h': {'text', 'header', 'c', 'c++'},
     'hpp': {'text', 'header', 'c++'},
