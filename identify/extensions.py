@@ -126,7 +126,7 @@ EXTENSIONS = {
     'woff2': {'binary', 'woff2'},
     'wsgi': {'text', 'wsgi', 'python'},
     'xml': {'text', 'xml'},
-    'xsd': {'text', 'xsd'},
+    'xsd': {'text', 'xml', 'xsd'},
     'yaml': {'text', 'yaml'},
     'yml': {'text', 'yaml'},
     'zip': {'binary', 'zip'},
