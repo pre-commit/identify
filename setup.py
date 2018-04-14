@@ -10,7 +10,7 @@ setup(
     name='identify',
     description='File identification library for Python',
     url='https://github.com/chriskuehl/identify',
-    version='1.0.11',
+    version='1.0.12',
 
     author='Chris Kuehl',
     author_email='ckuehl@ocf.berkeley.edu',
