@@ -91,6 +91,7 @@ EXTENSIONS = {
     'po': {'text', 'pofile'},
     'pp': {'text', 'puppet'},
     'proto': {'text', 'proto'},
+    'purs': {'text', 'purescript'},
     'py': {'text', 'python'},
     'r': {'text', 'r'},
     'rb': {'text', 'ruby'},
