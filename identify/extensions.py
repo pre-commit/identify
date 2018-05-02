@@ -148,6 +148,7 @@ NAMES = {
     '.jshintrc': {'text', 'json', 'jshintrc'},
     '.mailmap': {'text', 'mailmap'},
     '.npmignore': {'text', 'npmignore'},
+    '.yamllint': {'text', 'yaml', 'yamllint'},
     'AUTHORS': EXTENSIONS['txt'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
