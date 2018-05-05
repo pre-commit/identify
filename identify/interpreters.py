@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 INTERPRETERS = {
     'bash': {'shell', 'bash'},
     'dash': {'shell', 'dash'},
+    'perl': {'perl'},
     'python': {'python'},
     'python2': {'python', 'python2'},
     'python3': {'python', 'python3'},
