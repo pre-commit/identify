@@ -73,56 +73,65 @@ def test_tags_from_path_binary(tmpdir):
     }
 
 
-@pytest.mark.parametrize(('filename', 'expected'), (
-    ('test.py', {'text', 'python'}),
-    ('test.mk', {'text', 'makefile'}),
-    ('Makefile', {'text', 'makefile'}),
-    ('Dockerfile', {'text', 'dockerfile'}),
-    ('Dockerfile.xenial', {'text', 'dockerfile'}),
-    ('xenial.Dockerfile', {'text', 'dockerfile'}),
-    ('mod/test.py', {'text', 'python'}),
-    ('mod/Dockerfile', {'text', 'dockerfile'}),
+@pytest.mark.parametrize(
+    ('filename', 'expected'),
+    (
+        ('test.py', {'text', 'python'}),
+        ('test.mk', {'text', 'makefile'}),
+        ('Makefile', {'text', 'makefile'}),
+        ('Dockerfile', {'text', 'dockerfile'}),
+        ('Dockerfile.xenial', {'text', 'dockerfile'}),
+        ('xenial.Dockerfile', {'text', 'dockerfile'}),
+        ('mod/test.py', {'text', 'python'}),
+        ('mod/Dockerfile', {'text', 'dockerfile'}),
 
-    # full filename tests should take precedence over extension tests
-    ('test.cfg', {'text'}),
-    ('setup.cfg', {'text', 'ini'}),
+        # full filename tests should take precedence over extension tests
+        ('test.cfg', {'text'}),
+        ('setup.cfg', {'text', 'ini'}),
 
-    # Filename matches should still include extensions if applicable
-    ('README.md', {'text', 'markdown', 'plain-text'}),
+        # Filename matches should still include extensions if applicable
+        ('README.md', {'text', 'markdown', 'plain-text'}),
 
-    ('test.weird-unrecognized-extension', set()),
-    ('test', set()),
-    ('', set()),
-))
+        ('test.weird-unrecognized-extension', set()),
+        ('test', set()),
+        ('', set()),
+    ),
+)
 def test_tags_from_filename(filename, expected):
     assert identify.tags_from_filename(filename) == expected
 
 
-@pytest.mark.parametrize(('interpreter', 'expected'), (
-    ('python', {'python'}),
-    ('python3', {'python3', 'python'}),
-    ('python3.5.2', {'python3', 'python'}),
-    ('/usr/bin/python3.5.2', {'python3', 'python'}),
-    ('/usr/bin/herpderpderpderpderp', set()),
-    ('something-random', set()),
-    ('', set()),
-))
+@pytest.mark.parametrize(
+    ('interpreter', 'expected'),
+    (
+        ('python', {'python'}),
+        ('python3', {'python3', 'python'}),
+        ('python3.5.2', {'python3', 'python'}),
+        ('/usr/bin/python3.5.2', {'python3', 'python'}),
+        ('/usr/bin/herpderpderpderpderp', set()),
+        ('something-random', set()),
+        ('', set()),
+    ),
+)
 def test_tags_from_interpreter(interpreter, expected):
     assert identify.tags_from_interpreter(interpreter) == expected
 
 
-@pytest.mark.parametrize(('data', 'expected'), [
-    (b'hello world', True),
-    (b'', True),
-    ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
-    ('¯\_(ツ)_/¯'.encode('utf8'), True),
-    ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪┏(･o･)┛♪'.encode('utf8'), True),
-    ('éóñå'.encode('latin1'), True),
+@pytest.mark.parametrize(
+    ('data', 'expected'),
+    (
+        (b'hello world', True),
+        (b'', True),
+        ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
+        ('¯\_(ツ)_/¯'.encode('utf8'), True),
+        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪┏(･o･)┛♪'.encode('utf8'), True),
+        ('éóñå'.encode('latin1'), True),
 
-    (b'hello world\x00', False),
-    (b'\x7f\x45\x4c\x46\x02\x01\x01', False),  # first few bytes of /bin/bash
-    (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),  # some /dev/urandom output
-])
+        (b'hello world\x00', False),
+        (b'\x7f\x45\x4c\x46\x02\x01\x01', False),  # first few bytes of /bin/bash
+        (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),  # some /dev/urandom output
+    ),
+)
 def test_is_text(data, expected):
     assert identify.is_text(io.BytesIO(data)) is expected
 
