@@ -121,6 +121,7 @@ EXTENSIONS = {
     'txt': {'text', 'plain-text'},
     'vdx': {'text', 'vdx'},
     'vim': {'text', 'vim'},
+    'vue': {'text', 'vue'},
     'war': {'binary', 'zip', 'jar'},
     'wav': {'binary', 'audio', 'wav'},
     'whl': {'binary', 'wheel', 'zip'},
