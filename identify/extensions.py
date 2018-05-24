@@ -68,6 +68,7 @@ EXTENSIONS = {
     'key': {'text', 'pem'},
     'kt': {'text', 'kotlin'},
     'less': {'text', 'less'},
+    'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
