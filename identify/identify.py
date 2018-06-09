@@ -77,7 +77,7 @@ def tags_from_filename(filename):
             break
 
     if len(ext) > 0:
-        ext = ext[1:]
+        ext = ext[1:].lower()
         if ext in extensions.EXTENSIONS:
             ret.update(extensions.EXTENSIONS[ext])
 

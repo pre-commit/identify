@@ -85,6 +85,11 @@ def test_tags_from_path_binary(tmpdir):
         ('mod/test.py', {'text', 'python'}),
         ('mod/Dockerfile', {'text', 'dockerfile'}),
 
+        # case of extension should be ignored
+        ('f.JPG', {'binary', 'image', 'jpeg'}),
+        # but case of name checks should still be honored
+        ('dockerfile.py', {'text', 'python'}),
+
         # full filename tests should take precedence over extension tests
         ('test.cfg', {'text'}),
         ('setup.cfg', {'text', 'ini'}),
