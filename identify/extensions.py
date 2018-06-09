@@ -149,6 +149,7 @@ NAMES = {
     '.gitmodules': {'text', 'gitmodules'},
     '.jshintrc': {'text', 'json', 'jshintrc'},
     '.mailmap': {'text', 'mailmap'},
+    '.mention-bot': {'text', 'json', 'mention-bot'},
     '.npmignore': {'text', 'npmignore'},
     '.yamllint': {'text', 'yaml', 'yamllint'},
     'AUTHORS': EXTENSIONS['txt'],
