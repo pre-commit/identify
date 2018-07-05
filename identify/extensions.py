@@ -87,6 +87,7 @@ EXTENSIONS = {
     'php4': {'text', 'php'},
     'php5': {'text', 'php'},
     'pl': {'text', 'perl'},
+    'plantuml': {'text', 'plantuml'},
     'plist': {'text', 'plist'},
     'png': {'binary', 'image', 'png'},
     'po': {'text', 'pofile'},
