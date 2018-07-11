@@ -96,6 +96,7 @@ EXTENSIONS = {
     'proto': {'text', 'proto'},
     'purs': {'text', 'purescript'},
     'py': {'text', 'python'},
+    'pyi': {'text', 'pyi'},
     'r': {'text', 'r'},
     'rb': {'text', 'ruby'},
     'rs': {'text', 'rust'},
