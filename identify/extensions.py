@@ -114,6 +114,7 @@ EXTENSIONS = {
     'sls': {'text', 'salt'},
     'so': {'binary'},
     'spec': {'text', 'spec'},
+    'styl': {'text', 'stylus'},
     'sql': {'text', 'sql'},
     'svg': {'text', 'svg'},
     'swf': {'binary', 'swf'},
