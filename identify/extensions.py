@@ -82,6 +82,8 @@ EXTENSIONS = {
     'mm': {'text', 'c++', 'objective-c++'},
     'modulemap': {'text', 'modulemap'},
     'ngdoc': {'text', 'ngdoc'},
+    'nim': {'text', 'nim'},
+    'nimble': {'text', 'nimble'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
     'patch': {'text', 'diff'},
