@@ -12,6 +12,7 @@ EXTENSIONS = {
     'bz2': {'binary', 'bzip2'},
     'c': {'text', 'c'},
     'cc': {'text', 'c++'},
+    'cu': {'text', 'cuda'},
     'cfg': {'text'},
     'cmake': {'text', 'cmake'},
     'cnf': {'text'},
