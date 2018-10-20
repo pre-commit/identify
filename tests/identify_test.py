@@ -128,7 +128,7 @@ def test_tags_from_interpreter(interpreter, expected):
         (b'hello world', True),
         (b'', True),
         ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
-        ('¯\_(ツ)_/¯'.encode('utf8'), True),
+        (r'¯\_(ツ)_/¯'.encode('utf8'), True),
         ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪┏(･o･)┛♪'.encode('utf8'), True),
         ('éóñå'.encode('latin1'), True),
 
