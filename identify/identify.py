@@ -138,7 +138,7 @@ def parse_shebang(bytesio):
         first_line = first_line.decode('UTF-8')
     except UnicodeDecodeError:
         return ()
-    print first_line
+
     # Require only printable ascii
     for c in first_line:
         if c not in printable:
