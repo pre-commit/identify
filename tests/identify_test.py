@@ -55,11 +55,27 @@ def test_tags_from_path_file_with_shebang_non_executable(tmpdir):
     }
 
 
-def test_tags_from_path_file_with_shebang_non_executable_sls_python(tmpdir):
+def test_tags_from_path_file_with_shebang_non_executable_sls_py(tmpdir):
     x = tmpdir.join('test.sls')
-    x.write_text('#!/usr/bin/env python\nimport sys\n', encoding='UTF-8')
+    x.write_text('#! py\nimport sys\n', encoding='UTF-8')
     assert identify.tags_from_path(x.strpath) == {
         'file', 'text', 'non-executable', 'python', 'salt',
+    }
+
+
+def test_tags_from_path_file_with_shebang_non_executable_sls_pydsl(tmpdir):
+    x = tmpdir.join('test.sls')
+    x.write_text('#! pydsl\nimport sys\n', encoding='UTF-8')
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'non-executable', 'python', 'salt', 'pydsl',
+    }
+
+
+def test_tags_from_path_file_with_shebang_non_executable_sls_pyobjects(tmpdir):
+    x = tmpdir.join('test.sls')
+    x.write_text('#! pyobjects\nimport sys\n', encoding='UTF-8')
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'non-executable', 'python', 'salt', 'pyobjects',
     }
 
 
@@ -126,8 +142,8 @@ def test_tags_from_filename(filename, expected):
     ('interpreter', 'expected'),
     (
         ('py', {'python'}),
-        ('pydsl', {'python'}),
-        ('pyobjects', {'python'}),
+        ('pydsl', {'python', 'pydsl'}),
+        ('pyobjects', {'python', 'pyobjects'}),
         ('python', {'python'}),
         ('python3', {'python3', 'python'}),
         ('python3.5.2', {'python3', 'python'}),
