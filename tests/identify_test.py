@@ -51,7 +51,23 @@ def test_tags_from_path_file_with_shebang_non_executable(tmpdir):
     x = tmpdir.join('test')
     x.write_text('#!/usr/bin/env python\nimport sys\n', encoding='UTF-8')
     assert identify.tags_from_path(x.strpath) == {
-        'file', 'text', 'non-executable',
+        'file', 'text', 'non-executable', 'python',
+    }
+
+
+def test_tags_from_path_file_with_shebang_non_executable_sls_python(tmpdir):
+    x = tmpdir.join('test.sls')
+    x.write_text('#!/usr/bin/env python\nimport sys\n', encoding='UTF-8')
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'non-executable', 'python', 'salt',
+    }
+
+
+def test_tags_from_path_file_with_shebang_non_executable_sls_yaml(tmpdir):
+    x = tmpdir.join('test.sls')
+    x.write_text('foo:\n  - bar\n', encoding='UTF-8')
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'non-executable', 'salt',
     }
 
 
@@ -109,6 +125,9 @@ def test_tags_from_filename(filename, expected):
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),
     (
+        ('py', {'python'}),
+        ('pydsl', {'python'}),
+        ('pyobjects', {'python'}),
         ('python', {'python'}),
         ('python3', {'python3', 'python'}),
         ('python3.5.2', {'python3', 'python'}),
@@ -184,7 +203,7 @@ def test_parse_shebang_from_file_does_not_exist():
 def test_parse_shebang_from_file_nonexecutable(tmpdir):
     x = tmpdir.join('f')
     x.write_text('#!/usr/bin/env python', encoding='UTF-8')
-    assert identify.parse_shebang_from_file(x.strpath) == ()
+    assert identify.parse_shebang_from_file(x.strpath) == ('python',)
 
 
 def test_parse_shebang_from_file_simple(tmpdir):
