@@ -48,16 +48,15 @@ def tags_from_path(path):
     t = tags_from_filename(os.path.basename(path))
     if len(t) > 0:
         tags.update(t)
-    else:
-        if executable:
-            shebang = parse_shebang_from_file(path)
-            if len(shebang) > 0:
-                tags.update(tags_from_interpreter(shebang[0]))
 
-        if file_is_text(path):
-            tags.add(TEXT)
-        else:
-            tags.add(BINARY)
+    shebang = parse_shebang_from_file(path)
+    if len(shebang) > 0:
+        tags.update(tags_from_interpreter(shebang[0]))
+
+    if file_is_text(path):
+        tags.add(TEXT)
+    else:
+        tags.add(BINARY)
 
     assert {TEXT, BINARY} & tags, tags
     assert {EXECUTABLE, NON_EXECUTABLE} & tags, tags
@@ -139,7 +138,7 @@ def parse_shebang(bytesio):
         first_line = first_line.decode('UTF-8')
     except UnicodeDecodeError:
         return ()
-
+    print first_line
     # Require only printable ascii
     for c in first_line:
         if c not in printable:
@@ -155,8 +154,6 @@ def parse_shebang_from_file(path):
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError('{} does not exist.'.format(path))
-    if not os.access(path, os.X_OK):
-        return ()
 
     with open(path, 'rb') as f:
         return parse_shebang(f)
