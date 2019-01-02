@@ -57,6 +57,7 @@ EXTENSIONS = {
     'idl': {'text', 'idl'},
     'inc': {'text', 'inc'},
     'ini': {'text', 'ini'},
+    'j2': {'text', 'jinja'},
     'jade': {'text', 'jade'},
     'jar': {'binary', 'zip', 'jar'},
     'java': {'text', 'java'},
