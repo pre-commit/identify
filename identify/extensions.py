@@ -97,7 +97,6 @@ EXTENSIONS = {
     'phtml': {'text', 'php'},
     'pl': {'text', 'perl'},
     'plantuml': {'text', 'plantuml'},
-    'plist': {'text', 'plist'},
     'png': {'binary', 'image', 'png'},
     'po': {'text', 'pofile'},
     'pp': {'text', 'puppet'},
@@ -160,6 +159,9 @@ EXTENSIONS = {
     'yml': {'text', 'yaml'},
     'zip': {'binary', 'zip'},
     'zsh': {'text', 'shell', 'zsh'},
+}
+EXTENSIONS_NEED_BINARY_CHECK = {
+    'plist': {'plist'},
 }
 
 NAMES = {

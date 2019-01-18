@@ -16,6 +16,13 @@ def test_all_tags_includes_basic_ones():
     assert 'directory' in identify.ALL_TAGS
 
 
+def test_all_tags_contains_each_type():
+    assert 'xml' in identify.ALL_TAGS  # extension
+    assert 'plist' in identify.ALL_TAGS  # extension, needs binary check
+    assert 'dockerfile' in identify.ALL_TAGS  # by file convention
+    assert 'python3' in identify.ALL_TAGS  # by shebang
+
+
 def test_tags_from_path_does_not_exist(tmpdir):
     x = tmpdir.join('foo')
     with pytest.raises(ValueError):
@@ -73,6 +80,35 @@ def test_tags_from_path_binary(tmpdir):
     }
 
 
+def test_tags_from_path_plist_binary(tmpdir):
+    x = tmpdir.join('t.plist')
+    x.write_binary(
+        b'bplist00\xd1\x01\x02_\x10\x0fLast Login NameWDefault\x08\x0b\x1d\x00'
+        b'\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00'
+        b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00%',
+    )
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'plist', 'binary', 'non-executable',
+    }
+
+
+def test_tags_from_path_plist_text(tmpdir):
+    x = tmpdir.join('t.plist')
+    x.write(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'
+        '<plist version="1.0">\n'
+        '<dict>\n'
+        '\t<key>Last Login Name</key>\n'
+        '\t<string>Default</string>\n'
+        '</dict>\n'
+        '</plist>\n',
+    )
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'plist', 'text', 'non-executable',
+    }
+
+
 @pytest.mark.parametrize(
     ('filename', 'expected'),
     (
@@ -84,6 +120,9 @@ def test_tags_from_path_binary(tmpdir):
         ('xenial.Dockerfile', {'text', 'dockerfile'}),
         ('mod/test.py', {'text', 'python'}),
         ('mod/Dockerfile', {'text', 'dockerfile'}),
+
+        # does not set binary / text
+        ('f.plist', {'plist'}),
 
         # case of extension should be ignored
         ('f.JPG', {'binary', 'image', 'jpeg'}),
