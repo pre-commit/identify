@@ -22,6 +22,7 @@ BINARY = 'binary'
 
 ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
+ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
 ALL_TAGS.update(*extensions.NAMES.values())
 ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(ALL_TAGS)
@@ -54,6 +55,9 @@ def tags_from_path(path):
             if len(shebang) > 0:
                 tags.update(tags_from_interpreter(shebang[0]))
 
+    # some extensions can be both binary and text
+    # see EXTENSIONS_NEED_BINARY_CHECK
+    if not {TEXT, BINARY} & tags:
         if file_is_text(path):
             tags.add(TEXT)
         else:
@@ -80,6 +84,8 @@ def tags_from_filename(filename):
         ext = ext[1:].lower()
         if ext in extensions.EXTENSIONS:
             ret.update(extensions.EXTENSIONS[ext])
+        elif ext in extensions.EXTENSIONS_NEED_BINARY_CHECK:
+            ret.update(extensions.EXTENSIONS_NEED_BINARY_CHECK[ext])
 
     return ret
 
