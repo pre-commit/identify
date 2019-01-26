@@ -85,6 +85,7 @@ EXTENSIONS = {
     'modulemap': {'text', 'modulemap'},
     'ngdoc': {'text', 'ngdoc'},
     'nim': {'text', 'nim'},
+    'nims': {'text', 'nim'},
     'nimble': {'text', 'nimble'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
