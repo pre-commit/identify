@@ -95,7 +95,7 @@ EXTENSIONS = {
     'csm': {'chemical', 'x-csml'},
     'csml': {'chemical', 'x-csml'},
     'cson': {'text', 'cson'},
-    'css': {'css', 'text'},
+    'css': {'text', 'css'},
     'csv': {'text', 'csv'},
     'ctab': {'chemical', 'x-cactvs-binary'},
     'ctx': {'chemical', 'x-ctx'},
