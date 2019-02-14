@@ -117,6 +117,7 @@ EXTENSIONS = {
     'sh': {'text', 'shell'},
     'sls': {'text', 'salt'},
     'so': {'binary'},
+    'sol': {'text', 'solidity'},
     'spec': {'text', 'spec'},
     'styl': {'text', 'stylus'},
     'sql': {'text', 'sql'},
