@@ -85,6 +85,35 @@ $ identify-cli wat.wat --filename-only; echo $?
 1
 ```
 
+### Identifying LICENSE files
+
+`identify` also has an api for determining what type of license is contained
+in a file.  This routine is roughly based on the approaches used by
+[licensee] (the ruby gem that github uses to figure out the license for a
+repo).
+
+The approach that `identify` uses is as follows:
+
+1. Strip the copyright line
+2. Normalize all whitespace
+3. Return any exact matches
+4. Return the closest by edit distance (where edit distance < 5%)
+
+To use the api, install via `pip install identify[license]`
+
+```pycon
+>>> from identify import identify
+>>> identify.license_id('LICENSE')
+'MIT'
+```
+
+The return value of the `license_id` function is an [SPDX] id.  Currently
+licenses are sourced from [choosealicense.com].
+
+[licensee]: https://github.com/benbalter/licensee
+[SPDX]: https://spdx.org/licenses/
+[choosealicense.com]: https://github.com/github/choosealicense.com
+
 ## How it works
 
 A call to `tags_from_path` does this:

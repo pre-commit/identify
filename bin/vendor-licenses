@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Usage:
+
+    ./bin/vendor-licenses > identify/vendor/licenses.py
+"""
+from __future__ import absolute_import
+from __future__ import unicode_literals
+
+import argparse
+import os.path
+import subprocess
+import tempfile
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--revision', default='HEAD')
+    args = parser.parse_args()
+
+    licenses = []
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        subprocess.check_call((
+            'git', 'clone', '--no-checkout', '--quiet',
+            'https://github.com/github/choosealicense.com', tmpdir,
+        ))
+        subprocess.check_call((
+            'git', '-C', tmpdir, 'checkout', args.revision, '--', '_licenses',
+        ))
+
+        for filename in os.listdir(os.path.join(tmpdir, '_licenses')):
+            filename = os.path.join(tmpdir, '_licenses', filename)
+
+            with open(filename) as f:
+                contents = f.read()
+
+            _, data, license_text = contents.split('---\n', 2)
+
+            spdx, = [
+                line[len('spdx-id:'):].strip()
+                for line in data.splitlines()
+                if line.startswith('spdx-id:')
+            ]
+
+            licenses.append((spdx, license_text))
+
+        print('# -*- coding: utf-8 -*-')
+        print('from __future__ import absolute_import')
+        print('from __future__ import unicode_literals')
+        print('LICENSES = (')
+        for spdx, text in sorted(licenses):
+            print('    (')
+            print('        {!r},'.format(spdx))
+            print("        '''\\")
+            print(text.replace('\t', '    ').replace(' \n', '').strip())
+            print("''',")
+            print('    ),')
+        print(')')
+
+
+if __name__ == '__main__':
+    exit(main())

@@ -239,3 +239,32 @@ def make_executable(filename):
         filename,
         original_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH,
     )
+
+
+def test_license_identification():
+    assert identify.license_id('LICENSE') == 'MIT'
+
+
+def test_license_exact_identification(tmpdir):
+    wtfpl = '''\
+DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+'''
+    f = tmpdir.join('LICENSE')
+    f.write(wtfpl)
+    assert identify.license_id(f.strpath) == 'WTFPL'
+
+
+def test_license_not_identified():
+    assert identify.license_id(os.devnull) is None

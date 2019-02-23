@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+from __future__ import division
 from __future__ import unicode_literals
 
+import io
 import os.path
+import re
 import shlex
 import string
+import sys
 
 from identify import extensions
 from identify import interpreters
+from identify.vendor import licenses
 
 
 printable = frozenset(string.printable)
@@ -166,3 +171,60 @@ def parse_shebang_from_file(path):
 
     with open(path, 'rb') as f:
         return parse_shebang(f)
+
+
+COPYRIGHT_RE = re.compile(r'^\s*(Copyright|\(C\)) .*$', re.I | re.MULTILINE)
+WS_RE = re.compile(r'\s+')
+
+
+def _norm_license(s):
+    s = COPYRIGHT_RE.sub('', s)
+    s = WS_RE.sub(' ', s)
+    return s.strip()
+
+
+def license_id(filename):
+    """Return the spdx id for the license contained in `filename`.  If no
+    license is detected, returns `None`.
+
+    spdx: https://spdx.org/licenses/
+    licenses from choosealicense.com: https://github.com/choosealicense.com
+
+    Approximate algorithm:
+
+    1. strip copyright line
+    2. normalize whitespace (replace all whitespace with a single space)
+    3. check exact text match with existing licenses
+    4. failing that use edit distance
+    """
+    import editdistance  # `pip install identify[license]`
+
+    with io.open(filename, encoding='UTF-8') as f:
+        contents = f.read()
+
+    norm = _norm_license(contents)
+
+    min_edit_dist = sys.maxsize
+    min_edit_dist_spdx = ''
+
+    # try exact matches
+    for spdx, text in licenses.LICENSES:
+        norm_license = _norm_license(text)
+        if norm == norm_license:
+            return spdx
+
+        # skip the slow calculation if the lengths are very different
+        if norm and abs(len(norm) - len(norm_license)) / len(norm) > .05:
+            continue
+
+        edit_dist = editdistance.eval(norm, norm_license)
+        if edit_dist < min_edit_dist:
+            min_edit_dist = edit_dist
+            min_edit_dist_spdx = spdx
+
+    # if there's less than 5% edited from the license, we found our match
+    if norm and min_edit_dist / len(norm) < .05:
+        return min_edit_dist_spdx
+    else:
+        # no matches :'(
+        return None
