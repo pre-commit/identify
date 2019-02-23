@@ -28,4 +28,5 @@ setup(
 
     packages=find_packages(exclude=('tests*', 'testing*')),
     entry_points={'console_scripts': ['identify-cli=identify.cli:main']},
+    extras_require={'license': ['editdistance']},
 )
