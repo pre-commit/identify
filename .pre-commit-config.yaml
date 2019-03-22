@@ -14,7 +14,7 @@ repos:
     -   id: check-byte-order-marker
     -   id: fix-encoding-pragma
 -   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.7.1
+    rev: 3.7.7
     hooks:
     -   id: flake8
         exclude: ^identify/vendor/licenses\.py$
@@ -23,7 +23,7 @@ repos:
     hooks:
     -   id: autopep8
 -   repo: https://github.com/asottile/reorder_python_imports
-    rev: v1.3.5
+    rev: v1.4.0
     hooks:
     -   id: reorder-python-imports
         args: [
@@ -31,6 +31,6 @@ repos:
             '--add-import', 'from __future__ import unicode_literals',
         ]
 -   repo: https://github.com/asottile/add-trailing-comma
-    rev: v0.7.1
+    rev: v1.0.0
     hooks:
     -   id: add-trailing-comma
