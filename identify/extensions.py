@@ -190,6 +190,7 @@ NAMES = {
     'Makefile': EXTENSIONS['mk'],
     'NOTICE': EXTENSIONS['txt'],
     'PATENTS': EXTENSIONS['txt'],
+    'Pipfile': EXTENSIONS['toml'],
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'setup.cfg': EXTENSIONS['ini'],
