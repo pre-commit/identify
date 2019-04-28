@@ -68,6 +68,7 @@ EXTENSIONS = {
     'jpg': {'binary', 'image', 'jpeg'},
     'js': {'text', 'javascript'},
     'json': {'text', 'json'},
+    'jsonnet': {'text', 'jsonnet'},
     'jsx': {'text', 'jsx'},
     'key': {'text', 'pem'},
     'kml': {'text', 'kml', 'xml'},
