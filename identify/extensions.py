@@ -25,6 +25,7 @@ EXTENSIONS = {
     'css': {'text', 'css'},
     'csv': {'text', 'csv'},
     'cxx': {'text', 'c++'},
+    'dart': {'text', 'dart'},
     'def': {'text', 'def'},
     'dtd': {'text', 'dtd'},
     'ear': {'binary', 'zip', 'jar'},
@@ -160,6 +161,7 @@ EXTENSIONS = {
     'yang': {'text', 'yang'},
     'yin': {'text', 'xml', 'yin'},
     'yml': {'text', 'yaml'},
+    'zig': {'text', 'zig'},
     'zip': {'binary', 'zip'},
     'zsh': {'text', 'shell', 'zsh'},
 }
