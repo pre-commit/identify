@@ -161,6 +161,7 @@ EXTENSIONS = {
     'yang': {'text', 'yang'},
     'yin': {'text', 'xml', 'yin'},
     'yml': {'text', 'yaml'},
+    'zig': {'text', 'zig'},
     'zip': {'binary', 'zip'},
     'zsh': {'text', 'shell', 'zsh'},
 }
