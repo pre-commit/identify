@@ -55,6 +55,7 @@ EXTENSIONS = {
     'hxx': {'text', 'header', 'c++'},
     'icns': {'binary', 'icns'},
     'ico': {'binary', 'icon'},
+    'ics': {'text', 'icalendar'},
     'idl': {'text', 'idl'},
     'inc': {'text', 'inc'},
     'ini': {'text', 'ini'},
