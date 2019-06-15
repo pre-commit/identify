@@ -104,6 +104,7 @@ EXTENSIONS = {
     'png': {'binary', 'image', 'png'},
     'po': {'text', 'pofile'},
     'pp': {'text', 'puppet'},
+    'properties': {'text', 'java-properties'},
     'proto': {'text', 'proto'},
     'purs': {'text', 'purescript'},
     'py': {'text', 'python'},
