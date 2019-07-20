@@ -189,6 +189,7 @@ NAMES = {
     '.npmignore': {'text', 'npmignore'},
     '.yamllint': {'text', 'yaml', 'yamllint'},
     'AUTHORS': EXTENSIONS['txt'],
+    'CMakeLists.txt': EXTENSIONS['cmake'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
     'Gemfile': EXTENSIONS['rb'],
