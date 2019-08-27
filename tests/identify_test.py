@@ -118,6 +118,8 @@ def test_tags_from_path_plist_text(tmpdir):
         ('Dockerfile', {'text', 'dockerfile'}),
         ('Dockerfile.xenial', {'text', 'dockerfile'}),
         ('xenial.Dockerfile', {'text', 'dockerfile'}),
+        ('Pipfile', {'text', 'toml'}),
+        ('Pipfile.lock', {'text', 'json'}),
         ('mod/test.py', {'text', 'python'}),
         ('mod/Dockerfile', {'text', 'dockerfile'}),
 

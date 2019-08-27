@@ -80,7 +80,7 @@ def tags_from_filename(filename):
     ret = set()
 
     # Allow e.g. "Dockerfile.xenial" to match "Dockerfile"
-    for part in {filename} | set(filename.split('.')):
+    for part in [filename] + filename.split('.'):
         if part in extensions.NAMES:
             ret.update(extensions.NAMES[part])
             break
