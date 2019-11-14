@@ -109,6 +109,53 @@ def test_tags_from_path_plist_text(tmpdir):
     }
 
 
+def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
+    x = tmpdir.join('test.sls')
+    x.write('')
+    make_executable(x.strpath)
+    assert identify.tags_from_extension_specific_shebang(x.strpath) == {
+        'salt',
+        'text',
+    }
+
+
+@pytest.mark.parametrize(
+    ('interpreter', 'expected'),
+    (
+        ('cheetah', {'text', 'salt-cheetah'}),
+        ('dson', {'text', 'salt-dson'}),
+        ('genshi', {'text', 'salt-genshi'}),
+        ('mako', {'text', 'salt-mako'}),
+        ('py', {'text', 'python', 'salt-py'}),
+        ('pydsl', {'text', 'python', 'salt-pydsl'}),
+        ('pyobjects', {'text', 'python', 'salt-pyobjects'}),
+        ('wempy', {'text', 'salt-wempy'}),
+        ('yamlex', {'text', 'salt-yamlex'}),
+
+
+
+        # Should not be tagged since we don't match the contents
+        ('/usr/bin/env python', set()),
+    ),
+)
+@pytest.mark.parametrize(
+    ('shebang_prefix',),
+    (
+        ('#!',),
+        ('#! ',),
+    ),
+)
+def test_tags_from_extension_specific_shebang(
+    tmpdir,
+    shebang_prefix,
+    interpreter,
+    expected,
+):
+    x = tmpdir.join('test.sls')
+    x.write(shebang_prefix + interpreter)
+    assert identify.tags_from_extension_specific_shebang(x.strpath) == expected
+
+
 @pytest.mark.parametrize(
     ('filename', 'expected'),
     (

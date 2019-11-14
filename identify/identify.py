@@ -98,6 +98,9 @@ def tags_from_extension_specific_shebang(path):
             ],
         )
     except KeyError:
+        # The extension merits inspection but the parsed shebang is not on the
+        # known list. In this case the actual format is probably unknown so
+        # don't return a tag
         pass
 
     return ret
