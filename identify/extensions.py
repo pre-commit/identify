@@ -123,7 +123,6 @@ EXTENSIONS = {
     'scala': {'text', 'scala'},
     'scss': {'text', 'scss'},
     'sh': {'text', 'shell'},
-    'sls': {'text', 'salt'},
     'so': {'binary'},
     'sol': {'text', 'solidity'},
     'spec': {'text', 'spec'},
@@ -173,6 +172,20 @@ EXTENSIONS = {
 }
 EXTENSIONS_NEED_BINARY_CHECK = {
     'plist': {'plist'},
+}
+EXTENSIONS_NEED_SHEBANG_CHECK = {
+    'sls': {
+        'cheetah': {'text', 'salt-cheetah'},
+        'dson': {'text', 'salt-dson'},
+        'genshi': {'text', 'salt-genshi'},
+        'mako': {'text', 'salt-mako'},
+        'py': {'text', 'python', 'salt-py'},
+        'pydsl': {'text', 'python', 'salt-pydsl'},
+        'pyobjects': {'text', 'python', 'salt-pyobjects'},
+        'wempy': {'text', 'salt-wempy'},
+        'yamlex': {'text', 'salt-yamlex'},
+        None: {'text', 'salt'},
+    },
 }
 
 NAMES = {

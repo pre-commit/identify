@@ -28,6 +28,12 @@ BINARY = 'binary'
 ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
+ALL_TAGS.update(
+    *[
+        shebang_tags
+        for shebang_tags in extensions.EXTENSIONS_NEED_SHEBANG_CHECK.values()
+    ]
+)
 ALL_TAGS.update(*extensions.NAMES.values())
 ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(ALL_TAGS)
@@ -60,6 +66,8 @@ def tags_from_path(path):
             if len(shebang) > 0:
                 tags.update(tags_from_interpreter(shebang[0]))
 
+    tags.update(tags_from_extension_specific_shebang(path))
+
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
     if not {TEXT, BINARY} & tags:
@@ -71,6 +79,28 @@ def tags_from_path(path):
     assert {TEXT, BINARY} & tags, tags
     assert {EXECUTABLE, NON_EXECUTABLE} & tags, tags
     return tags
+
+
+def tags_from_extension_specific_shebang(path):
+    """Match tags from an extension that we need to read the shabang from."""
+    ext = os.path.splitext(path)[1].lstrip('.').lower()
+    ret = set()
+    if ext not in extensions.EXTENSIONS_NEED_SHEBANG_CHECK:
+        return ret
+
+    with open(path, 'rb') as f:
+        shebang = parse_shebang(f)
+
+    try:
+        ret.update(
+            extensions.EXTENSIONS_NEED_SHEBANG_CHECK[ext][
+                shebang[0] if shebang else None
+            ],
+        )
+    except KeyError:
+        pass
+
+    return ret
 
 
 def tags_from_filename(filename):
