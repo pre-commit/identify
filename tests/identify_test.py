@@ -132,10 +132,18 @@ def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
         ('wempy', {'text', 'salt-wempy'}),
         ('yamlex', {'text', 'salt-yamlex'}),
 
-
+        # Should be tagged as normal salt state files # FIXME: ..I think?
+        ('gpg', {'text', 'salt'}),
+        ('jinja', {'text', 'salt'}),
+        ('jinja|yaml', {'text', 'salt'}),
+        ('jinja|yaml|gpg', {'text', 'salt'}),
+        ('yaml', {'text', 'salt'}),
+        ('yaml|gpg', {'text', 'salt'}),
 
         # Should not be tagged since we don't match the contents
         ('/usr/bin/env python', set()),
+        ('python3', set()),
+        ('jinja|py', set()),
     ),
 )
 @pytest.mark.parametrize(
