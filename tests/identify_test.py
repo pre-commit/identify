@@ -54,6 +54,15 @@ def test_tags_from_path_simple_file(tmpdir):
     }
 
 
+def test_tags_from_path_file_with_incomplete_shebang(tmpdir):
+    x = tmpdir.join('test')
+    x.write_text('#!   \n', encoding='UTF-8')
+    make_executable(x.strpath)
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'executable',
+    }
+
+
 def test_tags_from_path_file_with_shebang_non_executable(tmpdir):
     x = tmpdir.join('test')
     x.write_text('#!/usr/bin/env python\nimport sys\n', encoding='UTF-8')
