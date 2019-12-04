@@ -157,7 +157,7 @@ def parse_shebang(bytesio):
             return ()
 
     cmd = tuple(_shebang_split(first_line.strip()))
-    if cmd[0] == '/usr/bin/env':
+    if cmd and cmd[0] == '/usr/bin/env':
         cmd = cmd[1:]
     return cmd
 
