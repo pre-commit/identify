@@ -104,6 +104,7 @@ EXTENSIONS = {
     'phtml': {'text', 'php'},
     'pl': {'text', 'perl'},
     'plantuml': {'text', 'plantuml'},
+    'pm': {'text', 'perl'},
     'png': {'binary', 'image', 'png'},
     'po': {'text', 'pofile'},
     'pp': {'text', 'puppet'},
