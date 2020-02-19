@@ -10,6 +10,7 @@ import shlex
 import string
 import sys
 
+from identify import emacs_tags
 from identify import extensions
 from identify import interpreters
 from identify.vendor import licenses
@@ -26,6 +27,7 @@ TEXT = 'text'
 BINARY = 'binary'
 
 ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
+ALL_TAGS.update(*emacs_tags.EMACS_TAGS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
 ALL_TAGS.update(*extensions.NAMES.values())
@@ -55,10 +57,14 @@ def tags_from_path(path):
     if len(t) > 0:
         tags.update(t)
     else:
+        shebang = None
         if executable:
             shebang = parse_shebang_from_file(path)
             if len(shebang) > 0:
                 tags.update(tags_from_interpreter(shebang[0]))
+        if not shebang:
+            emacs_tags_ = parse_emacs_tags_from_file(path)
+            tags.update(tags_from_emacs_tags(emacs_tags_))
 
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
@@ -106,6 +112,10 @@ def tags_from_interpreter(interpreter):
             interpreter, _, _ = interpreter.rpartition('.')
 
     return set()
+
+
+def tags_from_emacs_tags(emacs_tags_):
+    return emacs_tags.EMACS_TAGS.get(emacs_tags_.get('mode'), set())
 
 
 def is_text(bytesio):
@@ -171,6 +181,41 @@ def parse_shebang_from_file(path):
 
     with open(path, 'rb') as f:
         return parse_shebang(f)
+
+
+def parse_emacs_tags(bytesio):
+    """Parse Emacs tags from a file opened for reading binary."""
+    tags = dict()
+    for i in range(2):
+        try:
+            matcher = re.search(
+                r'-\*-\s*(.+?)\s*-\*-', bytesio.readline().decode('UTF-8'))
+        except UnicodeDecodeError:
+            continue
+        if not matcher:
+            continue
+        for k_v in (
+                re.split(r'\s*:\s*', x, 1)
+                for x in re.split(r'\s*;\s*', matcher.group(1), 1)
+        ):
+            if len(k_v) == 1:
+                k = 'mode'
+                v = k_v
+            else:
+                k, v = k_v
+            tags[k] = v
+    return tags
+
+
+def parse_emacs_tags_from_file(path):
+    """Parse Emacs tags given a file path."""
+    if not os.path.lexists(path):
+        raise ValueError('{} does not exist.'.format(path))
+    if not os.access(path, os.X_OK):
+        return {}
+
+    with open(path, 'rb') as f:
+        return parse_emacs_tags(f)
 
 
 COPYRIGHT_RE = re.compile(r'^\s*(Copyright|\(C\)) .*$', re.I | re.MULTILINE)
