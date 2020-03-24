@@ -135,7 +135,7 @@ EXTENSIONS = {
     'ss': {'text', 'scheme'},
     'styl': {'text', 'stylus'},
     'sql': {'text', 'sql'},
-    'svg': {'text', 'svg'},
+    'svg': {'text', 'image', 'svg'},
     'swf': {'binary', 'swf'},
     'swift': {'text', 'swift'},
     'swiftdeps': {'text', 'swiftdeps'},
