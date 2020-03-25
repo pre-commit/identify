@@ -10,6 +10,9 @@ File identification library for Python.
 Given a file (or some information about a file), return a set of standardized
 tags identifying what the file is.
 
+## Installation
+
+`pip install identify`
 
 ## Usage
 ### With a file on disk
