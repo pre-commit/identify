@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 
 
 EXTENSIONS = {
+    'adoc': {'text', 'asciidoc'},
+    'asciidoc': {'text', 'asciidoc'},
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
     'bash': {'text', 'shell', 'bash'},
