@@ -206,6 +206,7 @@ NAMES = {
     '.yamllint': EXTENSIONS['yaml'] | {'yamllint'},
     '.zshrc': EXTENSIONS['zsh'],
     'AUTHORS': EXTENSIONS['txt'],
+    '.BUILD': {'text', 'bazel'},
     'BUILD.bazel': {'text', 'bazel'},
     'BUILD': {'text', 'bazel'},
     'CMakeLists.txt': EXTENSIONS['cmake'],
