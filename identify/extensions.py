@@ -88,6 +88,8 @@ EXTENSIONS = {
     'md': {'text', 'markdown'},
     'mib': {'text', 'mib'},
     'mk': {'text', 'makefile'},
+    'ml': {'text', 'ocaml'},
+    'mli': {'text', 'ocaml'},
     'mm': {'text', 'c++', 'objective-c++'},
     'modulemap': {'text', 'modulemap'},
     'ngdoc': {'text', 'ngdoc'},
