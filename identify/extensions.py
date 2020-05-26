@@ -48,6 +48,7 @@ EXTENSIONS = {
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
     'gpx': {'text', 'gpx', 'xml'},
+    'graphql': {'text', 'graphql'},
     'gradle': {'text', 'groovy'},
     'groovy': {'text', 'groovy'},
     'gyb': {'text', 'gyb'},
