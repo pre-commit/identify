@@ -15,4 +15,5 @@ INTERPRETERS = {
     'sh': {'shell', 'sh'},
     'tcsh': {'shell', 'tcsh'},
     'zsh': {'shell', 'zsh'},
+    'csh': {'shell', 'csh'},
 }
