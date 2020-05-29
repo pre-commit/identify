@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 INTERPRETERS = {
     'bash': {'shell', 'bash'},
+    'csh': {'shell', 'csh'},
     'dash': {'shell', 'dash'},
     'node': {'javascript'},
     'nodejs': {'javascript'},
@@ -15,5 +16,4 @@ INTERPRETERS = {
     'sh': {'shell', 'sh'},
     'tcsh': {'shell', 'tcsh'},
     'zsh': {'shell', 'zsh'},
-    'csh': {'shell', 'csh'},
 }
