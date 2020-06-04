@@ -156,6 +156,7 @@ EXTENSIONS = {
     'tiff': {'binary', 'image', 'tiff'},
     'toml': {'text', 'toml'},
     'tf': {'text', 'terraform'},
+    'tfvars': {'text', 'terraform'},
     'ts': {'text', 'ts'},
     'tsx': {'text', 'tsx'},
     'ttf': {'binary', 'ttf'},
