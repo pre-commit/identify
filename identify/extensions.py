@@ -68,6 +68,7 @@ EXTENSIONS = {
     'idr': {'text', 'idris'},
     'inc': {'text', 'inc'},
     'ini': {'text', 'ini'},
+    'ipynb': {'text', 'jupyter'},
     'j2': {'text', 'jinja'},
     'jade': {'text', 'jade'},
     'jar': {'binary', 'zip', 'jar'},
