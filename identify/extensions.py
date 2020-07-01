@@ -93,6 +93,7 @@ EXTENSIONS = {
     'map': {'text', 'map'},
     'markdown': {'text', 'markdown'},
     'md': {'text', 'markdown'},
+    'mdx': {'text', 'mdx'},
     'mib': {'text', 'mib'},
     'mk': {'text', 'makefile'},
     'ml': {'text', 'ocaml'},
