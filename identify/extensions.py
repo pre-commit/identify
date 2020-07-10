@@ -128,6 +128,7 @@ EXTENSIONS = {
     'pyi': {'text', 'pyi'},
     'pyx': {'text', 'cython'},
     'pyz': {'binary', 'pyz'},
+    'pyzw': {'binary', 'pyz'},
     'pxd': {'text', 'cython'},
     'pxi': {'text', 'cython'},
     'r': {'text', 'r'},
