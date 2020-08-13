@@ -45,6 +45,7 @@ EXTENSIONS = {
     'eyaml': {'text', 'yaml'},
     'feature': {'text', 'gherkin'},
     'fish': {'text', 'fish'},
+    'gd': {'text', 'gdscript'},
     'gemspec': {'text', 'ruby'},
     'gif': {'binary', 'image', 'gif'},
     'go': {'text', 'go'},
