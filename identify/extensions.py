@@ -155,7 +155,7 @@ EXTENSIONS = {
     'styl': {'text', 'stylus'},
     'sql': {'text', 'sql'},
     'sv': {'text', 'system-verilog'},
-    'svg': {'text', 'image', 'svg'},
+    'svg': {'text', 'image', 'svg', 'xml'},
     'svh': {'text', 'system-verilog'},
     'swf': {'binary', 'swf'},
     'swift': {'text', 'swift'},
