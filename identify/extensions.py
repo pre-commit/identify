@@ -91,6 +91,7 @@ EXTENSIONS = {
     'kt': {'text', 'kotlin'},
     'less': {'text', 'less'},
     'lhs': {'text', 'literate-haskell'},
+    'libsonnet': {'text', 'jsonnet'},
     'lidr': {'text', 'idris'},
     'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
