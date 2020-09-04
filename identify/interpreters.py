@@ -6,6 +6,7 @@ INTERPRETERS = {
     'bash': {'shell', 'bash'},
     'csh': {'shell', 'csh'},
     'dash': {'shell', 'dash'},
+    'nix-shell': {'shell', 'bash'},
     'node': {'javascript'},
     'nodejs': {'javascript'},
     'perl': {'perl'},
