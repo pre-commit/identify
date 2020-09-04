@@ -159,6 +159,33 @@ def parse_shebang(bytesio):
     cmd = tuple(_shebang_split(first_line.strip()))
     if cmd and cmd[0] == '/usr/bin/env':
         cmd = cmd[1:]
+        if cmd[:1] == ('nix-shell',):
+            if cmd[1:]:
+                return ()
+            multiple_shebangs = False
+            while bytesio.read(2) == b'#!':
+                multiple_shebangs = True
+                next_line = bytesio.readline()
+                try:
+                    next_line = next_line.decode('UTF-8')
+                except UnicodeDecodeError:
+                    return ()
+
+                for c in next_line:
+                    if c not in printable:
+                        return ()
+
+                line_tokens = tuple(shlex.split(next_line.strip()))
+                for i, token in enumerate(line_tokens):
+                    if not token == '-i':
+                        continue
+                    try:
+                        # the argument to -i flag
+                        cmd = (line_tokens[i + 1],)
+                    except IndexError:
+                        return ()
+            if not multiple_shebangs:
+                return ()
     return cmd
 
 

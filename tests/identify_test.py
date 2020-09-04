@@ -217,6 +217,62 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b"#!/path'with/quotes    y", ("/path'with/quotes", 'y')),
         # Don't regress on leading/trailing ws
         (b"#! /path'with/quotes y ", ("/path'with/quotes", 'y')),
+        # Test nix-shell specialites with shebang on second line
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#! nix-shell -i bash -p python',
+            ('bash',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#! nix-shell -i python -p coreutils',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#! nix-shell -p coreutils -i python',
+            ('python',),
+        ),
+        # multi-line and no whitespace variation
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#! nix-shell -p coreutils\n' +
+            b'#! nix-shell -i python',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#!nix-shell -p coreutils\n' +
+            b'#!nix-shell -i python',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#!\xf9\x93\x01\x42\xcd',
+            (),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#!\x00\x00\x00\x00',
+            (),
+        ),
+        # non-proper nix-shell
+        # (b'#! /usr/bin/nix-shell', ()),  # out of scope test
+        (b'#! /usr/bin/env nix-shell', ()),
+        (b'#! /usr/bin/env nix-shell non-portable-argument', ()),
+        (
+            b'#! /usr/bin/env nix-shell\n' +
+            b'#! nix-shell -i', (),   # guard against index error
+        ),
+        # interpret quotes correctly
+        (
+            b'#!/usr/bin/env nix-shell\n' +
+            b'#!nix-shell --argstr x "a -i python3 p"\n' +
+            b'#!nix-shell -p hello\n' +
+            b'#!nix-shell -i bash\n' +
+            b'#!nix-shell --argstr y "b -i runhaskell q"',
+            ('bash',),
+        ),
         (b'\xf9\x93\x01\x42\xcd', ()),
         (b'#!\xf9\x93\x01\x42\xcd', ()),
         (b'#!\x00\x00\x00\x00', ()),
