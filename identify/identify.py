@@ -141,6 +141,27 @@ def _shebang_split(line):
         return line.split()
 
 
+def _parse_nix_shebang(bytesio, cmd):
+    while bytesio.read(2) == b'#!':
+        next_line = bytesio.readline()
+        try:
+            next_line = next_line.decode('UTF-8')
+        except UnicodeDecodeError:
+            return cmd
+
+        for c in next_line:
+            if c not in printable:
+                return cmd
+
+        line_tokens = tuple(_shebang_split(next_line.strip()))
+        for i, token in enumerate(line_tokens[:-1]):
+            if token != '-i':
+                continue
+            # the argument to -i flag
+            cmd = (line_tokens[i + 1],)
+    return cmd
+
+
 def parse_shebang(bytesio):
     """Parse the shebang from a file opened for reading binary."""
     if bytesio.read(2) != b'#!':
@@ -159,6 +180,8 @@ def parse_shebang(bytesio):
     cmd = tuple(_shebang_split(first_line.strip()))
     if cmd and cmd[0] == '/usr/bin/env':
         cmd = cmd[1:]
+        if cmd == ('nix-shell',):
+            return _parse_nix_shebang(bytesio, cmd)
     return cmd
 
 
