@@ -230,6 +230,7 @@ NAMES = {
     '.npmignore': {'text', 'npmignore'},
     '.pdbrc': EXTENSIONS['py'] | {'pdbrc'},
     '.pypirc': EXTENSIONS['ini'] | {'pypirc'},
+    '.rstcheck.cfg': EXTENSIONS['ini'],
     '.yamllint': EXTENSIONS['yaml'] | {'yamllint'},
     '.zshrc': EXTENSIONS['zsh'],
     'AUTHORS': EXTENSIONS['txt'],
