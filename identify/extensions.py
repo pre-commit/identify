@@ -219,6 +219,7 @@ NAMES = {
     '.cshrc': EXTENSIONS['csh'],
     '.dockerignore': {'text', 'dockerignore'},
     '.editorconfig': {'text', 'editorconfig'},
+    '.flake8': EXTENSIONS['ini'] | {'flake8'},
     '.gitconfig': EXTENSIONS['ini'] | {'gitconfig'},
     '.hgrc': EXTENSIONS['ini'] | {'hgrc'},
     '.gitattributes': {'text', 'gitattributes'},
