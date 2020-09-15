@@ -188,7 +188,7 @@ EXTENSIONS = {
     'woff': {'binary', 'woff'},
     'woff2': {'binary', 'woff2'},
     'wsgi': {'text', 'wsgi', 'python'},
-    'xhtml': {'text', 'xml', 'xhtml'},
+    'xhtml': {'text', 'xml', 'html', 'xhtml'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
