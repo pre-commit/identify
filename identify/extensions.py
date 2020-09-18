@@ -95,6 +95,7 @@ EXTENSIONS = {
     'lidr': {'text', 'idris'},
     'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
+    'mako': {'text', 'mako'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
     'markdown': {'text', 'markdown'},
