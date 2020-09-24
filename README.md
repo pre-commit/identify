@@ -21,6 +21,7 @@ If you have an actual file on disk, you can get the most information possible
 (a superset of all other methods):
 
 ```python
+>>> from identify import identify
 >>> identify.tags_from_path('/path/to/file.py')
 {'file', 'text', 'python', 'non-executable'}
 >>> identify.tags_from_path('/path/to/file-with-shebang')
