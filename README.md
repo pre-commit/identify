@@ -1,8 +1,8 @@
 identify
 ========
 
-[![Build Status](https://travis-ci.org/chriskuehl/identify.svg?branch=master)](https://travis-ci.org/chriskuehl/identify)
-[![Coverage Status](https://coveralls.io/repos/github/chriskuehl/identify/badge.svg?branch=master)](https://coveralls.io/github/chriskuehl/identify?branch=master)
+[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/pre-commit.identify?branchName=master)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=67&branchName=master)
+[![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/asottile/asottile/67/master.svg)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=67&branchName=master)
 [![PyPI version](https://badge.fury.io/py/identify.svg)](https://pypi.python.org/pypi/identify)
 
 File identification library for Python.
