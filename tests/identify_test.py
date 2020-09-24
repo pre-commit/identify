@@ -105,7 +105,7 @@ def test_tags_from_path_plist_text(tmpdir):
     x = tmpdir.join('t.plist')
     x.write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'
+        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'  # noqa: E501
         '<plist version="1.0">\n'
         '<dict>\n'
         '\t<key>Last Login Name</key>\n'
@@ -179,12 +179,14 @@ def test_tags_from_interpreter(interpreter, expected):
         (b'', True),
         ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
         (r'¯\_(ツ)_/¯'.encode('utf8'), True),
-        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪┏(･o･)┛♪'.encode('utf8'), True),
+        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode('utf8'), True),
         ('éóñå'.encode('latin1'), True),
 
         (b'hello world\x00', False),
-        (b'\x7f\x45\x4c\x46\x02\x01\x01', False),  # first few bytes of /bin/bash
-        (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),  # some /dev/urandom output
+        # first few bytes of /bin/bash
+        (b'\x7f\x45\x4c\x46\x02\x01\x01', False),
+        # some /dev/urandom output
+        (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),
     ),
 )
 def test_is_text(data, expected):
