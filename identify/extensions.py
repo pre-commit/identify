@@ -90,6 +90,7 @@ EXTENSIONS = {
     'key': {'text', 'pem'},
     'kml': {'text', 'kml', 'xml'},
     'kt': {'text', 'kotlin'},
+    'lean': {'text', 'lean'},
     'less': {'text', 'less'},
     'lhs': {'text', 'literate-haskell'},
     'libsonnet': {'text', 'jsonnet'},
