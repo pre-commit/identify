@@ -186,6 +186,7 @@ EXTENSIONS = {
     'vue': {'text', 'vue'},
     'war': {'binary', 'zip', 'jar'},
     'wav': {'binary', 'audio', 'wav'},
+    'webp': {'binary', 'image', 'webp'},
     'whl': {'binary', 'wheel', 'zip'},
     'wkt': {'text', 'wkt'},
     'woff': {'binary', 'woff'},
