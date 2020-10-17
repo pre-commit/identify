@@ -18,6 +18,7 @@ from identify.vendor import licenses
 printable = frozenset(string.printable)
 
 DIRECTORY = 'directory'
+PYTHON_PACKAGE = 'python-package'
 SYMLINK = 'symlink'
 FILE = 'file'
 EXECUTABLE = 'executable'
@@ -37,7 +38,10 @@ def tags_from_path(path):
     if not os.path.lexists(path):
         raise ValueError('{} does not exist.'.format(path))
     if os.path.isdir(path):
-        return {DIRECTORY}
+        tags = {DIRECTORY}
+        if os.path.isfile(os.path.join(path, '__init__.py')):
+            tags.add(PYTHON_PACKAGE)
+        return tags
     if os.path.islink(path):
         return {SYMLINK}
 

@@ -35,6 +35,16 @@ def test_tags_from_path_directory(tmpdir):
     assert identify.tags_from_path(x.strpath) == {'directory'}
 
 
+def test_tags_from_path_package(tmpdir):
+    x = tmpdir.join('foo')
+    x.mkdir()
+    init_path = x.join('__init__.py')
+    init_path.write('', mode='w')
+    assert identify.tags_from_path(x.strpath) == {
+        'directory', 'python-package',
+    }
+
+
 def test_tags_from_path_symlink(tmpdir):
     x = tmpdir.join('foo')
     x.mksymlinkto(tmpdir.join('lol').ensure())
