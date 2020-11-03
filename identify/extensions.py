@@ -257,6 +257,7 @@ NAMES = {
     'PATENTS': EXTENSIONS['txt'],
     'Pipfile': EXTENSIONS['toml'],
     'Pipfile.lock': EXTENSIONS['json'],
+    'PKGBUILD': {'text', 'bash', 'pkgbuild', 'alpm'},
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'setup.cfg': EXTENSIONS['ini'],
