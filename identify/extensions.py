@@ -178,6 +178,7 @@ EXTENSIONS = {
     'ts': {'text', 'ts'},
     'tsx': {'text', 'tsx'},
     'ttf': {'binary', 'ttf'},
+    'twig': {'text', 'twig'},
     'txsprofile': {'text', 'ini', 'txsprofile'},
     'txt': {'text', 'plain-text'},
     'v': {'text', 'verilog'},
