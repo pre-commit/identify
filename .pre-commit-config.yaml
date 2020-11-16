@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v3.3.0
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
@@ -14,16 +14,16 @@ repos:
     -   id: check-byte-order-marker
     -   id: fix-encoding-pragma
 -   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.0
+    rev: 3.8.4
     hooks:
     -   id: flake8
         exclude: ^identify/vendor/licenses\.py$
 -   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.5.2
+    rev: v1.5.4
     hooks:
     -   id: autopep8
 -   repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.3.0
+    rev: v2.3.6
     hooks:
     -   id: reorder-python-imports
         args: [
