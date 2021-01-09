@@ -111,6 +111,7 @@ EXTENSIONS = {
     'mli': {'text', 'ocaml'},
     'mm': {'text', 'c++', 'objective-c++'},
     'modulemap': {'text', 'modulemap'},
+    'myst': {'text', 'myst'},
     'ngdoc': {'text', 'ngdoc'},
     'nim': {'text', 'nim'},
     'nims': {'text', 'nim'},
