@@ -145,6 +145,7 @@ EXTENSIONS = {
     'pyz': {'binary', 'pyz'},
     'pyzw': {'binary', 'pyz'},
     'r': {'text', 'r'},
+    'rake': {'text', 'ruby'},
     'rb': {'text', 'ruby'},
     'rs': {'text', 'rust'},
     'rst': {'text', 'rst'},
