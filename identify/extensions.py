@@ -123,7 +123,7 @@ EXTENSIONS = {
     'mli': {'text', 'ocaml'},
     'mm': {'text', 'c++', 'objective-c++'},
     'modulemap': {'text', 'modulemap'},
-    'mp3': {'binary', 'mp3'},
+    'mp3': {'binary', 'audio'},
     'myst': {'text', 'myst'},
     'ngdoc': {'text', 'ngdoc'},
     'nim': {'text', 'nim'},
