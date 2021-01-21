@@ -9,7 +9,6 @@ EXTENSIONS = {
     'aax': {'binary', 'audio'},
     'act': {'binary', 'audio'},
     'adoc': {'text', 'asciidoc'},
-    'aifc': {'binary', 'audio'},
     'aiff': {'binary', 'audio'},
     'alac': {'binary', 'audio'},
     'asciidoc': {'text', 'asciidoc'},
