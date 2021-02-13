@@ -54,6 +54,15 @@ def test_tags_from_path_simple_file(tmpdir):
     }
 
 
+def test_tags_from_path_file_with_incomplete_shebang(tmpdir):
+    x = tmpdir.join('test')
+    x.write_text('#!   \n', encoding='UTF-8')
+    make_executable(x.strpath)
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'executable',
+    }
+
+
 def test_tags_from_path_file_with_shebang_non_executable(tmpdir):
     x = tmpdir.join('test')
     x.write_text('#!/usr/bin/env python\nimport sys\n', encoding='UTF-8')
@@ -96,7 +105,7 @@ def test_tags_from_path_plist_text(tmpdir):
     x = tmpdir.join('t.plist')
     x.write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'
+        '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'  # noqa: E501
         '<plist version="1.0">\n'
         '<dict>\n'
         '\t<key>Last Login Name</key>\n'
@@ -225,12 +234,14 @@ def test_tags_from_interpreter(interpreter, expected):
         (b'', True),
         ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
         (r'¯\_(ツ)_/¯'.encode('utf8'), True),
-        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪┏(･o･)┛♪'.encode('utf8'), True),
+        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode('utf8'), True),
         ('éóñå'.encode('latin1'), True),
 
         (b'hello world\x00', False),
-        (b'\x7f\x45\x4c\x46\x02\x01\x01', False),  # first few bytes of /bin/bash
-        (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),  # some /dev/urandom output
+        # first few bytes of /bin/bash
+        (b'\x7f\x45\x4c\x46\x02\x01\x01', False),
+        # some /dev/urandom output
+        (b'\x43\x92\xd9\x0f\xaf\x32\x2c', False),
     ),
 )
 def test_is_text(data, expected):
@@ -263,6 +274,66 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b"#!/path'with/quotes    y", ("/path'with/quotes", 'y')),
         # Don't regress on leading/trailing ws
         (b"#! /path'with/quotes y ", ("/path'with/quotes", 'y')),
+        # Test nix-shell specialites with shebang on second line
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#! nix-shell -i bash -p python',
+            ('bash',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#! nix-shell -i python -p coreutils',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#! nix-shell -p coreutils -i python',
+            ('python',),
+        ),
+        # multi-line and no whitespace variation
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#! nix-shell -p coreutils\n'
+            b'#! nix-shell -i python',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#!nix-shell -p coreutils\n'
+            b'#!nix-shell -i python',
+            ('python',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#!\xf9\x93\x01\x42\xcd',
+            ('nix-shell',),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#!\x00\x00\x00\x00',
+            ('nix-shell',),
+        ),
+        # non-proper nix-shell
+        (b'#! /usr/bin/nix-shell', ('/usr/bin/nix-shell',)),
+        (b'#! /usr/bin/env nix-shell', ('nix-shell',)),
+        (
+            b'#! /usr/bin/env nix-shell non-portable-argument',
+            ('nix-shell', 'non-portable-argument'),
+        ),
+        (
+            b'#! /usr/bin/env nix-shell\n'
+            b'#! nix-shell -i',
+            ('nix-shell',),   # guard against index error
+        ),
+        # interpret quotes correctly
+        (
+            b'#!/usr/bin/env nix-shell\n'
+            b'#!nix-shell --argstr x "a -i python3 p"\n'
+            b'#!nix-shell -p hello\n'
+            b'#!nix-shell -i bash\n'
+            b'#!nix-shell --argstr y "b -i runhaskell q"',
+            ('bash',),
+        ),
         (b'\xf9\x93\x01\x42\xcd', ()),
         (b'#!\xf9\x93\x01\x42\xcd', ()),
         (b'#!\x00\x00\x00\x00', ()),

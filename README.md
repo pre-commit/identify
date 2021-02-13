@@ -1,8 +1,9 @@
 identify
 ========
 
-[![Build Status](https://travis-ci.org/chriskuehl/identify.svg?branch=master)](https://travis-ci.org/chriskuehl/identify)
-[![Coverage Status](https://coveralls.io/repos/github/chriskuehl/identify/badge.svg?branch=master)](https://coveralls.io/github/chriskuehl/identify?branch=master)
+[![Build Status](https://dev.azure.com/asottile/asottile/_apis/build/status/pre-commit.identify?branchName=master)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=67&branchName=master)
+[![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/asottile/asottile/67/master.svg)](https://dev.azure.com/asottile/asottile/_build/latest?definitionId=67&branchName=master)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/identify/master.svg)](https://results.pre-commit.ci/latest/github/pre-commit/identify/master)
 [![PyPI version](https://badge.fury.io/py/identify.svg)](https://pypi.python.org/pypi/identify)
 
 File identification library for Python.
@@ -10,6 +11,9 @@ File identification library for Python.
 Given a file (or some information about a file), return a set of standardized
 tags identifying what the file is.
 
+## Installation
+
+`pip install identify`
 
 ## Usage
 ### With a file on disk
@@ -18,6 +22,7 @@ If you have an actual file on disk, you can get the most information possible
 (a superset of all other methods):
 
 ```python
+>>> from identify import identify
 >>> identify.tags_from_path('/path/to/file.py')
 {'file', 'text', 'python', 'non-executable'}
 >>> identify.tags_from_path('/path/to/file-with-shebang')
