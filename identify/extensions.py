@@ -52,9 +52,10 @@ EXTENSIONS = {
     'gif': {'binary', 'image', 'gif'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
+    'gpg': {'text', 'gnupg'},
     'gpx': {'text', 'gpx', 'xml'},
-    'graphql': {'text', 'graphql'},
     'gradle': {'text', 'groovy'},
+    'graphql': {'text', 'graphql'},
     'groovy': {'text', 'groovy'},
     'gyb': {'text', 'gyb'},
     'gyp': {'text', 'gyp', 'python'},
@@ -100,6 +101,7 @@ EXTENSIONS = {
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
+    'mako': {'text', 'mako'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
     'markdown': {'text', 'markdown'},
@@ -179,6 +181,7 @@ EXTENSIONS = {
     'tgz': {'binary', 'gzip'},
     'thrift': {'text', 'thrift'},
     'tiff': {'binary', 'image', 'tiff'},
+    'tmpl': {'text', 'cheetah'},
     'toml': {'text', 'toml'},
     'ts': {'text', 'ts'},
     'tsx': {'text', 'tsx'},
@@ -223,18 +226,13 @@ EXTENSIONS = {
 EXTENSIONS_NEED_BINARY_CHECK = {
     'plist': {'plist'},
 }
+# This should contain a map of file extensions to a map of interpreter names to
+# their own file extensions
 EXTENSIONS_NEED_SHEBANG_CHECK = {
     'sls': {
-        'cheetah': {'text', 'salt-cheetah'},
-        'dson': {'text', 'salt-dson'},
-        'genshi': {'text', 'salt-genshi'},
-        'mako': {'text', 'salt-mako'},
-        'py': {'text', 'python', 'salt-py'},
-        'pydsl': {'text', 'python', 'salt-pydsl'},
-        'pyobjects': {'text', 'python', 'salt-pyobjects'},
-        'wempy': {'text', 'salt-wempy'},
-        'yamlex': {'text', 'salt-yamlex'},
-        None: {'text', 'salt'},
+        'pydsl': 'py',
+        'pyobjects': 'py',
+        'cheetah': 'tmpl',
     },
 }
 

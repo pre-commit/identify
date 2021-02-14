@@ -28,12 +28,6 @@ BINARY = 'binary'
 ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
-ALL_TAGS.update(
-    *[
-        shebang_tags
-        for shebang_tags in extensions.EXTENSIONS_NEED_SHEBANG_CHECK.values()
-    ]
-)
 ALL_TAGS.update(*extensions.NAMES.values())
 ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(ALL_TAGS)
@@ -82,26 +76,37 @@ def tags_from_path(path):
 
 
 def tags_from_extension_specific_shebang(path):
-    """Match tags from an extension that we need to read the shabang from."""
-    ext = os.path.splitext(path)[1].lstrip('.').lower()
+    """Match tags from an extension that we need to read the shebang from."""
+    _, filename = os.path.split(path)
+    _, ext = os.path.splitext(filename)
     ret = set()
-    if ext not in extensions.EXTENSIONS_NEED_SHEBANG_CHECK:
+    if ext.lstrip('.') not in extensions.EXTENSIONS_NEED_SHEBANG_CHECK:
         return ret
+
+    interpreter_to_extension_map = extensions.EXTENSIONS_NEED_SHEBANG_CHECK[
+        ext.lstrip('.')
+    ]
 
     with open(path, 'rb') as f:
         shebang = parse_shebang(f)
 
-    try:
-        ret.update(
-            extensions.EXTENSIONS_NEED_SHEBANG_CHECK[ext][
-                shebang[0] if shebang else None
-            ],
-        )
-    except KeyError:
-        # The extension merits inspection but the parsed shebang is not on the
-        # known list. In this case the actual format is probably unknown so
-        # don't return a tag
-        pass
+    if ext == '.sls':
+        if shebang:
+            # try to match tags for the file extension of the first interpreter
+            try:
+                first_interpreter = shebang[0].split('|')[0]
+                ret.update(
+                    extensions.EXTENSIONS[
+                        interpreter_to_extension_map.get(
+                            first_interpreter, first_interpreter,
+                        )
+                    ],
+                )
+            except (IndexError, KeyError):
+                pass
+        else:
+            # the default interpreter is jinja
+            ret.update(extensions.EXTENSIONS['jinja'])
 
     return ret
 

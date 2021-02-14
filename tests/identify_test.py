@@ -123,7 +123,7 @@ def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
     x.write('')
     make_executable(x.strpath)
     assert identify.tags_from_extension_specific_shebang(x.strpath) == {
-        'salt',
+        'jinja',
         'text',
     }
 
@@ -131,28 +131,22 @@ def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),
     (
-        ('cheetah', {'text', 'salt-cheetah'}),
-        ('dson', {'text', 'salt-dson'}),
-        ('genshi', {'text', 'salt-genshi'}),
-        ('mako', {'text', 'salt-mako'}),
-        ('py', {'text', 'python', 'salt-py'}),
-        ('pydsl', {'text', 'python', 'salt-pydsl'}),
-        ('pyobjects', {'text', 'python', 'salt-pyobjects'}),
-        ('wempy', {'text', 'salt-wempy'}),
-        ('yamlex', {'text', 'salt-yamlex'}),
-
-        # Should be tagged as normal salt state files # FIXME: ..I think?
-        ('gpg', {'text', 'salt'}),
-        ('jinja', {'text', 'salt'}),
-        ('jinja|yaml', {'text', 'salt'}),
-        ('jinja|yaml|gpg', {'text', 'salt'}),
-        ('yaml', {'text', 'salt'}),
-        ('yaml|gpg', {'text', 'salt'}),
-
-        # Should not be tagged since we don't match the contents
-        ('/usr/bin/env python', set()),
-        ('python3', set()),
-        ('jinja|py', set()),
+        ('cheetah', {'text', 'cheetah'}),
+        ('dson', set()),
+        ('genshi', set()),
+        ('gpg', {'text', 'gnupg'}),
+        ('jinja', {'text', 'jinja'}),
+        ('jinja|py', {'text', 'jinja'}),
+        ('jinja|yaml', {'text', 'jinja'}),
+        ('jinja|yaml|gpg', {'text', 'jinja'}),
+        ('mako', {'text', 'mako'}),
+        ('py', {'text', 'python'}),
+        ('pydsl', {'text', 'python'}),
+        ('pyobjects', {'text', 'python'}),
+        ('wempy', set()),
+        ('yaml', {'text', 'yaml'}),
+        ('yamlex', set()),
+        ('yaml|gpg', {'text', 'yaml'}),
     ),
 )
 @pytest.mark.parametrize(
