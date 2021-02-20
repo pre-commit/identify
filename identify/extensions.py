@@ -231,6 +231,8 @@ NAMES = {
     '.bashrc': EXTENSIONS['bash'],
     '.bowerrc': EXTENSIONS['json'] | {'bowerrc'},
     '.browserslistrc': {'text', 'browserslistrc'},
+    '.clang-format': EXTENSIONS['yaml'],
+    '.clang-tidy': EXTENSIONS['yaml'],
     '.codespellrc': EXTENSIONS['ini'] | {'codespellrc'},
     '.coveragerc': EXTENSIONS['ini'] | {'coveragerc'},
     '.cshrc': EXTENSIONS['csh'],
