@@ -25,7 +25,10 @@ NON_EXECUTABLE = 'non-executable'
 TEXT = 'text'
 BINARY = 'binary'
 
-ALL_TAGS = {DIRECTORY, SYMLINK, FILE, EXECUTABLE, NON_EXECUTABLE, TEXT, BINARY}
+TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK))
+MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
+ENCODING_TAGS = frozenset((BINARY, TEXT))
+ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
 ALL_TAGS.update(*extensions.NAMES.values())
@@ -62,14 +65,14 @@ def tags_from_path(path):
 
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
-    if not {TEXT, BINARY} & tags:
+    if not ENCODING_TAGS & tags:
         if file_is_text(path):
             tags.add(TEXT)
         else:
             tags.add(BINARY)
 
-    assert {TEXT, BINARY} & tags, tags
-    assert {EXECUTABLE, NON_EXECUTABLE} & tags, tags
+    assert ENCODING_TAGS & tags, tags
+    assert MODE_TAGS & tags, tags
     return tags
 
 
