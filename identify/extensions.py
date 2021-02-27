@@ -8,6 +8,7 @@ EXTENSIONS = {
     'asciidoc': {'text', 'asciidoc'},
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
+    'avif': {'binary', 'image', 'avif'},
     'bash': {'text', 'shell', 'bash'},
     'bat': {'text', 'batch'},
     'bib': {'text', 'bib'},
