@@ -14,6 +14,20 @@ from identify import identify
 def test_all_tags_includes_basic_ones():
     assert 'file' in identify.ALL_TAGS
     assert 'directory' in identify.ALL_TAGS
+    assert 'executable' in identify.ALL_TAGS
+    assert 'text' in identify.ALL_TAGS
+
+
+@pytest.mark.parametrize(
+    'tag_group',
+    (
+        identify.TYPE_TAGS,
+        identify.MODE_TAGS,
+        identify.ENCODING_TAGS,
+    ),
+)
+def test_all_tags_contains_all_groups(tag_group):
+    assert tag_group < identify.ALL_TAGS
 
 
 def test_all_tags_contains_each_type():
