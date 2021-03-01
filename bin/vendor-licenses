@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """Usage:
 
     ./bin/vendor-licenses > identify/vendor/licenses.py
 """
-from __future__ import absolute_import
-from __future__ import unicode_literals
-
 import argparse
 import os.path
 import subprocess
 import tempfile
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--revision', default='HEAD')
     args = parser.parse_args()
@@ -51,12 +47,13 @@ def main():
         print('LICENSES = (')
         for spdx, text in sorted(licenses):
             print('    (')
-            print('        {!r},'.format(spdx))
+            print(f'        {spdx!r},')
             print("        '''\\")
             print(text.replace('\t', '    ').replace(' \n', '').strip())
             print("''',")
             print('    ),')
         print(')')
+    return 0
 
 
 if __name__ == '__main__':

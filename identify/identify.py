@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import unicode_literals
-
-import io
 import os.path
 import re
 import shlex
 import string
 import sys
+from typing import IO
+from typing import List
+from typing import Optional
+from typing import Set
+from typing import Tuple
 
 from identify import extensions
 from identify import interpreters
@@ -28,17 +27,17 @@ BINARY = 'binary'
 TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
 ENCODING_TAGS = frozenset((BINARY, TEXT))
-ALL_TAGS = set(TYPE_TAGS).union(MODE_TAGS).union(ENCODING_TAGS)
-ALL_TAGS.update(*extensions.EXTENSIONS.values())
-ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
-ALL_TAGS.update(*extensions.NAMES.values())
-ALL_TAGS.update(*interpreters.INTERPRETERS.values())
-ALL_TAGS = frozenset(ALL_TAGS)
+_ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
+_ALL_TAGS.update(*extensions.EXTENSIONS.values())
+_ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
+_ALL_TAGS.update(*extensions.NAMES.values())
+_ALL_TAGS.update(*interpreters.INTERPRETERS.values())
+ALL_TAGS = frozenset(_ALL_TAGS)
 
 
-def tags_from_path(path):
+def tags_from_path(path: str) -> Set[str]:
     if not os.path.lexists(path):
-        raise ValueError('{} does not exist.'.format(path))
+        raise ValueError(f'{path} does not exist.')
     if os.path.isdir(path):
         return {DIRECTORY}
     if os.path.islink(path):
@@ -76,8 +75,8 @@ def tags_from_path(path):
     return tags
 
 
-def tags_from_filename(filename):
-    _, filename = os.path.split(filename)
+def tags_from_filename(path: str) -> Set[str]:
+    _, filename = os.path.split(path)
     _, ext = os.path.splitext(filename)
 
     ret = set()
@@ -98,7 +97,7 @@ def tags_from_filename(filename):
     return ret
 
 
-def tags_from_interpreter(interpreter):
+def tags_from_interpreter(interpreter: str) -> Set[str]:
     _, _, interpreter = interpreter.rpartition('/')
 
     # Try "python3.5.2" => "python3.5" => "python3" until one matches.
@@ -111,7 +110,7 @@ def tags_from_interpreter(interpreter):
     return set()
 
 
-def is_text(bytesio):
+def is_text(bytesio: IO[bytes]) -> bool:
     """Return whether the first KB of contents seems to be binary.
 
     This is roughly based on libmagic's binary/text detection:
@@ -125,14 +124,14 @@ def is_text(bytesio):
     return not bool(bytesio.read(1024).translate(None, text_chars))
 
 
-def file_is_text(path):
+def file_is_text(path: str) -> bool:
     if not os.path.lexists(path):
-        raise ValueError('{} does not exist.'.format(path))
+        raise ValueError(f'{path} does not exist.')
     with open(path, 'rb') as f:
         return is_text(f)
 
 
-def _shebang_split(line):
+def _shebang_split(line: str) -> List[str]:
     try:
         # shebangs aren't supposed to be quoted, though some tools such as
         # setuptools will write them with quotes so we'll best-guess parse
@@ -144,11 +143,14 @@ def _shebang_split(line):
         return line.split()
 
 
-def _parse_nix_shebang(bytesio, cmd):
+def _parse_nix_shebang(
+        bytesio: IO[bytes],
+        cmd: Tuple[str, ...],
+) -> Tuple[str, ...]:
     while bytesio.read(2) == b'#!':
-        next_line = bytesio.readline()
+        next_line_b = bytesio.readline()
         try:
-            next_line = next_line.decode('UTF-8')
+            next_line = next_line_b.decode('UTF-8')
         except UnicodeDecodeError:
             return cmd
 
@@ -165,13 +167,13 @@ def _parse_nix_shebang(bytesio, cmd):
     return cmd
 
 
-def parse_shebang(bytesio):
+def parse_shebang(bytesio: IO[bytes]) -> Tuple[str, ...]:
     """Parse the shebang from a file opened for reading binary."""
     if bytesio.read(2) != b'#!':
         return ()
-    first_line = bytesio.readline()
+    first_line_b = bytesio.readline()
     try:
-        first_line = first_line.decode('UTF-8')
+        first_line = first_line_b.decode('UTF-8')
     except UnicodeDecodeError:
         return ()
 
@@ -188,10 +190,10 @@ def parse_shebang(bytesio):
     return cmd
 
 
-def parse_shebang_from_file(path):
+def parse_shebang_from_file(path: str) -> Tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
-        raise ValueError('{} does not exist.'.format(path))
+        raise ValueError(f'{path} does not exist.')
     if not os.access(path, os.X_OK):
         return ()
 
@@ -203,13 +205,13 @@ COPYRIGHT_RE = re.compile(r'^\s*(Copyright|\(C\)) .*$', re.I | re.MULTILINE)
 WS_RE = re.compile(r'\s+')
 
 
-def _norm_license(s):
+def _norm_license(s: str) -> str:
     s = COPYRIGHT_RE.sub('', s)
     s = WS_RE.sub(' ', s)
     return s.strip()
 
 
-def license_id(filename):
+def license_id(filename: str) -> Optional[str]:
     """Return the spdx id for the license contained in `filename`.  If no
     license is detected, returns `None`.
 
@@ -225,7 +227,7 @@ def license_id(filename):
     """
     import editdistance  # `pip install identify[license]`
 
-    with io.open(filename, encoding='UTF-8') as f:
+    with open(filename, encoding='UTF-8') as f:
         contents = f.read()
 
     norm = _norm_license(contents)
