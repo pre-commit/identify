@@ -28,7 +28,7 @@ BINARY = 'binary'
 TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
 ENCODING_TAGS = frozenset((BINARY, TEXT))
-ALL_TAGS = set(TYPE_TAGS).union(MODE_TAGS).union(ENCODING_TAGS)
+ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
 ALL_TAGS.update(*extensions.EXTENSIONS.values())
 ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
 ALL_TAGS.update(*extensions.NAMES.values())
