@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import unicode_literals
-
 import io
 import os
 import stat
@@ -191,9 +187,9 @@ def test_tags_from_interpreter(interpreter, expected):
     (
         (b'hello world', True),
         (b'', True),
-        ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
-        (r'¯\_(ツ)_/¯'.encode('utf8'), True),
-        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode('utf8'), True),
+        ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode(), True),
+        (r'¯\_(ツ)_/¯'.encode(), True),
+        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode(), True),
         ('éóñå'.encode('latin1'), True),
 
         (b'hello world\x00', False),
