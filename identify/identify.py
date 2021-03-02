@@ -1,6 +1,7 @@
 import os.path
 import re
 import shlex
+import stat
 import string
 import sys
 from typing import IO
@@ -18,13 +19,14 @@ printable = frozenset(string.printable)
 
 DIRECTORY = 'directory'
 SYMLINK = 'symlink'
+SOCKET = 'socket'
 FILE = 'file'
 EXECUTABLE = 'executable'
 NON_EXECUTABLE = 'non-executable'
 TEXT = 'text'
 BINARY = 'binary'
 
-TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK))
+TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK, SOCKET))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
 ENCODING_TAGS = frozenset((BINARY, TEXT))
 _ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
@@ -36,12 +38,18 @@ ALL_TAGS = frozenset(_ALL_TAGS)
 
 
 def tags_from_path(path: str) -> Set[str]:
-    if not os.path.lexists(path):
+    try:
+        sr = os.lstat(path)
+    except (OSError, ValueError):  # same error-handling as `os.lexists()`
         raise ValueError(f'{path} does not exist.')
-    if os.path.isdir(path):
+
+    mode = sr.st_mode
+    if stat.S_ISDIR(mode):
         return {DIRECTORY}
-    if os.path.islink(path):
+    if stat.S_ISLNK(mode):
         return {SYMLINK}
+    if stat.S_ISSOCK(mode):
+        return {SOCKET}
 
     tags = {FILE}
 

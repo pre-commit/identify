@@ -37,7 +37,7 @@ If you have an actual file on disk, you can get the most information possible
 
 When using a file on disk, the checks performed are:
 
-* File type (file, symlink, directory)
+* File type (file, symlink, directory, socket)
 * Mode (is it executable?)
 * File name (mostly based on extension)
 * If executable, the shebang is read and the interpreter interpreted

@@ -1,6 +1,8 @@
 import io
 import os
+import socket
 import stat
+from tempfile import TemporaryDirectory
 
 import pytest
 
@@ -12,6 +14,7 @@ def test_all_tags_includes_basic_ones():
     assert 'directory' in identify.ALL_TAGS
     assert 'executable' in identify.ALL_TAGS
     assert 'text' in identify.ALL_TAGS
+    assert 'socket' in identify.ALL_TAGS
 
 
 @pytest.mark.parametrize(
@@ -49,6 +52,17 @@ def test_tags_from_path_symlink(tmpdir):
     x = tmpdir.join('foo')
     x.mksymlinkto(tmpdir.join('lol').ensure())
     assert identify.tags_from_path(x.strpath) == {'symlink'}
+
+
+def test_tags_from_path_socket():
+    tmproot = '/tmp'  # short path avoids `OSError: AF_UNIX path too long`
+    with TemporaryDirectory(dir=tmproot) as tmpdir:
+        socket_path = os.path.join(tmpdir, 'socket')
+        with socket.socket(socket.AF_UNIX) as sock:
+            sock.bind(socket_path)
+            tags = identify.tags_from_path(socket_path)
+
+    assert tags == {'socket'}
 
 
 def test_tags_from_path_broken_symlink(tmpdir):
