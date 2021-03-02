@@ -76,11 +76,11 @@ optional arguments:
   --filename-only
 ```
 
-```bash
+```console
 $ identify-cli setup.py; echo $?
 ["file", "non-executable", "python", "text"]
 0
-identify setup.py --filename-only; echo $?
+$ identify setup.py --filename-only; echo $?
 ["python", "text"]
 0
 $ identify-cli wat.wat; echo $?
