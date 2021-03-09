@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import unicode_literals
-
-
 EXTENSIONS = {
     'adoc': {'text', 'asciidoc'},
     'asciidoc': {'text', 'asciidoc'},
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
+    'avif': {'binary', 'image', 'avif'},
     'bash': {'text', 'shell', 'bash'},
     'bat': {'text', 'batch'},
     'bib': {'text', 'bib'},
@@ -243,6 +239,8 @@ NAMES = {
     '.bashrc': EXTENSIONS['bash'],
     '.bowerrc': EXTENSIONS['json'] | {'bowerrc'},
     '.browserslistrc': {'text', 'browserslistrc'},
+    '.clang-format': EXTENSIONS['yaml'],
+    '.clang-tidy': EXTENSIONS['yaml'],
     '.codespellrc': EXTENSIONS['ini'] | {'codespellrc'},
     '.coveragerc': EXTENSIONS['ini'] | {'coveragerc'},
     '.cshrc': EXTENSIONS['csh'],

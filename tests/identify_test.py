@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import unicode_literals
-
+import builtins
+import errno
 import io
 import os
+import socket
 import stat
+from tempfile import TemporaryDirectory
+from unittest import mock
 
 import pytest
 
@@ -14,6 +15,21 @@ from identify import identify
 def test_all_tags_includes_basic_ones():
     assert 'file' in identify.ALL_TAGS
     assert 'directory' in identify.ALL_TAGS
+    assert 'executable' in identify.ALL_TAGS
+    assert 'text' in identify.ALL_TAGS
+    assert 'socket' in identify.ALL_TAGS
+
+
+@pytest.mark.parametrize(
+    'tag_group',
+    (
+        identify.TYPE_TAGS,
+        identify.MODE_TAGS,
+        identify.ENCODING_TAGS,
+    ),
+)
+def test_all_tags_contains_all_groups(tag_group):
+    assert tag_group < identify.ALL_TAGS
 
 
 def test_all_tags_contains_each_type():
@@ -39,6 +55,17 @@ def test_tags_from_path_symlink(tmpdir):
     x = tmpdir.join('foo')
     x.mksymlinkto(tmpdir.join('lol').ensure())
     assert identify.tags_from_path(x.strpath) == {'symlink'}
+
+
+def test_tags_from_path_socket():
+    tmproot = '/tmp'  # short path avoids `OSError: AF_UNIX path too long`
+    with TemporaryDirectory(dir=tmproot) as tmpdir:
+        socket_path = os.path.join(tmpdir, 'socket')
+        with socket.socket(socket.AF_UNIX) as sock:
+            sock.bind(socket_path)
+            tags = identify.tags_from_path(socket_path)
+
+    assert tags == {'socket'}
 
 
 def test_tags_from_path_broken_symlink(tmpdir):
@@ -226,9 +253,9 @@ def test_tags_from_interpreter(interpreter, expected):
     (
         (b'hello world', True),
         (b'', True),
-        ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode('utf8'), True),
-        (r'¯\_(ツ)_/¯'.encode('utf8'), True),
-        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode('utf8'), True),
+        ('éóñəå  ⊂(◉‿◉)つ(ノ≥∇≤)ノ'.encode(), True),
+        (r'¯\_(ツ)_/¯'.encode(), True),
+        ('♪┏(・o･)┛♪┗ ( ･o･) ┓♪┏ ( ) ┛♪┗ (･o･ ) ┓♪'.encode(), True),
         ('éóñå'.encode('latin1'), True),
 
         (b'hello world\x00', False),
@@ -353,6 +380,15 @@ def test_parse_shebang_from_file_simple(tmpdir):
     x.write_text('#!/usr/bin/env python', encoding='UTF-8')
     make_executable(x.strpath)
     assert identify.parse_shebang_from_file(x.strpath) == ('python',)
+
+
+def test_parse_shebang_open_raises_einval(tmpdir):
+    x = tmpdir.join('f')
+    x.write('#!/usr/bin/env not-expected\n')
+    make_executable(x)
+    error = OSError(errno.EINVAL, f'Invalid argument {x}')
+    with mock.patch.object(builtins, 'open', side_effect=error):
+        assert identify.parse_shebang_from_file(x.strpath) == ()
 
 
 def make_executable(filename):

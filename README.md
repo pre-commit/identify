@@ -37,7 +37,7 @@ If you have an actual file on disk, you can get the most information possible
 
 When using a file on disk, the checks performed are:
 
-* File type (file, symlink, directory)
+* File type (file, symlink, directory, socket)
 * Mode (is it executable?)
 * File name (mostly based on extension)
 * If executable, the shebang is read and the interpreter interpreted
@@ -76,11 +76,11 @@ optional arguments:
   --filename-only
 ```
 
-```bash
+```console
 $ identify-cli setup.py; echo $?
 ["file", "non-executable", "python", "text"]
 0
-identify setup.py --filename-only; echo $?
+$ identify setup.py --filename-only; echo $?
 ["python", "text"]
 0
 $ identify-cli wat.wat; echo $?
