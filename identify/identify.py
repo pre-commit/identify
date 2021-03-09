@@ -86,11 +86,11 @@ def tags_from_path(path: str) -> Set[str]:
     return tags
 
 
-def tags_from_extension_specific_shebang(path):
+def tags_from_extension_specific_shebang(path: str) -> Set[str]:
     """Match tags from an extension that we need to read the shebang from."""
     _, filename = os.path.split(path)
     _, ext = os.path.splitext(filename)
-    ret = set()
+    ret = set()  # type: Set[str]
     if ext.lstrip('.') not in extensions.EXTENSIONS_NEED_SHEBANG_CHECK:
         return ret
 

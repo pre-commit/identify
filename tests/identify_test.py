@@ -158,15 +158,13 @@ def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),
     (
-        ('cheetah', {'text', 'cheetah'}),
         ('dson', set()),
         ('genshi', set()),
-        ('gpg', {'text', 'gnupg'}),
+        ('gpg', {'binary', 'gnupg'}),
         ('jinja', {'text', 'jinja'}),
         ('jinja|py', {'text', 'jinja'}),
         ('jinja|yaml', {'text', 'jinja'}),
         ('jinja|yaml|gpg', {'text', 'jinja'}),
-        ('mako', {'text', 'mako'}),
         ('py', {'text', 'python'}),
         ('pydsl', {'text', 'python'}),
         ('pyobjects', {'text', 'python'}),

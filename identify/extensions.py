@@ -48,7 +48,7 @@ EXTENSIONS = {
     'gif': {'binary', 'image', 'gif'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
-    'gpg': {'text', 'gnupg'},
+    'gpg': {'binary', 'gnupg'},
     'gpx': {'text', 'gpx', 'xml'},
     'gradle': {'text', 'groovy'},
     'graphql': {'text', 'graphql'},
@@ -97,7 +97,6 @@ EXTENSIONS = {
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
-    'mako': {'text', 'mako'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
     'markdown': {'text', 'markdown'},
@@ -177,7 +176,6 @@ EXTENSIONS = {
     'tgz': {'binary', 'gzip'},
     'thrift': {'text', 'thrift'},
     'tiff': {'binary', 'image', 'tiff'},
-    'tmpl': {'text', 'cheetah'},
     'toml': {'text', 'toml'},
     'ts': {'text', 'ts'},
     'tsx': {'text', 'tsx'},
@@ -228,7 +226,6 @@ EXTENSIONS_NEED_SHEBANG_CHECK = {
     'sls': {
         'pydsl': 'py',
         'pyobjects': 'py',
-        'cheetah': 'tmpl',
     },
 }
 
