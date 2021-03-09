@@ -1,8 +1,11 @@
+import builtins
+import errno
 import io
 import os
 import socket
 import stat
 from tempfile import TemporaryDirectory
+from unittest import mock
 
 import pytest
 
@@ -328,6 +331,15 @@ def test_parse_shebang_from_file_simple(tmpdir):
     x.write_text('#!/usr/bin/env python', encoding='UTF-8')
     make_executable(x.strpath)
     assert identify.parse_shebang_from_file(x.strpath) == ('python',)
+
+
+def test_parse_shebang_open_raises_einval(tmpdir):
+    x = tmpdir.join('f')
+    x.write('#!/usr/bin/env not-expected\n')
+    make_executable(x)
+    error = OSError(errno.EINVAL, f'Invalid argument {x}')
+    with mock.patch.object(builtins, 'open', side_effect=error):
+        assert identify.parse_shebang_from_file(x.strpath) == ()
 
 
 def make_executable(filename):
