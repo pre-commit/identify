@@ -155,7 +155,6 @@ EXTENSIONS = {
     'scss': {'text', 'scss'},
     'sh': {'text', 'shell'},
     'sln': {'text', 'sln'},
-    'sls': {'text', 'salt'},
     'so': {'binary'},
     'sol': {'text', 'solidity'},
     'spec': {'text', 'spec'},
@@ -220,13 +219,8 @@ EXTENSIONS = {
 EXTENSIONS_NEED_BINARY_CHECK = {
     'plist': {'plist'},
 }
-# This should contain a map of file extensions to a map of interpreter names to
-# their own file extensions
-EXTENSIONS_NEED_SHEBANG_CHECK = {
-    'sls': {
-        'pydsl': 'py',
-        'pyobjects': 'py',
-    },
+EXTENSIONS_NEED_INTERPRETER_CHECK = {
+    'sls': {'text', 'salt'},
 }
 
 NAMES = {

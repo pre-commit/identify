@@ -33,6 +33,7 @@ ENCODING_TAGS = frozenset((BINARY, TEXT))
 _ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
 _ALL_TAGS.update(*extensions.EXTENSIONS.values())
 _ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
+_ALL_TAGS.update(*extensions.EXTENSIONS_NEED_INTERPRETER_CHECK.values())
 _ALL_TAGS.update(*extensions.NAMES.values())
 _ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(_ALL_TAGS)
@@ -61,17 +62,27 @@ def tags_from_path(path: str) -> Set[str]:
         tags.add(NON_EXECUTABLE)
 
     # As an optimization, if we're able to read tags from the filename, then we
-    # don't peek at the file contents.
+    # don't peek at the file contents unless the file extension requires it
     t = tags_from_filename(os.path.basename(path))
     if len(t) > 0:
         tags.update(t)
-    else:
-        if executable:
-            shebang = parse_shebang_from_file(path)
-            if len(shebang) > 0:
-                tags.update(tags_from_interpreter(shebang[0]))
 
-    tags.update(tags_from_extension_specific_shebang(path))
+    ext = os.path.splitext(os.path.split(path)[-1])[-1].lstrip('.')
+    if (
+        not len(t) and executable
+    ) or ext in extensions.EXTENSIONS_NEED_INTERPRETER_CHECK:
+        try:
+            tags.update(extensions.EXTENSIONS_NEED_INTERPRETER_CHECK[ext])
+        except KeyError:
+            pass
+
+        shebang = parse_shebang_from_file(path)
+        if len(shebang) > 0:
+            tags.update(
+                tags_from_interpreter(
+                    shebang[0].split('|')[0].strip(),
+                ),
+            )
 
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
@@ -84,42 +95,6 @@ def tags_from_path(path: str) -> Set[str]:
     assert ENCODING_TAGS & tags, tags
     assert MODE_TAGS & tags, tags
     return tags
-
-
-def tags_from_extension_specific_shebang(path: str) -> Set[str]:
-    """Match tags from an extension that we need to read the shebang from."""
-    _, filename = os.path.split(path)
-    _, ext = os.path.splitext(filename)
-    ret = set()  # type: Set[str]
-    if ext.lstrip('.') not in extensions.EXTENSIONS_NEED_SHEBANG_CHECK:
-        return ret
-
-    interpreter_to_extension_map = extensions.EXTENSIONS_NEED_SHEBANG_CHECK[
-        ext.lstrip('.')
-    ]
-
-    with open(path, 'rb') as f:
-        shebang = parse_shebang(f)
-
-    if ext == '.sls':
-        if shebang:
-            # try to match tags for the file extension of the first interpreter
-            try:
-                first_interpreter = shebang[0].split('|')[0]
-                ret.update(
-                    extensions.EXTENSIONS[
-                        interpreter_to_extension_map.get(
-                            first_interpreter, first_interpreter,
-                        )
-                    ],
-                )
-            except (IndexError, KeyError):
-                pass
-        else:
-            # the default interpreter is jinja
-            ret.update(extensions.EXTENSIONS['jinja'])
-
-    return ret
 
 
 def tags_from_filename(path: str) -> Set[str]:
@@ -166,7 +141,7 @@ def is_text(bytesio: IO[bytes]) -> bool:
     text_chars = (
         bytearray([7, 8, 9, 10, 11, 12, 13, 27]) +
         bytearray(range(0x20, 0x7F)) +
-        bytearray(range(0x80, 0X100))
+        bytearray(range(0x80, 0x100))
     )
     return not bool(bytesio.read(1024).translate(None, text_chars))
 
@@ -191,8 +166,8 @@ def _shebang_split(line: str) -> List[str]:
 
 
 def _parse_nix_shebang(
-        bytesio: IO[bytes],
-        cmd: Tuple[str, ...],
+    bytesio: IO[bytes],
+    cmd: Tuple[str, ...],
 ) -> Tuple[str, ...]:
     while bytesio.read(2) == b'#!':
         next_line_b = bytesio.readline()
@@ -241,7 +216,14 @@ def parse_shebang_from_file(path: str) -> Tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
-    if not os.access(path, os.X_OK):
+    ext = os.path.splitext(os.path.split(path)[-1])[-1].lstrip('.')
+    if (
+        ext not in extensions.EXTENSIONS_NEED_INTERPRETER_CHECK and
+        not os.access(
+            path,
+            os.X_OK,
+        )
+    ):
         return ()
 
     try:
@@ -295,7 +277,7 @@ def license_id(filename: str) -> Optional[str]:
             return spdx
 
         # skip the slow calculation if the lengths are very different
-        if norm and abs(len(norm) - len(norm_license)) / len(norm) > .05:
+        if norm and abs(len(norm) - len(norm_license)) / len(norm) > 0.05:
             continue
 
         edit_dist = editdistance.eval(norm, norm_license)
@@ -304,7 +286,7 @@ def license_id(filename: str) -> Optional[str]:
             min_edit_dist_spdx = spdx
 
     # if there's less than 5% edited from the license, we found our match
-    if norm and min_edit_dist / len(norm) < .05:
+    if norm and min_edit_dist / len(norm) < 0.05:
         return min_edit_dist_spdx
     else:
         # no matches :'(

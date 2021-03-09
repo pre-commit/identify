@@ -145,51 +145,45 @@ def test_tags_from_path_plist_text(tmpdir):
     }
 
 
-def test_tags_from_extension_specific_shebang_executable_file(tmpdir):
-    x = tmpdir.join('test.sls')
-    x.write('')
-    make_executable(x.strpath)
-    assert identify.tags_from_extension_specific_shebang(x.strpath) == {
-        'jinja',
-        'text',
-    }
-
-
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),
     (
-        ('dson', set()),
-        ('genshi', set()),
-        ('gpg', {'binary', 'gnupg'}),
-        ('jinja', {'text', 'jinja'}),
-        ('jinja|py', {'text', 'jinja'}),
-        ('jinja|yaml', {'text', 'jinja'}),
-        ('jinja|yaml|gpg', {'text', 'jinja'}),
-        ('py', {'text', 'python'}),
-        ('pydsl', {'text', 'python'}),
-        ('pyobjects', {'text', 'python'}),
-        ('wempy', set()),
-        ('yaml', {'text', 'yaml'}),
-        ('yamlex', set()),
-        ('yaml|gpg', {'text', 'yaml'}),
+        ('dson', {'salt', 'file', 'non-executable', 'text'}),
+        ('genshi', {'salt', 'file', 'non-executable', 'text'}),
+        ('gpg', {'salt', 'file', 'non-executable', 'text', 'gnupg'}),
+        ('jinja', {'salt', 'file', 'non-executable', 'text', 'jinja'}),
+        ('jinja|py', {'salt', 'file', 'non-executable', 'text', 'jinja'}),
+        ('jinja|yaml', {'salt', 'file', 'non-executable', 'text', 'jinja'}),
+        (
+            'jinja|yaml|gpg', {
+                'salt', 'file', 'non-executable', 'text', 'jinja',
+            },
+        ),
+        ('py', {'salt', 'file', 'non-executable', 'text', 'python'}),
+        ('pydsl', {'salt', 'file', 'non-executable', 'text', 'python'}),
+        ('pyobjects', {'salt', 'file', 'non-executable', 'text', 'python'}),
+        ('wempy', {'salt', 'file', 'non-executable', 'text'}),
+        ('yaml', {'salt', 'file', 'non-executable', 'text', 'yaml'}),
+        ('yamlex', {'salt', 'file', 'non-executable', 'text'}),
+        ('yaml|gpg', {'salt', 'file', 'non-executable', 'text', 'yaml'}),
     ),
 )
 @pytest.mark.parametrize(
-    ('shebang_prefix',),
+    ('interpreter_prefix',),
     (
         ('#!',),
         ('#! ',),
     ),
 )
-def test_tags_from_extension_specific_shebang(
+def test_tags_from_path_with_interpreter_check(
     tmpdir,
-    shebang_prefix,
+    interpreter_prefix,
     interpreter,
     expected,
 ):
     x = tmpdir.join('test.sls')
-    x.write(shebang_prefix + interpreter)
-    assert identify.tags_from_extension_specific_shebang(x.strpath) == expected
+    x.write(interpreter_prefix + interpreter)
+    assert identify.tags_from_path(x.strpath) == expected
 
 
 @pytest.mark.parametrize(
