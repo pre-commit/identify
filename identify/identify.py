@@ -1,3 +1,4 @@
+import errno
 import os.path
 import re
 import shlex
@@ -205,8 +206,14 @@ def parse_shebang_from_file(path: str) -> Tuple[str, ...]:
     if not os.access(path, os.X_OK):
         return ()
 
-    with open(path, 'rb') as f:
-        return parse_shebang(f)
+    try:
+        with open(path, 'rb') as f:
+            return parse_shebang(f)
+    except OSError as e:
+        if e.errno == errno.EINVAL:
+            return ()
+        else:
+            raise
 
 
 COPYRIGHT_RE = re.compile(r'^\s*(Copyright|\(C\)) .*$', re.I | re.MULTILINE)
