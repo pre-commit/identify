@@ -183,6 +183,7 @@ EXTENSIONS = {
     'txsprofile': {'text', 'ini', 'txsprofile'},
     'txt': {'text', 'plain-text'},
     'v': {'text', 'verilog'},
+    'vb': {'text', 'vb'},
     'vbproj': {'text', 'xml', 'vbproj'},
     'vcxproj': {'text', 'xml', 'vcxproj'},
     'vdx': {'text', 'vdx'},
