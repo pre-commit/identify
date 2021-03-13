@@ -261,6 +261,7 @@ NAMES = {
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
     'Gemfile': EXTENSIONS['rb'],
+    'Gemfile.lock': {'text'},
     'Jenkinsfile': {'text', 'groovy'},
     'LICENSE': EXTENSIONS['txt'],
     'MAINTAINERS': EXTENSIONS['txt'],
