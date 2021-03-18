@@ -226,6 +226,7 @@ NAMES = {
     '.bash_aliases': EXTENSIONS['bash'],
     '.bash_profile': EXTENSIONS['bash'],
     '.bashrc': EXTENSIONS['bash'],
+    '.bazelrc': {'text', 'bazelrc'},
     '.bowerrc': EXTENSIONS['json'] | {'bowerrc'},
     '.browserslistrc': {'text', 'browserslistrc'},
     '.clang-format': EXTENSIONS['yaml'],
