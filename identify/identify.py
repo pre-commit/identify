@@ -240,7 +240,7 @@ def license_id(filename: str) -> Optional[str]:
     3. check exact text match with existing licenses
     4. failing that use edit distance
     """
-    import editdistance  # `pip install identify[license]`
+    import editdistance_s  # `pip install identify[license]`
 
     with open(filename, encoding='UTF-8') as f:
         contents = f.read()
@@ -260,7 +260,7 @@ def license_id(filename: str) -> Optional[str]:
         if norm and abs(len(norm) - len(norm_license)) / len(norm) > .05:
             continue
 
-        edit_dist = editdistance.eval(norm, norm_license)
+        edit_dist = editdistance_s.distance(norm, norm_license)
         if edit_dist < min_edit_dist:
             min_edit_dist = edit_dist
             min_edit_dist_spdx = spdx
