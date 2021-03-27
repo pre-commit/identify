@@ -32,6 +32,7 @@ EXTENSIONS = {
     'cxx': {'text', 'c++'},
     'dart': {'text', 'dart'},
     'def': {'text', 'def'},
+    'dll': {'binary'},
     'dtd': {'text', 'dtd'},
     'ear': {'binary', 'zip', 'jar'},
     'edn': {'text', 'clojure', 'edn'},
