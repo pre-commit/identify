@@ -1,5 +1,5 @@
 import errno
-import os.path
+import os
 import re
 import shlex
 import stat
@@ -54,7 +54,8 @@ def tags_from_path(path: str) -> Set[str]:
 
     tags = {FILE}
 
-    executable = os.access(path, os.X_OK)
+    executable = os.stat(path).st_mode \
+        & (stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
     if executable:
         tags.add(EXECUTABLE)
     else:
