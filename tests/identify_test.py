@@ -199,6 +199,8 @@ def test_tags_from_path_with_interpreter_check(
         ('Pipfile.lock', {'text', 'json'}),
         ('mod/test.py', {'text', 'python'}),
         ('mod/Dockerfile', {'text', 'dockerfile'}),
+        ('Gemfile', {'text', 'ruby'}),
+        ('Gemfile.lock', {'text'}),
 
         # does not set binary / text
         ('f.plist', {'plist'}),
