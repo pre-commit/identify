@@ -58,6 +58,7 @@ EXTENSIONS = {
     'gypi': {'text', 'gyp', 'python'},
     'gz': {'binary', 'gzip'},
     'h': {'text', 'header', 'c', 'c++'},
+    'hh' : {'text', 'header', 'c++'},
     'hpp': {'text', 'header', 'c++'},
     'hs': {'text', 'haskell'},
     'htm': {'text', 'html'},
