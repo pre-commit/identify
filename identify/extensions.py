@@ -29,7 +29,7 @@ EXTENSIONS = {
     'css': {'text', 'css'},
     'csv': {'text', 'csv'},
     'cu': {'text', 'cuda'},
-    'cuh': {'text', 'header', 'cuda'},
+    'cuh': {'text', 'cuda'},
     'cxx': {'text', 'c++'},
     'dart': {'text', 'dart'},
     'def': {'text', 'def'},
