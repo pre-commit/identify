@@ -33,11 +33,11 @@ def main() -> int:
 
             _, data, license_text = contents.split('---\n', 2)
 
-            spdx, = [
+            spdx, = (
                 line[len('spdx-id:'):].strip()
                 for line in data.splitlines()
                 if line.startswith('spdx-id:')
-            ]
+            )
 
             licenses.append((spdx, license_text))
 
