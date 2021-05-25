@@ -160,6 +160,9 @@ def test_tags_from_path_plist_text(tmpdir):
         ('mod/Dockerfile', {'text', 'dockerfile'}),
         ('Gemfile', {'text', 'ruby'}),
         ('Gemfile.lock', {'text'}),
+        ('Jenkinsfile', {'text', 'groovy', 'jenkins'}),
+        ('build.jenkins', {'text', 'groovy', 'jenkins'}),
+        ('build.jenkinsfile', {'text', 'groovy', 'jenkins'}),
 
         # does not set binary / text
         ('f.plist', {'plist'}),
