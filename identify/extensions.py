@@ -288,4 +288,5 @@ NAMES = {
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'setup.cfg': EXTENSIONS['ini'],
+    'WORKSPACE': EXTENSIONS['bzl'],
 }
