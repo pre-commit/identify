@@ -220,8 +220,10 @@ EXTENSIONS = {
     'yang': {'text', 'yang'},
     'yin': {'text', 'xml', 'yin'},
     'yml': {'text', 'yaml'},
+    'zcml': {'text', 'xml', 'zcml'},
     'zig': {'text', 'zig'},
     'zip': {'binary', 'zip'},
+    'zpt': {'text', 'zpt'},
     'zsh': {'text', 'shell', 'zsh'},
 }
 EXTENSIONS_NEED_BINARY_CHECK = {
