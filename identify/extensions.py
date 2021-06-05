@@ -188,6 +188,7 @@ EXTENSIONS = {
     'twig': {'text', 'twig'},
     'txsprofile': {'text', 'ini', 'txsprofile'},
     'txt': {'text', 'plain-text'},
+    'urdf': {'text', 'xml', 'urdf'},
     'v': {'text', 'verilog'},
     'vb': {'text', 'vb'},
     'vbproj': {'text', 'xml', 'vbproj'},
