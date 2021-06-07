@@ -183,6 +183,7 @@ EXTENSIONS = {
     'tiff': {'binary', 'image', 'tiff'},
     'toml': {'text', 'toml'},
     'ts': {'text', 'ts'},
+    'tsv': {'text', 'tsv'},
     'tsx': {'text', 'tsx'},
     'ttf': {'binary', 'ttf'},
     'twig': {'text', 'twig'},
