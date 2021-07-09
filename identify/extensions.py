@@ -294,4 +294,5 @@ NAMES = {
     'Rakefile': EXTENSIONS['rb'],
     'setup.cfg': EXTENSIONS['ini'],
     'WORKSPACE': EXTENSIONS['bzl'],
+    'wscript': EXTENSIONS['py'],
 }
