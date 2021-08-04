@@ -1,5 +1,6 @@
 EXTENSIONS = {
     'adoc': {'text', 'asciidoc'},
+    'ai': {'binary', 'adobe-illustrator'},
     'asciidoc': {'text', 'asciidoc'},
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
