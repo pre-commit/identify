@@ -94,6 +94,7 @@ EXTENSIONS = {
     'key': {'text', 'pem'},
     'kml': {'text', 'kml', 'xml'},
     'kt': {'text', 'kotlin'},
+    'kts': {'text', 'kotlin'},
     'lean': {'text', 'lean'},
     'lektorproject': {'text', 'ini', 'lektorproject'},
     'less': {'text', 'less'},
