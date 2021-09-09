@@ -138,6 +138,7 @@ EXTENSIONS = {
     'pp': {'text', 'puppet'},
     'properties': {'text', 'java-properties'},
     'proto': {'text', 'proto'},
+    'ps1': {'text', 'powershell'},
     'puml': {'text', 'plantuml'},
     'purs': {'text', 'purescript'},
     'pxd': {'text', 'cython'},
