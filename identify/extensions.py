@@ -35,6 +35,7 @@ EXTENSIONS = {
     'cuh': {'text', 'cuda'},
     'cxx': {'text', 'c++'},
     'dart': {'text', 'dart'},
+    'ddl': {'text', 'sql'},
     'def': {'text', 'def'},
     'dll': {'binary'},
     'dtd': {'text', 'dtd'},
