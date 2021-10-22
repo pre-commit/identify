@@ -3,6 +3,7 @@ INTERPRETERS = {
     'awk': {'awk'},
     'bash': {'shell', 'bash'},
     'bats': {'shell', 'bash', 'bats'},
+    'cbsd': {'shell', 'cbsd'},
     'csh': {'shell', 'csh'},
     'dash': {'shell', 'dash'},
     'expect': {'expect'},
