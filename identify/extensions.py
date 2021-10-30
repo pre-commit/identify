@@ -172,6 +172,7 @@ EXTENSIONS = {
     'ss': {'text', 'scheme'},
     'styl': {'text', 'stylus'},
     'sv': {'text', 'system-verilog'},
+    'svelte': {'text', 'svelte'},
     'svg': {'text', 'image', 'svg', 'xml'},
     'svh': {'text', 'system-verilog'},
     'swf': {'binary', 'swf'},
