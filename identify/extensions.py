@@ -137,6 +137,7 @@ EXTENSIONS = {
     'png': {'binary', 'image', 'png'},
     'po': {'text', 'pofile'},
     'pp': {'text', 'puppet'},
+    'prisma': {'text', 'prisma'},
     'properties': {'text', 'java-properties'},
     'proto': {'text', 'proto'},
     'ps1': {'text', 'powershell'},
