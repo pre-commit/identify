@@ -154,6 +154,7 @@ EXTENSIONS = {
     'r': {'text', 'r'},
     'rake': {'text', 'ruby'},
     'rb': {'text', 'ruby'},
+    'rng': {'text', 'xml', 'relax-ng'},
     'rs': {'text', 'rust'},
     'rst': {'text', 'rst'},
     's': {'text', 'asm'},
