@@ -50,6 +50,7 @@ EXTENSIONS = {
     'fish': {'text', 'fish'},
     'gd': {'text', 'gdscript'},
     'gemspec': {'text', 'ruby'},
+    'geojson': {'text', 'geojson', 'json'},
     'gif': {'binary', 'image', 'gif'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
