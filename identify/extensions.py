@@ -205,6 +205,7 @@ EXTENSIONS = {
     'vh': {'text', 'verilog'},
     'vhd': {'text', 'vhdl'},
     'vim': {'text', 'vim'},
+    'vtl': {'text', 'vtl'},
     'vue': {'text', 'vue'},
     'war': {'binary', 'zip', 'jar'},
     'wav': {'binary', 'audio', 'wav'},
