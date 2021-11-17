@@ -288,6 +288,8 @@ NAMES = {
     'Gemfile': EXTENSIONS['rb'],
     'Gemfile.lock': {'text'},
     'GNUmakefile': EXTENSIONS['mk'],
+    'go.mod': {'text', 'go-mod'},
+    'go.sum': {'text', 'go-sum'},
     'Jenkinsfile': EXTENSIONS['jenkins'],
     'LICENSE': EXTENSIONS['txt'],
     'MAINTAINERS': EXTENSIONS['txt'],
