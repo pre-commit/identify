@@ -1,4 +1,5 @@
 import errno
+import math
 import os.path
 import re
 import shlex
@@ -244,7 +245,7 @@ def license_id(filename: str) -> Optional[str]:
     3. check exact text match with existing licenses
     4. failing that use edit distance
     """
-    import editdistance_s  # `pip install identify[license]`
+    import ukkonen  # `pip install identify[license]`
 
     with open(filename, encoding='UTF-8') as f:
         contents = f.read()
@@ -253,6 +254,8 @@ def license_id(filename: str) -> Optional[str]:
 
     min_edit_dist = sys.maxsize
     min_edit_dist_spdx = ''
+
+    cutoff = math.ceil(.05 * len(norm))
 
     # try exact matches
     for spdx, text in licenses.LICENSES:
@@ -264,13 +267,13 @@ def license_id(filename: str) -> Optional[str]:
         if norm and abs(len(norm) - len(norm_license)) / len(norm) > .05:
             continue
 
-        edit_dist = editdistance_s.distance(norm, norm_license)
-        if edit_dist < min_edit_dist:
+        edit_dist = ukkonen.distance(norm, norm_license, cutoff)
+        if edit_dist < cutoff and edit_dist < min_edit_dist:
             min_edit_dist = edit_dist
             min_edit_dist_spdx = spdx
 
     # if there's less than 5% edited from the license, we found our match
-    if norm and min_edit_dist / len(norm) < .05:
+    if norm and min_edit_dist < cutoff:
         return min_edit_dist_spdx
     else:
         # no matches :'(
