@@ -269,7 +269,7 @@ NAMES = {
     '.mention-bot': EXTENSIONS['json'] | {'mention-bot'},
     '.npmignore': {'text', 'npmignore'},
     '.pdbrc': EXTENSIONS['py'] | {'pdbrc'},
-    '.prettierignore': {'text', 'gitignore'},
+    '.prettierignore': {'text', 'gitignore', 'prettierignore'},
     '.pypirc': EXTENSIONS['ini'] | {'pypirc'},
     '.rstcheck.cfg': EXTENSIONS['ini'],
     '.yamllint': EXTENSIONS['yaml'] | {'yamllint'},
