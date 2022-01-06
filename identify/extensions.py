@@ -113,6 +113,7 @@ EXTENSIONS = {
     'md': {'text', 'markdown'},
     'mdx': {'text', 'mdx'},
     'mib': {'text', 'mib'},
+    'mjs': {'text', 'javascript'},
     'mk': {'text', 'makefile'},
     'ml': {'text', 'ocaml'},
     'mli': {'text', 'ocaml'},
