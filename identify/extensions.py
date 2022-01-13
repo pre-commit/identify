@@ -25,6 +25,7 @@ EXTENSIONS = {
     'coffee': {'text', 'coffee'},
     'conf': {'text'},
     'cpp': {'text', 'c++'},
+    'cr': {'text', 'crystal'},
     'crt': {'text', 'pem'},
     'cs': {'text', 'c#'},
     'csproj': {'text', 'xml', 'csproj'},
