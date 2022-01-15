@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import errno
 import math
 import os.path
@@ -7,10 +9,6 @@ import stat
 import string
 import sys
 from typing import IO
-from typing import List
-from typing import Optional
-from typing import Set
-from typing import Tuple
 
 from identify import extensions
 from identify import interpreters
@@ -39,7 +37,7 @@ _ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(_ALL_TAGS)
 
 
-def tags_from_path(path: str) -> Set[str]:
+def tags_from_path(path: str) -> set[str]:
     try:
         sr = os.lstat(path)
     except (OSError, ValueError):  # same error-handling as `os.lexists()`
@@ -85,7 +83,7 @@ def tags_from_path(path: str) -> Set[str]:
     return tags
 
 
-def tags_from_filename(path: str) -> Set[str]:
+def tags_from_filename(path: str) -> set[str]:
     _, filename = os.path.split(path)
     _, ext = os.path.splitext(filename)
 
@@ -107,7 +105,7 @@ def tags_from_filename(path: str) -> Set[str]:
     return ret
 
 
-def tags_from_interpreter(interpreter: str) -> Set[str]:
+def tags_from_interpreter(interpreter: str) -> set[str]:
     _, _, interpreter = interpreter.rpartition('/')
 
     # Try "python3.5.2" => "python3.5" => "python3" until one matches.
@@ -141,7 +139,7 @@ def file_is_text(path: str) -> bool:
         return is_text(f)
 
 
-def _shebang_split(line: str) -> List[str]:
+def _shebang_split(line: str) -> list[str]:
     try:
         # shebangs aren't supposed to be quoted, though some tools such as
         # setuptools will write them with quotes so we'll best-guess parse
@@ -155,8 +153,8 @@ def _shebang_split(line: str) -> List[str]:
 
 def _parse_nix_shebang(
         bytesio: IO[bytes],
-        cmd: Tuple[str, ...],
-) -> Tuple[str, ...]:
+        cmd: tuple[str, ...],
+) -> tuple[str, ...]:
     while bytesio.read(2) == b'#!':
         next_line_b = bytesio.readline()
         try:
@@ -177,7 +175,7 @@ def _parse_nix_shebang(
     return cmd
 
 
-def parse_shebang(bytesio: IO[bytes]) -> Tuple[str, ...]:
+def parse_shebang(bytesio: IO[bytes]) -> tuple[str, ...]:
     """Parse the shebang from a file opened for reading binary."""
     if bytesio.read(2) != b'#!':
         return ()
@@ -204,7 +202,7 @@ def parse_shebang(bytesio: IO[bytes]) -> Tuple[str, ...]:
     return cmd
 
 
-def parse_shebang_from_file(path: str) -> Tuple[str, ...]:
+def parse_shebang_from_file(path: str) -> tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
@@ -231,7 +229,7 @@ def _norm_license(s: str) -> str:
     return s.strip()
 
 
-def license_id(filename: str) -> Optional[str]:
+def license_id(filename: str) -> str | None:
     """Return the spdx id for the license contained in `filename`.  If no
     license is detected, returns `None`.
 
