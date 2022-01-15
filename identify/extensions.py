@@ -1,3 +1,4 @@
+from __future__ import annotations
 EXTENSIONS = {
     'adoc': {'text', 'asciidoc'},
     'ai': {'binary', 'adobe-illustrator'},

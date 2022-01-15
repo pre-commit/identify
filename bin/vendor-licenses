@@ -3,6 +3,8 @@
 
     ./bin/vendor-licenses > identify/vendor/licenses.py
 """
+from __future__ import annotations
+
 import argparse
 import os.path
 import subprocess

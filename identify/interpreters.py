@@ -1,3 +1,4 @@
+from __future__ import annotations
 INTERPRETERS = {
     'ash': {'shell', 'ash'},
     'awk': {'awk'},

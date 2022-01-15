@@ -1,12 +1,13 @@
+from __future__ import annotations
+
 import argparse
 import json
-from typing import Optional
 from typing import Sequence
 
 from identify import identify
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--filename-only', action='store_true')
     parser.add_argument('path')

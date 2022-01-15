@@ -1,3 +1,4 @@
+from __future__ import annotations
 LICENSES = (
     (
         '0BSD',
