@@ -178,6 +178,7 @@ EXTENSIONS = {
     'spec': {'text', 'spec'},
     'sql': {'text', 'sql'},
     'ss': {'text', 'scheme'},
+    'sty': {'text', 'tex'},
     'styl': {'text', 'stylus'},
     'sv': {'text', 'system-verilog'},
     'svelte': {'text', 'svelte'},
