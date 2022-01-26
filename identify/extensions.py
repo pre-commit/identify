@@ -80,6 +80,7 @@ EXTENSIONS = {
     'idr': {'text', 'idris'},
     'inc': {'text', 'inc'},
     'ini': {'text', 'ini'},
+    'inl': {'text', 'inl', 'c++'},
     'ino': {'text', 'ino', 'c++'},
     'inx': {'text', 'xml', 'inx'},
     'ipynb': {'text', 'jupyter'},
