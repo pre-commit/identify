@@ -108,6 +108,7 @@ EXTENSIONS = {
     'lhs': {'text', 'literate-haskell'},
     'libsonnet': {'text', 'jsonnet'},
     'lidr': {'text', 'idris'},
+    'liquid': {'text', 'liquid'},
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
     'm': {'text', 'c', 'objective-c'},
