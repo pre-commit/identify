@@ -131,6 +131,7 @@ EXTENSIONS = {
     'nims': {'text', 'nim'},
     'nimble': {'text', 'nimble'},
     'nix': {'text', 'nix'},
+    'njk': {'text', 'nunjucks'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
     'patch': {'text', 'diff'},
