@@ -18,6 +18,7 @@ EXTENSIONS = {
     'cc': {'text', 'c++'},
     'cfg': {'text'},
     'chs': {'text', 'c2hs'},
+    'cjs': {'text', 'javascript'},
     'clj': {'text', 'clojure'},
     'cljc': {'text', 'clojure'},
     'cljs': {'text', 'clojure', 'clojurescript'},
