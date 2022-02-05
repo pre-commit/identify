@@ -312,6 +312,7 @@ NAMES = {
     'Pipfile': EXTENSIONS['toml'],
     'Pipfile.lock': EXTENSIONS['json'],
     'PKGBUILD': {'text', 'bash', 'pkgbuild', 'alpm'},
+    'poetry.lock': EXTENSIONS['toml'],
     'pylintrc': EXTENSIONS['ini'] | {'pylintrc'},
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
