@@ -65,7 +65,7 @@ def tags_from_path(path: str) -> set[str]:
     if len(t) > 0:
         tags.update(t)
     else:
-        if executable:
+        if file_is_text(path):
             shebang = parse_shebang_from_file(path)
             if len(shebang) > 0:
                 tags.update(tags_from_interpreter(shebang[0]))
@@ -206,8 +206,6 @@ def parse_shebang_from_file(path: str) -> tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
-    if not os.access(path, os.X_OK):
-        return ()
 
     try:
         with open(path, 'rb') as f:
