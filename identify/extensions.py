@@ -99,6 +99,7 @@ EXTENSIONS = {
     'js': {'text', 'javascript'},
     'json': {'text', 'json'},
     'jsonnet': {'text', 'jsonnet'},
+    'json5': {'text', 'json5'},
     'jsx': {'text', 'jsx'},
     'key': {'text', 'pem'},
     'kml': {'text', 'kml', 'xml'},
