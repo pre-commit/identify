@@ -163,6 +163,7 @@ EXTENSIONS = {
     'pyx': {'text', 'cython'},
     'pyz': {'binary', 'pyz'},
     'pyzw': {'binary', 'pyz'},
+    'qml': {'text', 'qml'},
     'r': {'text', 'r'},
     'rake': {'text', 'ruby'},
     'rb': {'text', 'ruby'},
