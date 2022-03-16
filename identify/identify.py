@@ -53,7 +53,12 @@ def tags_from_path(path: str) -> set[str]:
 
     tags = {FILE}
 
-    executable = os.access(path, os.X_OK)
+    # Some systems' access(2) don't correctly surface whether a file is
+    # executable, so we fall back to another check to be sure.
+    executable = (
+        os.access(path, os.X_OK) or
+        bool(os.stat(path).st_mode & stat.S_IXUSR)
+    )
     if executable:
         tags.add(EXECUTABLE)
     else:
