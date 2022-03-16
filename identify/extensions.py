@@ -114,7 +114,7 @@ EXTENSIONS = {
     'liquid': {'text', 'liquid'},
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
-    'm': {'text', 'c', 'objective-c'},
+    'm': {'text', 'objective-c'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
     'markdown': {'text', 'markdown'},
