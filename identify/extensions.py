@@ -298,7 +298,7 @@ NAMES = {
     'CONTRIBUTING': EXTENSIONS['txt'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
-    'Gemfile': EXTENSIONS['rb'],
+    'Gemfile': {'ruby.gemfile'} | EXTENSIONS['rb'],
     'Gemfile.lock': {'text'},
     'GNUmakefile': EXTENSIONS['mk'],
     'go.mod': {'text', 'go-mod'},
