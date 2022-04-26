@@ -51,7 +51,7 @@ EXTENSIONS = {
     'exe': {'binary'},
     'eyaml': {'text', 'yaml'},
     'feature': {'text', 'gherkin'},
-    'fish': {'text', 'fish'},
+    'fish': {'text', 'shell', 'fish'},
     'gd': {'text', 'gdscript'},
     'gemspec': {'text', 'ruby'},
     'geojson': {'text', 'geojson', 'json'},
