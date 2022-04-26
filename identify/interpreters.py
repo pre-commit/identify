@@ -18,5 +18,6 @@ INTERPRETERS = {
     'ruby': {'ruby'},
     'sh': {'shell', 'sh'},
     'tcsh': {'shell', 'tcsh'},
+    'v': {'v', 'vlang'},
     'zsh': {'shell', 'zsh'},
 }

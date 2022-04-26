@@ -220,6 +220,7 @@ EXTENSIONS = {
     'vhd': {'text', 'vhdl'},
     'vim': {'text', 'vim'},
     'vtl': {'text', 'vtl'},
+    'vsh': {'text', 'v', 'vlang'},
     'vue': {'text', 'vue'},
     'war': {'binary', 'zip', 'jar'},
     'wav': {'binary', 'audio', 'wav'},
