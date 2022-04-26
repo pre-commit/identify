@@ -211,7 +211,7 @@ EXTENSIONS = {
     'txsprofile': {'text', 'ini', 'txsprofile'},
     'txt': {'text', 'plain-text'},
     'urdf': {'text', 'xml', 'urdf'},
-    'v': {'text', 'verilog'},
+    'v': {'text', 'verilog', 'v', 'vlang'},
     'vb': {'text', 'vb'},
     'vbproj': {'text', 'xml', 'vbproj'},
     'vcxproj': {'text', 'xml', 'vcxproj'},
