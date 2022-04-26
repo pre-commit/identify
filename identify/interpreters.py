@@ -8,6 +8,7 @@ INTERPRETERS = {
     'csh': {'shell', 'csh'},
     'dash': {'shell', 'dash'},
     'expect': {'expect'},
+    'fish': {'fish'},
     'ksh': {'shell', 'ksh'},
     'node': {'javascript'},
     'nodejs': {'javascript'},
