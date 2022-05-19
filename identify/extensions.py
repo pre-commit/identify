@@ -127,6 +127,8 @@ EXTENSIONS = {
     'mli': {'text', 'ocaml'},
     'mm': {'text', 'c++', 'objective-c++'},
     'modulemap': {'text', 'modulemap'},
+    'mscx': {'text', 'xml', 'musescore'},
+    'mscz': {'binary', 'zip', 'musescore'},
     'myst': {'text', 'myst'},
     'ngdoc': {'text', 'ngdoc'},
     'nim': {'text', 'nim'},
