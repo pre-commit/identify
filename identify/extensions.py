@@ -182,6 +182,7 @@ EXTENSIONS = {
     'sh': {'text', 'shell'},
     'sln': {'text', 'sln'},
     'sls': {'text', 'salt'},
+    'smk': {'text', 'snakefile'},
     'so': {'binary'},
     'sol': {'text', 'solidity'},
     'spec': {'text', 'spec'},
@@ -321,6 +322,8 @@ NAMES = {
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'setup.cfg': EXTENSIONS['ini'],
+    'Snakefile': EXTENSIONS['smk'],
+    'snakefile': EXTENSIONS['smk'],
     'WORKSPACE': EXTENSIONS['bzl'],
     'wscript': EXTENSIONS['py'],
 }
