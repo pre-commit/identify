@@ -270,7 +270,7 @@ NAMES = {
     '.cshrc': EXTENSIONS['csh'],
     '.csslintrc': EXTENSIONS['json'] | {'csslintrc'},
     '.dockerignore': {'text', 'dockerignore'},
-    '.editorconfig': {'text', 'editorconfig'},
+    '.editorconfig': EXTENSIONS['ini'] | {'editorconfig'},
     '.flake8': EXTENSIONS['ini'] | {'flake8'},
     '.gitattributes': {'text', 'gitattributes'},
     '.gitconfig': EXTENSIONS['ini'] | {'gitconfig'},
