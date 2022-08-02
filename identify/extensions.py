@@ -45,6 +45,7 @@ EXTENSIONS = {
     'ear': {'binary', 'zip', 'jar'},
     'edn': {'text', 'clojure', 'edn'},
     'ejs': {'text', 'ejs'},
+    'env': {'text', 'dotenv'},
     'eot': {'binary', 'eot'},
     'eps': {'binary', 'eps'},
     'erb': {'text', 'erb'},
