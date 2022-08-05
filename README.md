@@ -13,7 +13,9 @@ tags identifying what the file is.
 
 ## Installation
 
-`pip install identify`
+```bash
+pip install identify
+```
 
 ## Usage
 ### With a file on disk
