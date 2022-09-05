@@ -280,6 +280,7 @@ NAMES = {
     '.gitlint': EXTENSIONS['ini'] | {'gitlint'},
     '.gitmodules': {'text', 'gitmodules'},
     '.hgrc': EXTENSIONS['ini'] | {'hgrc'},
+    '.importlinter': EXTENSIONS['ini'] | {'import-linter'},
     '.isort.cfg': EXTENSIONS['ini'] | {'isort'},
     '.jshintrc': EXTENSIONS['json'] | {'jshintrc'},
     '.mailmap': {'text', 'mailmap'},
