@@ -97,6 +97,7 @@ EXTENSIONS = {
     'jenkinsfile': {'text', 'groovy', 'jenkins'},
     'jinja': {'text', 'jinja'},
     'jinja2': {'text', 'jinja'},
+    'jl': {'text', 'julia'},
     'jpeg': {'binary', 'image', 'jpeg'},
     'jpg': {'binary', 'image', 'jpeg'},
     'js': {'text', 'javascript'},
