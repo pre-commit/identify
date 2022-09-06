@@ -38,6 +38,7 @@ EXTENSIONS = {
     'cu': {'text', 'cuda'},
     'cuh': {'text', 'cuda'},
     'cxx': {'text', 'c++'},
+    'cylc': {'text', 'cylc'},
     'dart': {'text', 'dart'},
     'def': {'text', 'def'},
     'dll': {'binary'},
