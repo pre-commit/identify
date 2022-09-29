@@ -146,7 +146,7 @@ EXTENSIONS = {
     'njk': {'text', 'nunjucks'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
-    'patch': {'text', 'diff'},
+    'patch': {'text', 'diff', 'patch'},
     'pdf': {'binary', 'pdf'},
     'pem': {'text', 'pem'},
     'php': {'text', 'php'},
