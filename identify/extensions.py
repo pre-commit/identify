@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 EXTENSIONS = {
     'adoc': {'text', 'asciidoc'},
     'ai': {'binary', 'adobe-illustrator'},
@@ -11,6 +12,7 @@ EXTENSIONS = {
     'bat': {'text', 'batch'},
     'bats': {'text', 'shell', 'bash', 'bats'},
     'bib': {'text', 'bib'},
+    'bin': {'binary', 'bin'},
     'bmp': {'binary', 'image', 'bitmap'},
     'bz2': {'binary', 'bzip2'},
     'bzl': {'text', 'bazel'},
@@ -46,6 +48,7 @@ EXTENSIONS = {
     'ear': {'binary', 'zip', 'jar'},
     'edn': {'text', 'clojure', 'edn'},
     'ejs': {'text', 'ejs'},
+    'elf': {'binary', 'elf'},
     'env': {'text', 'dotenv'},
     'eot': {'binary', 'eot'},
     'eps': {'binary', 'eps'},
@@ -144,6 +147,7 @@ EXTENSIONS = {
     'nimble': {'text', 'nimble'},
     'nix': {'text', 'nix'},
     'njk': {'text', 'nunjucks'},
+    'obj': {'binary', 'obj'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
     'patch': {'text', 'diff'},
