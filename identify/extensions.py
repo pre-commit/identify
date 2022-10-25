@@ -36,6 +36,7 @@ EXTENSIONS = {
     'css': {'text', 'css'},
     'csv': {'text', 'csv'},
     'cu': {'text', 'cuda'},
+    'cue': {'text', 'cue'},
     'cuh': {'text', 'cuda'},
     'cxx': {'text', 'c++'},
     'cylc': {'text', 'cylc'},
