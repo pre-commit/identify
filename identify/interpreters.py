@@ -12,6 +12,7 @@ INTERPRETERS = {
     'node': {'javascript'},
     'nodejs': {'javascript'},
     'perl': {'perl'},
+    'php': {'php'},
     'python': {'python'},
     'python2': {'python', 'python2'},
     'python3': {'python', 'python3'},
