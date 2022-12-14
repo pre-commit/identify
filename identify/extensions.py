@@ -267,6 +267,7 @@ EXTENSIONS = {
 }
 EXTENSIONS_NEED_BINARY_CHECK = {
     'plist': {'plist'},
+    'ppm': {'image', 'ppm'},
 }
 
 NAMES = {
