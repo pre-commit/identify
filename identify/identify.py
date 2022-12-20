@@ -103,7 +103,8 @@ def tags_from_filename(path: str) -> set[str]:
 
     return ret
 
-def tags_from_shebang(shebang: tuple[str,...]) -> set[str]:
+
+def tags_from_shebang(shebang: tuple[str, ...]) -> set[str]:
     if len(shebang) > 0:
         interpreter = shebang[0]
         _, _, interpreter = interpreter.rpartition('/')

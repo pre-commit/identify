@@ -189,6 +189,7 @@ def test_tags_from_path_plist_text(tmpdir):
 def test_tags_from_filename(filename, expected):
     assert identify.tags_from_filename(filename) == expected
 
+
 @pytest.mark.parametrize(
     ('shebang', 'expected'),
     (
@@ -200,6 +201,7 @@ def test_tags_from_filename(filename, expected):
 )
 def test_tags_from_shebang(shebang, expected):
     assert identify.tags_from_shebang(shebang) == expected
+
 
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),
