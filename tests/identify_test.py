@@ -189,6 +189,17 @@ def test_tags_from_path_plist_text(tmpdir):
 def test_tags_from_filename(filename, expected):
     assert identify.tags_from_filename(filename) == expected
 
+@pytest.mark.parametrize(
+    ('shebang', 'expected'),
+    (
+        (('/usr/bin/python',), {'python'}),
+        (('/usr/bin/osascript',), {'applescript'}),
+        (('/usr/bin/osascript', '-l', 'JavaScript'), {'javascript'}),
+        (('/usr/bin/osascript', '-l', 'AppleScript'), {'applescript'}),
+    ),
+)
+def test_tags_from_shebang(shebang, expected):
+    assert identify.tags_from_shebang(shebang) == expected
 
 @pytest.mark.parametrize(
     ('interpreter', 'expected'),

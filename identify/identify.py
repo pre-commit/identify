@@ -67,8 +67,7 @@ def tags_from_path(path: str) -> set[str]:
     else:
         if executable:
             shebang = parse_shebang_from_file(path)
-            if len(shebang) > 0:
-                tags.update(tags_from_interpreter(shebang[0]))
+            tags.update(tags_from_shebang(shebang))
 
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
@@ -103,6 +102,23 @@ def tags_from_filename(path: str) -> set[str]:
             ret.update(extensions.EXTENSIONS_NEED_BINARY_CHECK[ext])
 
     return ret
+
+def tags_from_shebang(shebang: tuple[str,...]) -> set[str]:
+    if len(shebang) > 0:
+        interpreter = shebang[0]
+        _, _, interpreter = interpreter.rpartition('/')
+        # osascript can use different language runtimes based on the -l
+        # flag. Example: osascript -l JavaScript
+        if interpreter == 'osascript':
+            for i, token in enumerate(shebang):
+                if token == '-l':
+                    if shebang[i + 1] == 'JavaScript':
+                        return {'javascript'}
+                    else:
+                        return {'applescript'}
+        return tags_from_interpreter(interpreter)
+
+    return set()
 
 
 def tags_from_interpreter(interpreter: str) -> set[str]:
