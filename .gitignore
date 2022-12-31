@@ -3,3 +3,8 @@
 /.coverage
 /.tox
 /dist
+
+
+# Added by cargo
+
+/target
