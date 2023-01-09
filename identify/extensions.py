@@ -211,6 +211,7 @@ EXTENSIONS = {
     'swf': {'binary', 'swf'},
     'swift': {'text', 'swift'},
     'swiftdeps': {'text', 'swiftdeps'},
+    't': {'text', 't'},
     'tac': {'text', 'twisted', 'python'},
     'tar': {'binary', 'tar'},
     'tex': {'text', 'tex'},
