@@ -130,6 +130,7 @@ EXTENSIONS = {
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
     'm': {'text', 'objective-c'},
+    'm4': {'text', 'm4'},
     'make': {'text', 'makefile'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
