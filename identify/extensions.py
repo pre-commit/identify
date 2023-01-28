@@ -41,6 +41,7 @@ EXTENSIONS = {
     'cxx': {'text', 'c++'},
     'cylc': {'text', 'cylc'},
     'dart': {'text', 'dart'},
+    'dbc': {'text', 'dbc'},
     'def': {'text', 'def'},
     'dll': {'binary'},
     'dtd': {'text', 'dtd'},
