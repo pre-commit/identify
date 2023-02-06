@@ -1,23 +1,18 @@
-use std::collections::HashMap;
-use std::collections::HashSet;
+use std::env;
 
+mod identify;
+mod tags;
 
 fn main() {
-    let extensions: HashMap<&str, HashSet<&str>> = include!(
-        concat!(env!("OUT_DIR"), "/extensions.rs")
-    );
-    let extensions_need_binary_check: HashMap<&str, HashSet<&str>> = include!(
-        concat!(env!("OUT_DIR"), "/extensions_need_binary_check.rs")
-    );
-    let names: HashMap<&str, HashSet<&str>> = include!(
-        concat!(env!("OUT_DIR"), "/names.rs")
-    );
-    let interpreters: HashMap<&str, HashSet<&str>> = include!(
-        concat!(env!("OUT_DIR"), "/interpreters.rs")
-    );
+    let args: Vec<String> = env::args().skip(1).collect();
+    if args.len() < 1 {
+        eprintln!("Usage: identify [--filename-only] FILE");
+        return;
+    }
 
-    println!("{:?}", extensions["bash"]);
-    println!("{:?}", extensions_need_binary_check["ppm"]);
-    println!("{:?}", names[".flake8"]);
-    println!("{:?}", interpreters["python3"]);
+    if args[0] == "--filename-only" {
+        println!("{:?}", identify::tags_from_filename(&args[1]));
+    } else {
+        println!("{:?}", identify::tags_from_path(&args[0]));
+    }
 }

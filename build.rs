@@ -7,16 +7,16 @@ use std::path::Path;
 type Dict = HashMap<String, HashSet<String>>;
 
 fn serialize_map(map: Dict, filename: &Path) {
-    let mut lines: Vec<String> = ["[".into()].into();
+    let mut lines: Vec<String> = ["phf_map!(\n".into()].into();
     for (ext, tags) in map.iter() {
-        lines.push(format!(r#"    ("{ext}", ["#));
+        lines.push(format!(r#"    "{ext}" => phf_set!("#));
         for tag in tags {
             lines.push(format!(r#""{tag}", "#));
         }
-        lines.push("].into()),".into());
+        lines.push("),\n".into());
     }
-    lines.push("].into()".into());
-    fs::write(filename, lines.join("\n")).unwrap();
+    lines.push(")".into());
+    fs::write(filename, lines.join("")).unwrap();
 }
 
 fn main() {
