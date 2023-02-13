@@ -148,6 +148,7 @@ EXTENSIONS = {
     'modulemap': {'text', 'modulemap'},
     'mscx': {'text', 'xml', 'musescore'},
     'mscz': {'binary', 'zip', 'musescore'},
+    'mustache': {'text', 'mustache'},
     'myst': {'text', 'myst'},
     'ngdoc': {'text', 'ngdoc'},
     'nim': {'text', 'nim'},
