@@ -160,6 +160,7 @@ EXTENSIONS = {
     'p12': {'binary', 'p12'},
     'pas': {'text', 'pascal'},
     'patch': {'text', 'diff'},
+    'pdb' : {'text', 'pdb'},
     'pdf': {'binary', 'pdf'},
     'pem': {'text', 'pem'},
     'php': {'text', 'php'},
