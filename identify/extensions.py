@@ -223,6 +223,7 @@ EXTENSIONS = {
     'tac': {'text', 'twisted', 'python'},
     'tar': {'binary', 'tar'},
     'tex': {'text', 'tex'},
+    'textproto': {'text', 'textproto'},
     'tf': {'text', 'terraform'},
     'tfvars': {'text', 'terraform'},
     'tgz': {'binary', 'gzip'},
