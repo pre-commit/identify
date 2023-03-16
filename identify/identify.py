@@ -191,7 +191,7 @@ def parse_shebang(bytesio: IO[bytes]) -> tuple[str, ...]:
             return ()
 
     cmd = tuple(_shebang_split(first_line.strip()))
-    if cmd and cmd[0] == '/usr/bin/env':
+    if cmd and (cmd[0] == '/usr/bin/env' or 'with-contenv' in cmd[0]):
         if cmd[1] == '-S':
             cmd = cmd[2:]
         else:

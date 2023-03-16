@@ -255,6 +255,9 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b"#!/path'with/quotes    y", ("/path'with/quotes", 'y')),
         # Don't regress on leading/trailing ws
         (b"#! /path'with/quotes y ", ("/path'with/quotes", 'y')),
+        #
+        (b'#!/usr/bin/with-contenv bash', ('bash',)),
+        (b'#!/command/with-contenv sh', ('sh',)),
         # Test nix-shell specialites with shebang on second line
         (
             b'#! /usr/bin/env nix-shell\n'
