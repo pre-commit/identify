@@ -10,6 +10,7 @@ EXTENSIONS = {
     'bash': {'text', 'shell', 'bash'},
     'bat': {'text', 'batch'},
     'bats': {'text', 'shell', 'bash', 'bats'},
+    'beancount': {'text', 'beancount'},
     'bib': {'text', 'bib'},
     'bmp': {'binary', 'image', 'bitmap'},
     'bz2': {'binary', 'bzip2'},
