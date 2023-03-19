@@ -167,6 +167,8 @@ def test_tags_from_path_plist_text(tmpdir):
         ('build.jenkinsfile', {'text', 'groovy', 'jenkins'}),
         ('meson.build', {'text', 'meson'}),
         ('meson_options.txt', {'text', 'plain-text', 'meson'}),
+        ('Justfile', {'text', 'justfile'}),
+        ('.justfile', {'text', 'justfile'}),
 
         # does not set binary / text
         ('f.plist', {'plist'}),
