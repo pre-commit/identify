@@ -326,6 +326,7 @@ NAMES = {
     'BUILD.bazel': EXTENSIONS['bzl'],
     'CMakeLists.txt': EXTENSIONS['cmake'],
     'CHANGELOG': EXTENSIONS['txt'],
+    'config.ru': EXTENSIONS['rb'],
     'CONTRIBUTING': EXTENSIONS['txt'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
