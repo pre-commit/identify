@@ -39,6 +39,7 @@ def test_all_tags_contains_each_type():
     assert 'plist' in identify.ALL_TAGS  # extension, needs binary check
     assert 'dockerfile' in identify.ALL_TAGS  # by file convention
     assert 'python3' in identify.ALL_TAGS  # by shebang
+    assert 'php8' in identify.ALL_TAGS  # by shebang
 
 
 def test_tags_from_path_does_not_exist(tmpdir):
