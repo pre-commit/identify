@@ -284,6 +284,7 @@ EXTENSIONS_NEED_BINARY_CHECK = {
 }
 
 NAMES = {
+    '.ansible-lint': EXTENSIONS['yaml'],
     '.babelrc': EXTENSIONS['json'] | {'babelrc'},
     '.bash_aliases': EXTENSIONS['bash'],
     '.bash_profile': EXTENSIONS['bash'],
