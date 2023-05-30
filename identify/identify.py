@@ -25,6 +25,7 @@ EXECUTABLE = 'executable'
 NON_EXECUTABLE = 'non-executable'
 TEXT = 'text'
 BINARY = 'binary'
+SHELL = 'shell'
 
 TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK, SOCKET))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
@@ -59,16 +60,14 @@ def tags_from_path(path: str) -> set[str]:
     else:
         tags.add(NON_EXECUTABLE)
 
-    # As an optimization, if we're able to read tags from the filename, then we
-    # don't peek at the file contents.
     t = tags_from_filename(os.path.basename(path))
-    if len(t) > 0:
-        tags.update(t)
-    else:
-        if executable:
-            shebang = parse_shebang_from_file(path)
-            if len(shebang) > 0:
-                tags.update(tags_from_interpreter(shebang[0]))
+    tags.update(t)
+
+    # SHELL will get added by the filename
+    if executable or SHELL in tags:
+        shebang = parse_shebang_from_file(path)
+        if len(shebang) > 0:
+            tags.update(tags_from_interpreter(shebang[0]))
 
     # some extensions can be both binary and text
     # see EXTENSIONS_NEED_BINARY_CHECK
@@ -206,8 +205,6 @@ def parse_shebang_from_file(path: str) -> tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
-    if not os.access(path, os.X_OK):
-        return ()
 
     try:
         with open(path, 'rb') as f:

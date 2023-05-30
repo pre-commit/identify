@@ -109,6 +109,21 @@ def test_tags_from_path_file_with_shebang_executable(tmpdir):
         'file', 'text', 'executable', 'python',
     }
 
+def test_tags_from_path_executable_shell_script(tmpdir):
+    x = tmpdir.join('test')
+    x.write_text('#!/bin/bash', encoding='UTF-8')
+    make_executable(x.strpath)
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'executable', 'shell', 'bash'
+    }
+
+def test_tags_from_path_non_executable_shell_script(tmpdir):
+    x = tmpdir.join('test.sh')
+    x.write_text('#!/bin/bash', encoding='UTF-8')
+    assert identify.tags_from_path(x.strpath) == {
+        'file', 'text', 'non-executable', 'shell', 'bash',
+    }
+
 
 def test_tags_from_path_binary(tmpdir):
     x = tmpdir.join('test')
@@ -336,7 +351,7 @@ def test_parse_shebang_from_file_does_not_exist():
 def test_parse_shebang_from_file_nonexecutable(tmpdir):
     x = tmpdir.join('f')
     x.write_text('#!/usr/bin/env python', encoding='UTF-8')
-    assert identify.parse_shebang_from_file(x.strpath) == ()
+    assert identify.parse_shebang_from_file(x.strpath) == ('python',)
 
 
 def test_parse_shebang_from_file_simple(tmpdir):
