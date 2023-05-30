@@ -109,13 +109,15 @@ def test_tags_from_path_file_with_shebang_executable(tmpdir):
         'file', 'text', 'executable', 'python',
     }
 
+
 def test_tags_from_path_executable_shell_script(tmpdir):
     x = tmpdir.join('test')
     x.write_text('#!/bin/bash', encoding='UTF-8')
     make_executable(x.strpath)
     assert identify.tags_from_path(x.strpath) == {
-        'file', 'text', 'executable', 'shell', 'bash'
+        'file', 'text', 'executable', 'shell', 'bash',
     }
+
 
 def test_tags_from_path_non_executable_shell_script(tmpdir):
     x = tmpdir.join('test.sh')
