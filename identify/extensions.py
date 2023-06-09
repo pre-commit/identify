@@ -243,6 +243,7 @@ EXTENSIONS = {
     'vb': {'text', 'vb'},
     'vbproj': {'text', 'xml', 'vbproj'},
     'vcxproj': {'text', 'xml', 'vcxproj'},
+    'vcxproj.filters': {'text', 'xml', 'vcxproj'},
     'vdx': {'text', 'vdx'},
     'vh': {'text', 'verilog'},
     'vhd': {'text', 'vhdl'},
