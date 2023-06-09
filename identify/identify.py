@@ -8,6 +8,7 @@ import shlex
 import stat
 import string
 import sys
+from pathlib import Path
 from typing import IO
 
 from identify import extensions
@@ -85,7 +86,7 @@ def tags_from_path(path: str) -> set[str]:
 
 def tags_from_filename(path: str) -> set[str]:
     _, filename = os.path.split(path)
-    _, ext = os.path.splitext(filename)
+    ext = Path(filename).suffixes
 
     ret = set()
 
@@ -96,11 +97,12 @@ def tags_from_filename(path: str) -> set[str]:
             break
 
     if len(ext) > 0:
-        ext = ext[1:].lower()
-        if ext in extensions.EXTENSIONS:
-            ret.update(extensions.EXTENSIONS[ext])
-        elif ext in extensions.EXTENSIONS_NEED_BINARY_CHECK:
-            ret.update(extensions.EXTENSIONS_NEED_BINARY_CHECK[ext])
+        for ext_subset in (ext[-i:] for i in range(1, len(ext) + 1)):
+            str_ext = ''.join(ext_subset)[1:].lower()
+            if str_ext in extensions.EXTENSIONS:
+                ret.update(extensions.EXTENSIONS[str_ext])
+            elif str_ext in extensions.EXTENSIONS_NEED_BINARY_CHECK:
+                ret.update(extensions.EXTENSIONS_NEED_BINARY_CHECK[str_ext])
 
     return ret
 
