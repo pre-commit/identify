@@ -398,3 +398,10 @@ def test_tags_from_path_multi_suffix(tmpdir):
     b = tmpdir.join('test.vcxproj.filters').ensure()
     assert identify.tags_from_path(x.strpath) == \
         identify.tags_from_path(b.strpath)
+
+
+def test_tags_from_path_multi_suffix_no_config(tmpdir):
+    x = tmpdir.join('test.xml').ensure()
+    b = tmpdir.join('test.someother.xml').ensure()
+    assert identify.tags_from_path(x.strpath) == \
+        identify.tags_from_path(b.strpath)
