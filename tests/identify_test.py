@@ -60,11 +60,12 @@ def test_tags_from_path_symlink(tmpdir):
     assert identify.tags_from_path(x.strpath) == {'symlink'}
 
 
+@pytest.mark.skipif(not hasattr(socket, 'AF_UNIX'), reason='Unix-only')
 def test_tags_from_path_socket():
     tmproot = '/tmp'  # short path avoids `OSError: AF_UNIX path too long`
     with TemporaryDirectory(dir=tmproot) as tmpdir:
         socket_path = os.path.join(tmpdir, 'socket')
-        with socket.socket(socket.AF_UNIX) as sock:
+        with socket.socket(socket.AF_UNIX) as sock:  # type: ignore
             sock.bind(socket_path)
             tags = identify.tags_from_path(socket_path)
 
