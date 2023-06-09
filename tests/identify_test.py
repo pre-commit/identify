@@ -390,3 +390,10 @@ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 
 def test_license_not_identified():
     assert identify.license_id(os.devnull) is None
+
+
+def test_tags_from_path_multi_suffix(tmpdir):
+    x = tmpdir.join('test.vcxproj').ensure()
+    b = tmpdir.join('test.vcxproj.filters').ensure()
+    assert identify.tags_from_path(x.strpath) == \
+        identify.tags_from_path(b.strpath)
