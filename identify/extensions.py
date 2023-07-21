@@ -99,7 +99,7 @@ EXTENSIONS = {
     'inl': {'text', 'inl', 'c++'},
     'ino': {'text', 'ino', 'c++'},
     'inx': {'text', 'xml', 'inx'},
-    'ipynb': {'text', 'jupyter'},
+    'ipynb': {'text', 'jupyter', 'json'},
     'j2': {'text', 'jinja'},
     'jade': {'text', 'jade'},
     'jar': {'binary', 'zip', 'jar'},
