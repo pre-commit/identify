@@ -65,6 +65,7 @@ EXTENSIONS = {
     'feature': {'text', 'gherkin'},
     'fish': {'text', 'fish'},
     'fits': {'binary', 'fits'},
+    'ftl': {'text', 'fluent'},
     'gd': {'text', 'gdscript'},
     'gemspec': {'text', 'ruby'},
     'geojson': {'text', 'geojson', 'json'},
