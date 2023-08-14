@@ -330,6 +330,7 @@ NAMES = {
     'CMakeLists.txt': EXTENSIONS['cmake'],
     'CHANGELOG': EXTENSIONS['txt'],
     'config.ru': EXTENSIONS['rb'],
+    'Containerfile': {'text', 'dockerfile'},
     'CONTRIBUTING': EXTENSIONS['txt'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
