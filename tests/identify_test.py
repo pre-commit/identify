@@ -154,6 +154,7 @@ def test_tags_from_path_plist_text(tmpdir):
         ('test.py', {'text', 'python'}),
         ('test.mk', {'text', 'makefile'}),
         ('Makefile', {'text', 'makefile'}),
+        ('Containerfile', {'text', 'dockerfile'}),
         ('Dockerfile', {'text', 'dockerfile'}),
         ('Dockerfile.xenial', {'text', 'dockerfile'}),
         ('xenial.Dockerfile', {'text', 'dockerfile'}),
