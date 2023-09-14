@@ -338,6 +338,7 @@ NAMES = {
     'config.ru': EXTENSIONS['rb'],
     'Containerfile': {'text', 'dockerfile'},
     'CONTRIBUTING': EXTENSIONS['txt'],
+    'copy.bara.sky': EXTENSIONS['bzl'],
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
     'Gemfile': EXTENSIONS['rb'],
