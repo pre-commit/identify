@@ -74,6 +74,7 @@ EXTENSIONS = {
     'gd': {'text', 'gdscript'},
     'gemspec': {'text', 'ruby'},
     'geojson': {'text', 'geojson', 'json'},
+    'ggb': {'binary', 'zip', 'ggb'},
     'gif': {'binary', 'image', 'gif'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
