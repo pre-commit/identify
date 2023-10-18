@@ -125,6 +125,7 @@ EXTENSIONS = {
     'jsonnet': {'text', 'jsonnet'},
     'json5': {'text', 'json5'},
     'jsx': {'text', 'jsx'},
+    'k': {'text', 'kcl'},
     'key': {'text', 'pem'},
     'kml': {'text', 'kml', 'xml'},
     'kt': {'text', 'kotlin'},
