@@ -269,6 +269,7 @@ EXTENSIONS = {
     'woff2': {'binary', 'woff2'},
     'wsgi': {'text', 'wsgi', 'python'},
     'xhtml': {'text', 'xml', 'html', 'xhtml'},
+    'xacro': {'text', 'xml', 'urdf', 'xacro'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
