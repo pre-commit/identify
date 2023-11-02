@@ -241,7 +241,7 @@ EXTENSIONS = {
     'thrift': {'text', 'thrift'},
     'tiff': {'binary', 'image', 'tiff'},
     'toml': {'text', 'toml'},
-    'ts': {'text', 'ts'},
+    'ts': {'text', 'ts', 'typescript'},
     'tsv': {'text', 'tsv'},
     'tsx': {'text', 'tsx'},
     'ttf': {'binary', 'ttf'},
