@@ -20,6 +20,7 @@ def test_all_tags_includes_basic_ones():
     assert 'executable' in identify.ALL_TAGS
     assert 'text' in identify.ALL_TAGS
     assert 'socket' in identify.ALL_TAGS
+    assert 'empty' in identify.ALL_TAGS
 
 
 @pytest.mark.parametrize(
@@ -80,7 +81,7 @@ def test_tags_from_path_broken_symlink(tmpdir):
 def test_tags_from_path_simple_file(tmpdir):
     x = tmpdir.join('test.py').ensure()
     assert identify.tags_from_path(x.strpath) == {
-        'file', 'text', 'non-executable', 'python',
+        'file', 'text', 'non-executable', 'python', 'empty',
     }
 
 

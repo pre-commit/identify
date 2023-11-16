@@ -27,6 +27,8 @@ If you have an actual file on disk, you can get the most information possible
 {'file', 'text', 'python', 'non-executable'}
 >>> identify.tags_from_path('/path/to/file-with-shebang')
 {'file', 'text', 'shell', 'bash', 'executable'}
+>>> identify.tags_from_path('/path/to/__init__.py')
+{'file', 'text', 'python', 'empty', 'non-executable'}
 >>> identify.tags_from_path('/bin/bash')
 {'file', 'binary', 'executable'}
 >>> identify.tags_from_path('/path/to/directory')
@@ -39,6 +41,7 @@ When using a file on disk, the checks performed are:
 
 * File type (file, symlink, directory, socket)
 * Mode (is it executable?)
+* Size (is it empty, i.e. zero-length?)
 * File name (mostly based on extension)
 * If executable, the shebang is read and the interpreter interpreted
 
@@ -124,7 +127,7 @@ licenses are sourced from [choosealicense.com].
 A call to `tags_from_path` does this:
 
 1. What is the type: file, symlink, directory? If it's not file, stop here.
-2. Is it executable? Add the appropriate tag.
+2. Is it executable? Zero-length? Add the appropriate tags.
 3. Do we recognize the file extension? If so, add the appropriate tags, stop
    here. These tags would include binary/text.
 4. Peek at the first X bytes of the file. Use these to determine whether it is

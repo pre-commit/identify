@@ -25,11 +25,12 @@ EXECUTABLE = 'executable'
 NON_EXECUTABLE = 'non-executable'
 TEXT = 'text'
 BINARY = 'binary'
+EMPTY = 'empty'
 
 TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK, SOCKET))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
 ENCODING_TAGS = frozenset((BINARY, TEXT))
-_ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
+_ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS, EMPTY}
 _ALL_TAGS.update(*extensions.EXTENSIONS.values())
 _ALL_TAGS.update(*extensions.EXTENSIONS_NEED_BINARY_CHECK.values())
 _ALL_TAGS.update(*extensions.NAMES.values())
@@ -52,6 +53,9 @@ def tags_from_path(path: str) -> set[str]:
         return {SOCKET}
 
     tags = {FILE}
+
+    if sr.st_size == 0:
+        tags.add(EMPTY)
 
     executable = os.access(path, os.X_OK)
     if executable:
