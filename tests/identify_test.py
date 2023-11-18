@@ -151,6 +151,7 @@ def test_tags_from_path_plist_text(tmpdir):
 @pytest.mark.parametrize(
     ('filename', 'expected'),
     (
+        ('.salt-lint', {'text', 'salt-lint', 'yaml'}),
         ('test.py', {'text', 'python'}),
         ('test.mk', {'text', 'makefile'}),
         ('Makefile', {'text', 'makefile'}),

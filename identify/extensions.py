@@ -328,6 +328,7 @@ NAMES = {
     '.prettierignore': {'text', 'gitignore', 'prettierignore'},
     '.pypirc': EXTENSIONS['ini'] | {'pypirc'},
     '.rstcheck.cfg': EXTENSIONS['ini'],
+    '.salt-lint': EXTENSIONS['yaml'] | {'salt-lint'},
     '.yamllint': EXTENSIONS['yaml'] | {'yamllint'},
     '.zlogin': EXTENSIONS['zsh'],
     '.zlogout': EXTENSIONS['zsh'],
