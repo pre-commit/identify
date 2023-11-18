@@ -7,6 +7,7 @@ EXTENSIONS = {
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
     'avif': {'binary', 'image', 'avif'},
+    'avsc': {'text', 'avro-schema'},
     'bash': {'text', 'shell', 'bash'},
     'bat': {'text', 'batch'},
     'bats': {'text', 'shell', 'bash', 'bats'},
