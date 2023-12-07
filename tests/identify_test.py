@@ -152,6 +152,7 @@ def test_tags_from_path_plist_text(tmpdir):
     ('filename', 'expected'),
     (
         ('.salt-lint', {'text', 'salt-lint', 'yaml'}),
+        ('.scalafmt.conf', {'text', 'scalafmt'}),
         ('test.py', {'text', 'python'}),
         ('test.mk', {'text', 'makefile'}),
         ('Makefile', {'text', 'makefile'}),
