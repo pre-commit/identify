@@ -22,6 +22,7 @@ EXTENSIONS = {
     'c++m': {'text', 'c++'},
     'cc': {'text', 'c++'},
     'ccm': {'text', 'c++'},
+    'cff': {'text', 'yaml'},
     'cfg': {'text'},
     'chs': {'text', 'c2hs'},
     'cjs': {'text', 'javascript'},
