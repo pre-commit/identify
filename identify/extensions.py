@@ -151,6 +151,7 @@ EXTENSIONS = {
     'md': {'text', 'markdown'},
     'mdx': {'text', 'mdx'},
     'meson': {'text', 'meson'},
+    'metal': {'text', 'metal'},
     'mib': {'text', 'mib'},
     'mjs': {'text', 'javascript'},
     'mk': {'text', 'makefile'},
