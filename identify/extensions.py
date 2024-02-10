@@ -272,6 +272,7 @@ EXTENSIONS = {
     'wsgi': {'text', 'wsgi', 'python'},
     'xhtml': {'text', 'xml', 'html', 'xhtml'},
     'xacro': {'text', 'xml', 'urdf', 'xacro'},
+    'xctestplan': {'text', 'json'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
