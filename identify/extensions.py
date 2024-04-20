@@ -341,6 +341,8 @@ NAMES = {
     '.zshenv': EXTENSIONS['zsh'],
     'AUTHORS': EXTENSIONS['txt'],
     'BUILD': EXTENSIONS['bzl'],
+    'Cargo.toml': EXTENSIONS['toml'] | {'cargo'},
+    'Cargo.lock': EXTENSIONS['toml'] | {'cargo-lock'},
     'CMakeLists.txt': EXTENSIONS['cmake'],
     'CHANGELOG': EXTENSIONS['txt'],
     'config.ru': EXTENSIONS['rb'],
