@@ -252,6 +252,7 @@ EXTENSIONS = {
     'txsprofile': {'text', 'ini', 'txsprofile'},
     'txt': {'text', 'plain-text'},
     'txtpb': {'text', 'textproto'},
+    'typ': {'text', 'typst'},
     'urdf': {'text', 'xml', 'urdf'},
     'v': {'text', 'verilog'},
     'vb': {'text', 'vb'},
