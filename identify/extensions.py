@@ -375,6 +375,8 @@ NAMES = {
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'rebar.config': EXTENSIONS['erl'],
+    'rust-toolchain': EXTENSIONS['toml'] | {'rust-toolchain'},
+    'rust-toolchain.toml': EXTENSIONS['toml'] | {'rust-toolchain'},
     'setup.cfg': EXTENSIONS['ini'],
     'sys.config': EXTENSIONS['erl'],
     'sys.config.src': EXTENSIONS['erl'],
