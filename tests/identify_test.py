@@ -172,6 +172,9 @@ def test_tags_from_path_plist_text(tmpdir):
         ('meson.build', {'text', 'meson'}),
         ('meson_options.txt', {'text', 'plain-text', 'meson'}),
         ('Vagrantfile', {'text', 'ruby'}),
+        ('buf.yaml', {'text', 'yaml', 'buf'}),
+        ('buf.gen.yaml', {'text', 'yaml', 'buf'}),
+        ('buf.lock', {'text', 'yaml', 'buf-lock'}),
 
         # does not set binary / text
         ('f.plist', {'plist'}),
