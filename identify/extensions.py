@@ -20,6 +20,7 @@ EXTENSIONS = {
     'c': {'text', 'c'},
     'c++': {'text', 'c++'},
     'c++m': {'text', 'c++'},
+    'can': {'text', 'capl'},
     'cc': {'text', 'c++'},
     'ccm': {'text', 'c++'},
     'cfg': {'text'},
