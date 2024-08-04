@@ -30,12 +30,12 @@ INTERPRETERS = {
     'python3.10': {'python', 'python3', 'python3.10'},
     'python3.11': {'python', 'python3', 'python3.11'},
     'python3.12': {'python', 'python3', 'python3.12'},
-    'python3.13': {'python', 'python3', 'python3.13'},    
+    'python3.13': {'python', 'python3', 'python3.13'},
     'ruby': {'ruby'},
     'sed': {'sed'},
     'sh': {'shell', 'sh'},
     'tcsh': {'shell', 'tcsh'},
     'xdotool': {'xdotool'},
     'xonsh': {'shell', 'xonsh'},
-    'zsh': {'shell', 'zsh'}
+    'zsh': {'shell', 'zsh'},
 }
