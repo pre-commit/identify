@@ -53,8 +53,7 @@ def tags_from_path(path: str) -> set[str]:
 
     tags = {FILE}
 
-    executable = os.access(path, os.X_OK)
-    if executable:
+    if executable := os.access(path, os.X_OK):
         tags.add(EXECUTABLE)
     else:
         tags.add(NON_EXECUTABLE)
