@@ -325,6 +325,8 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b'#!\x00\x00\x00\x00', ()),
         # shebang lines with multiple arguments
         (b'#!/usr/bin/env -S python -u', ('python', '-u')),
+        (b'#!/usr/bin/env', ()),
+        (b'#!/usr/bin/env -S', ()),
     ),
 )
 def test_parse_shebang(s, expected):
