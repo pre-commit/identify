@@ -58,6 +58,7 @@ EXTENSIONS = {
     'edn': {'text', 'clojure', 'edn'},
     'ejs': {'text', 'ejs'},
     'ejson': {'text', 'json', 'ejson'},
+    'elm': {'text', 'elm'},
     'env': {'text', 'dotenv'},
     'eot': {'binary', 'eot'},
     'eps': {'binary', 'eps'},
