@@ -172,6 +172,9 @@ def test_tags_from_path_plist_text(tmpdir):
         ('meson.build', {'text', 'meson'}),
         ('meson_options.txt', {'text', 'plain-text', 'meson'}),
         ('Vagrantfile', {'text', 'ruby'}),
+        ('Tiltfile', {'text', 'tiltfile', 'starlark'}),
+        ('Tiltfile.abc', {'text', 'tiltfile', 'starlark'}),
+        ('test.Tiltfile', {'text', 'tiltfile', 'starlark'}),
 
         # does not set binary / text
         ('f.plist', {'plist'}),
