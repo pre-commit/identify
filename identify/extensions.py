@@ -20,6 +20,7 @@ EXTENSIONS = {
     'bib': {'text', 'bib'},
     'bmp': {'binary', 'image', 'bitmap'},
     'bz2': {'binary', 'bzip2'},
+    'bz3': {'binary', 'bzip3'},
     'bzl': {'text', 'bazel'},
     'c': {'text', 'c'},
     'c++': {'text', 'c++'},
