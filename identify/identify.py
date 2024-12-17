@@ -195,6 +195,10 @@ def parse_shebang(bytesio: IO[bytes]) -> tuple[str, ...]:
         cmd = cmd[2:]
     elif cmd[:1] == ('/usr/bin/env',):
         cmd = cmd[1:]
+    elif cmd[:2] == ('/bin/env', '-S'):
+        cmd = cmd[2:]
+    elif cmd[:1] == ('/bin/env',):
+        cmd = cmd[1:]
 
     if cmd == ('nix-shell',):
         return _parse_nix_shebang(bytesio, cmd)
