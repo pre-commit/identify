@@ -87,6 +87,7 @@ EXTENSIONS = {
     'geojson': {'text', 'geojson', 'json'},
     'ggb': {'binary', 'zip', 'ggb'},
     'gif': {'binary', 'image', 'gif'},
+    'gleam': {'text', 'gleam'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
     'gpx': {'text', 'gpx', 'xml'},
