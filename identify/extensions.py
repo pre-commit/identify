@@ -393,6 +393,7 @@ NAMES = {
     'setup.cfg': EXTENSIONS['ini'],
     'sys.config': EXTENSIONS['erl'],
     'sys.config.src': EXTENSIONS['erl'],
+    'Tiltfile': {'text', 'tiltfile'},
     'Vagrantfile': EXTENSIONS['rb'],
     'WORKSPACE': EXTENSIONS['bzl'],
     'wscript': EXTENSIONS['py'],
