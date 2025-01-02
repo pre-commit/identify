@@ -201,6 +201,8 @@ EXTENSIONS = {
     'properties': {'text', 'java-properties'},
     'proto': {'text', 'proto'},
     'ps1': {'text', 'powershell'},
+    'psd1': {'text', 'powershell'},
+    'psm1': {'text', 'powershell'},
     'pug': {'text', 'pug'},
     'puml': {'text', 'plantuml'},
     'purs': {'text', 'purescript'},
