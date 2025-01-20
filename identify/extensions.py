@@ -6,6 +6,7 @@ EXTENSIONS = {
     'asciidoc': {'text', 'asciidoc'},
     'apinotes': {'text', 'apinotes'},
     'asar': {'binary', 'asar'},
+    'asm': {'text', 'asm'},
     'astro': {'text', 'astro'},
     'avif': {'binary', 'image', 'avif'},
     'avsc': {'text', 'avro-schema'},
