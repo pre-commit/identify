@@ -250,6 +250,7 @@ EXTENSIONS = {
     'swiftdeps': {'text', 'swiftdeps'},
     'tac': {'text', 'twisted', 'python'},
     'tar': {'binary', 'tar'},
+    'templ': {'text', 'templ'},
     'tex': {'text', 'tex'},
     'textproto': {'text', 'textproto'},
     'tf': {'text', 'terraform'},
