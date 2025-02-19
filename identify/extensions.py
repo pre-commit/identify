@@ -225,6 +225,7 @@ EXTENSIONS = {
     'rs': {'text', 'rust'},
     'rst': {'text', 'rst'},
     's': {'text', 'asm'},
+    'sas': {'text', 'sas'},
     'sass': {'text', 'sass'},
     'sbt': {'text', 'sbt', 'scala'},
     'sc': {'text', 'scala'},
