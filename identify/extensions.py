@@ -285,6 +285,7 @@ EXTENSIONS = {
     'wkt': {'text', 'wkt'},
     'woff': {'binary', 'woff'},
     'woff2': {'binary', 'woff2'},
+    'wsdl': {'text', 'xml', 'wsdl'},
     'wsgi': {'text', 'wsgi', 'python'},
     'xhtml': {'text', 'xml', 'html', 'xhtml'},
     'xacro': {'text', 'xml', 'urdf', 'xacro'},
