@@ -21,6 +21,5 @@ INTERPRETERS = {
     'ruby': {'ruby'},
     'sh': {'shell', 'sh'},
     'tcsh': {'shell', 'tcsh'},
-    'uv': {'python'},
     'zsh': {'shell', 'zsh'},
 }
