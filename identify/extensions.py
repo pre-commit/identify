@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 EXTENSIONS = {
     'adoc': {'text', 'asciidoc'},
     'ai': {'binary', 'adobe-illustrator'},
@@ -134,6 +135,7 @@ EXTENSIONS = {
     'jpg': {'binary', 'image', 'jpeg'},
     'js': {'text', 'javascript'},
     'json': {'text', 'json'},
+    'jsonc': {'text', 'jsonc'},
     'jsonld': {'text', 'json', 'jsonld'},
     'jsonnet': {'text', 'jsonnet'},
     'json5': {'text', 'json5'},
