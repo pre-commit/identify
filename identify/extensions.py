@@ -154,7 +154,7 @@ EXTENSIONS = {
     'lpr': {'text', 'lazarus', 'pascal'},
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
-    'm': {'text', 'objective-c'},
+    'm': {'text', 'objective-c', 'matlab'},
     'm4': {'text', 'm4'},
     'make': {'text', 'makefile'},
     'manifest': {'text', 'manifest'},
