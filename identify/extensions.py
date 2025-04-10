@@ -156,6 +156,7 @@ EXTENSIONS = {
     'lua': {'text', 'lua'},
     'm': {'text', 'objective-c'},
     'm4': {'text', 'm4'},
+    'magik': {'text', 'magik'},
     'make': {'text', 'makefile'},
     'manifest': {'text', 'manifest'},
     'map': {'text', 'map'},
