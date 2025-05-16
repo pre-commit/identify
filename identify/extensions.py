@@ -352,6 +352,7 @@ NAMES = {
     '.pypirc': EXTENSIONS['ini'] | {'pypirc'},
     '.rstcheck.cfg': EXTENSIONS['ini'],
     '.salt-lint': EXTENSIONS['yaml'] | {'salt-lint'},
+    '.sqlfluff': EXTENSIONS['ini'],
     '.yamllint': EXTENSIONS['yaml'] | {'yamllint'},
     '.zlogin': EXTENSIONS['zsh'],
     '.zlogout': EXTENSIONS['zsh'],
