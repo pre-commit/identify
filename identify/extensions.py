@@ -301,6 +301,7 @@ EXTENSIONS = {
     'xqy': {'text', 'xquery'},
     'xsd': {'text', 'xml', 'xsd'},
     'xsl': {'text', 'xml', 'xsl'},
+    'xslt': {'text', 'xml', 'xsl'},
     'yaml': {'text', 'yaml'},
     'yamlld': {'text', 'yaml', 'yamlld'},
     'yang': {'text', 'yang'},
