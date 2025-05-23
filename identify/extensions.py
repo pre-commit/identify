@@ -201,7 +201,6 @@ EXTENSIONS = {
     'pom': {'pom', 'text', 'xml'},
     'pp': {'text', 'puppet'},
     'prisma': {'text', 'prisma'},
-    'proj': {'text', 'xml', 'msbuild'},
     'properties': {'text', 'java-properties'},
     'props': {'text', 'xml', 'msbuild'},
     'proto': {'text', 'proto'},
