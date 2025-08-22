@@ -226,6 +226,7 @@ EXTENSIONS = {
     'rb': {'text', 'ruby'},
     'resx': {'text', 'resx', 'xml'},
     'rng': {'text', 'xml', 'relax-ng'},
+    'robot': {'text', 'robot'},
     'rs': {'text', 'rust'},
     'rst': {'text', 'rst'},
     's': {'text', 'asm'},
