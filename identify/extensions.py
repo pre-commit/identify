@@ -374,6 +374,7 @@ NAMES = {
     'BUILD': EXTENSIONS['bzl'],
     'Cargo.toml': EXTENSIONS['toml'] | {'cargo'},
     'Cargo.lock': EXTENSIONS['toml'] | {'cargo-lock'},
+    'deny.toml': EXTENSIONS['toml'] | {'cargo-deny'},
     'clippy.toml': EXTENSIONS['toml'] | {'clippy'},
     'CMakeLists.txt': EXTENSIONS['cmake'],
     'CHANGELOG': EXTENSIONS['txt'],
