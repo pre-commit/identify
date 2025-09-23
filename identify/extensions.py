@@ -194,6 +194,7 @@ EXTENSIONS = {
     'php4': {'text', 'php'},
     'php5': {'text', 'php'},
     'phtml': {'text', 'php'},
+    'piskel': {'text', 'piskel', 'json'},
     'pl': {'text', 'perl'},
     'plantuml': {'text', 'plantuml'},
     'pm': {'text', 'perl'},
