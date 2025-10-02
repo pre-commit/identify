@@ -399,7 +399,7 @@ NAMES = {
     'PATENTS': EXTENSIONS['txt'],
     'Pipfile': EXTENSIONS['toml'],
     'Pipfile.lock': EXTENSIONS['json'],
-    'PKGBUILD': {'text', 'bash', 'pkgbuild', 'alpm'},
+    'PKGBUILD': EXTENSIONS['bash'] | {'pkgbuild', 'alpm'},
     'poetry.lock': EXTENSIONS['toml'],
     'pom.xml': EXTENSIONS['pom'],
     'pylintrc': EXTENSIONS['ini'] | {'pylintrc'},
