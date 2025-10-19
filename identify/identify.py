@@ -37,7 +37,7 @@ _ALL_TAGS.update(*interpreters.INTERPRETERS.values())
 ALL_TAGS = frozenset(_ALL_TAGS)
 
 
-def tags_from_path(path: str) -> set[str]:
+def tags_from_path(path: str | os.PathLike[str]) -> set[str]:
     try:
         sr = os.lstat(path)
     except (OSError, ValueError):  # same error-handling as `os.lexists()`
@@ -83,7 +83,7 @@ def tags_from_path(path: str) -> set[str]:
     return tags
 
 
-def tags_from_filename(path: str) -> set[str]:
+def tags_from_filename(path: str | os.PathLike[str]) -> set[str]:
     _, filename = os.path.split(path)
     _, ext = os.path.splitext(filename)
 
@@ -132,7 +132,7 @@ def is_text(bytesio: IO[bytes]) -> bool:
     return not bool(bytesio.read(1024).translate(None, text_chars))
 
 
-def file_is_text(path: str) -> bool:
+def file_is_text(path: str | os.PathLike[str]) -> bool:
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
     with open(path, 'rb') as f:
@@ -202,7 +202,7 @@ def parse_shebang(bytesio: IO[bytes]) -> tuple[str, ...]:
     return cmd
 
 
-def parse_shebang_from_file(path: str) -> tuple[str, ...]:
+def parse_shebang_from_file(path: str | os.PathLike[str]) -> tuple[str, ...]:
     """Parse the shebang given a file path."""
     if not os.path.lexists(path):
         raise ValueError(f'{path} does not exist.')
