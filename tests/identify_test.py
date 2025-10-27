@@ -261,6 +261,7 @@ def test_file_is_text_does_not_exist(tmpdir):
         (b'#!/usr/bin/env python', ('python',)),
         (b'#! /usr/bin/python', ('/usr/bin/python',)),
         (b'#!/usr/bin/foo  python', ('/usr/bin/foo', 'python')),
+        (b'#!/bin/busybox sh', ('sh',)),
         # despite this being invalid, setuptools will write shebangs like this
         (b'#!"/path/with spaces/x" y', ('/path/with spaces/x', 'y')),
         # this is apparently completely ok to embed quotes
