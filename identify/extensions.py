@@ -122,6 +122,7 @@ EXTENSIONS = {
     'inx': {'text', 'xml', 'inx'},
     'ipynb': {'text', 'jupyter', 'json'},
     'ipp': {'text', 'c++'},
+    'ipxe': {'text', 'ipxe'},
     'ixx': {'text', 'c++'},
     'j2': {'text', 'jinja'},
     'jade': {'text', 'jade'},
