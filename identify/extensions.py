@@ -104,6 +104,7 @@ EXTENSIONS = {
     'hbs': {'text', 'handlebars'},
     'hcl': {'text', 'hcl'},
     'hh': {'text', 'header', 'c++'},
+    'hip': {'text', 'hip'},
     'hpp': {'text', 'header', 'c++'},
     'hrl': {'text', 'erlang'},
     'hs': {'text', 'haskell'},
