@@ -300,6 +300,8 @@ EXTENSIONS = {
     'xhtml': {'text', 'xml', 'html', 'xhtml'},
     'xacro': {'text', 'xml', 'urdf', 'xacro'},
     'xctestplan': {'text', 'json'},
+    'xlf': {'text', 'xml', 'xliff'},
+    'xliff': {'text', 'xml', 'xliff'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
