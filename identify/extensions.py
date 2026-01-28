@@ -196,6 +196,7 @@ EXTENSIONS = {
     'php5': {'text', 'php'},
     'phtml': {'text', 'php'},
     'piskel': {'text', 'piskel', 'json'},
+    'pkl': {'text', 'pkl'},
     'pl': {'text', 'perl'},
     'plantuml': {'text', 'plantuml'},
     'pm': {'text', 'perl'},
