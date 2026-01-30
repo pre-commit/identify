@@ -8,6 +8,7 @@ INTERPRETERS = {
     'csh': {'shell', 'csh'},
     'dash': {'shell', 'dash'},
     'expect': {'expect'},
+    'escript': {'erlang'},
     'ksh': {'shell', 'ksh'},
     'node': {'javascript'},
     'nodejs': {'javascript'},
