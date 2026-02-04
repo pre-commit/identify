@@ -411,6 +411,8 @@ NAMES = {
     'Rakefile': EXTENSIONS['rb'],
     'rebar.config': EXTENSIONS['erl'],
     'setup.cfg': EXTENSIONS['ini'],
+    'sconstruct': {'test', 'scons'},
+    'sconscript': {'test', 'scons'},
     'sys.config': EXTENSIONS['erl'],
     'sys.config.src': EXTENSIONS['erl'],
     'Tiltfile': {'text', 'tiltfile'},
