@@ -218,6 +218,7 @@ EXTENSIONS = {
     'pyi': {'text', 'pyi'},
     'pyproj': {'text', 'xml', 'pyproj', 'msbuild'},
     'pyt': {'text', 'python'},
+    'pyw': {'text', 'python'},
     'pyx': {'text', 'cython'},
     'pyz': {'binary', 'pyz'},
     'pyzw': {'binary', 'pyz'},
