@@ -302,6 +302,7 @@ EXTENSIONS = {
     'xctestplan': {'text', 'json'},
     'xlf': {'text', 'xml', 'xliff'},
     'xliff': {'text', 'xml', 'xliff'},
+    'xaml': {'text', 'xml', 'xaml'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
