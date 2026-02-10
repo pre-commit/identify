@@ -35,6 +35,7 @@ EXTENSIONS = {
     'cljc': {'text', 'clojure'},
     'cljs': {'text', 'clojure', 'clojurescript'},
     'cmake': {'text', 'cmake'},
+    'cmd': {'text', 'batch'},
     'cnf': {'text'},
     'coffee': {'text', 'coffee'},
     'conf': {'text'},
