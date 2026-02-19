@@ -128,6 +128,7 @@ EXTENSIONS = {
     'jade': {'text', 'jade'},
     'jar': {'binary', 'zip', 'jar'},
     'java': {'text', 'java'},
+    'jbuilder': {'text', 'jbuilder', 'ruby'},
     'jenkins': {'text', 'groovy', 'jenkins'},
     'jenkinsfile': {'text', 'groovy', 'jenkins'},
     'jinja': {'text', 'jinja'},
