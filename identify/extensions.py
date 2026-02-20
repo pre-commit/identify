@@ -59,6 +59,7 @@ EXTENSIONS = {
     'dart': {'text', 'dart'},
     'dbc': {'text', 'dbc'},
     'def': {'text', 'def'},
+    'diff': {'text', 'diff'},
     'dll': {'binary'},
     'dtd': {'text', 'dtd'},
     'ear': {'binary', 'zip', 'jar'},
