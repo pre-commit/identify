@@ -309,6 +309,7 @@ EXTENSIONS = {
     'xcworkspacedata': {'text', 'xml', 'xcworkspacedata', 'xcodebuild'},
     'xlf': {'text', 'xml', 'xliff'},
     'xliff': {'text', 'xml', 'xliff'},
+    'xaml': {'text', 'xml', 'xaml'},
     'xml': {'text', 'xml'},
     'xq': {'text', 'xquery'},
     'xql': {'text', 'xquery'},
