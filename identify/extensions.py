@@ -103,6 +103,8 @@ EXTENSIONS = {
     'h': {'text', 'header', 'c', 'c++'},
     'hbs': {'text', 'handlebars'},
     'hcl': {'text', 'hcl'},
+    'hlsl': {'text', 'hlsl'},
+    'hlsli': {'text', 'hlsl'},
     'hh': {'text', 'header', 'c++'},
     'hpp': {'text', 'header', 'c++'},
     'hrl': {'text', 'erlang'},
