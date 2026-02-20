@@ -72,6 +72,7 @@ EXTENSIONS = {
     'eps': {'binary', 'eps'},
     'erb': {'text', 'erb'},
     'erl': {'text', 'erlang'},
+    'escript': {'text', 'erlang'},
     'ex': {'text', 'elixir'},
     'exe': {'binary'},
     'exs': {'text', 'elixir'},
