@@ -427,6 +427,7 @@ NAMES = {
     'sys.config': EXTENSIONS['erl'],
     'sys.config.src': EXTENSIONS['erl'],
     'Tiltfile': {'text', 'tiltfile'},
+    'uv.lock': EXTENSIONS['toml'],
     'Vagrantfile': EXTENSIONS['rb'],
     'WORKSPACE': EXTENSIONS['bzl'],
     'wscript': EXTENSIONS['py'],
