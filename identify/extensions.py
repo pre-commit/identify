@@ -383,6 +383,7 @@ NAMES = {
     'AUTHORS': EXTENSIONS['txt'],
     'bblayers.conf': EXTENSIONS['bb'],
     'bitbake.conf': EXTENSIONS['bb'],
+    'Brewfile': EXTENSIONS['rb'],
     'BUILD': EXTENSIONS['bzl'],
     'Cargo.toml': EXTENSIONS['toml'] | {'cargo'},
     'Cargo.lock': EXTENSIONS['toml'] | {'cargo-lock'},
