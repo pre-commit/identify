@@ -392,6 +392,7 @@ NAMES = {
     'COPYING': EXTENSIONS['txt'],
     'Dockerfile': {'text', 'dockerfile'},
     'direnvrc': EXTENSIONS['bash'],
+    'Fastfile': EXTENSIONS['rb'],
     'Gemfile': EXTENSIONS['rb'],
     'Gemfile.lock': {'text'},
     'GNUmakefile': EXTENSIONS['mk'],
