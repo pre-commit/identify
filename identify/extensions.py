@@ -301,7 +301,10 @@ EXTENSIONS = {
     'wsgi': {'text', 'wsgi', 'python'},
     'xhtml': {'text', 'xml', 'html', 'xhtml'},
     'xacro': {'text', 'xml', 'urdf', 'xacro'},
-    'xctestplan': {'text', 'json'},
+    'xcconfig': {'text', 'xcconfig', 'xcodebuild'},
+    'xcscheme': {'text', 'xml', 'xcscheme', 'xcodebuild'},
+    'xctestplan': {'text', 'json', 'xctestplan', 'xcodebuild'},
+    'xcworkspacedata': {'text', 'xml', 'xcworkspacedata', 'xcodebuild'},
     'xlf': {'text', 'xml', 'xliff'},
     'xliff': {'text', 'xml', 'xliff'},
     'xml': {'text', 'xml'},
@@ -328,6 +331,8 @@ EXTENSIONS = {
 EXTENSIONS_NEED_BINARY_CHECK = {
     'plist': {'plist'},
     'ppm': {'image', 'ppm'},
+    'xcprivacy': {'plist', 'xcprivacy', 'xcodebuild'},
+    'xcsettings': {'plist', 'xcsettings', 'xcodebuild'},
 }
 
 NAMES = {
