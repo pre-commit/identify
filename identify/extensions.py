@@ -93,7 +93,7 @@ EXTENSIONS = {
     'ggb': {'binary', 'zip', 'ggb'},
     'gif': {'binary', 'image', 'gif'},
     'gleam': {'text', 'gleam'},
-    'glsl': {'comp', 'frag', 'geom', 'tesc', 'tese', 'vert'},
+    'glsl': {'text', 'comp', 'frag', 'geom', 'tesc', 'tese', 'vert'},
     'go': {'text', 'go'},
     'gotmpl': {'text', 'gotmpl'},
     'gpx': {'text', 'gpx', 'xml'},
