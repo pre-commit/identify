@@ -248,6 +248,7 @@ EXTENSIONS = {
     'scss': {'text', 'scss'},
     'sh': {'text', 'shell'},
     'sln': {'text', 'sln'},
+    'slnx': {'text', 'xml', 'slnx', 'msbuild'},
     'sls': {'text', 'salt'},
     'so': {'binary'},
     'sol': {'text', 'solidity'},
