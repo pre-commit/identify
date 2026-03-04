@@ -424,6 +424,7 @@ NAMES = {
     'poetry.lock': EXTENSIONS['toml'],
     'pom.xml': EXTENSIONS['pom'],
     'pylintrc': EXTENSIONS['ini'] | {'pylintrc'},
+    'pyproject.toml': EXTENSIONS['toml'] | {'pyproject'},
     'README': EXTENSIONS['txt'],
     'Rakefile': EXTENSIONS['rb'],
     'rebar.config': EXTENSIONS['erl'],
