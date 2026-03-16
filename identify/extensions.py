@@ -52,7 +52,7 @@ EXTENSIONS = {
     'csx': {'text', 'c#', 'c#script'},
     'cu': {'text', 'cuda'},
     'cue': {'text', 'cue'},
-    'cuh': {'text', 'cuda'},
+    'cuh': {'text', 'header', 'cuda'},
     'cxx': {'text', 'c++'},
     'cxxm': {'text', 'c++'},
     'cylc': {'text', 'cylc'},
