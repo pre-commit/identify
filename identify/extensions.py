@@ -274,6 +274,7 @@ EXTENSIONS = {
     'tfvars': {'text', 'terraform'},
     'tgz': {'binary', 'gzip'},
     'thrift': {'text', 'thrift'},
+    'tif': {'binary', 'image', 'tiff'},
     'tiff': {'binary', 'image', 'tiff'},
     'toml': {'text', 'toml'},
     'tpp': {'text', 'c++'},
