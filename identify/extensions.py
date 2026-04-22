@@ -19,6 +19,7 @@ EXTENSIONS = {
     'bbclass': {'text', 'bitbake'},
     'beancount': {'text', 'beancount'},
     'bib': {'text', 'bib'},
+    'bin': {'binary'},
     'bmp': {'binary', 'image', 'bitmap'},
     'bz2': {'binary', 'bzip2'},
     'bz3': {'binary', 'bzip3'},
