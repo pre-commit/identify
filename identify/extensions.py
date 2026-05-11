@@ -163,6 +163,7 @@ EXTENSIONS = {
     'lpr': {'text', 'lazarus', 'pascal'},
     'lr': {'text', 'lektor'},
     'lua': {'text', 'lua'},
+    'luau': {'text', 'lua', 'luau'},
     'm': {'text', 'objective-c'},
     'm4': {'text', 'm4'},
     'magik': {'text', 'magik'},
