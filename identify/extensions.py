@@ -267,7 +267,7 @@ EXTENSIONS = {
     'tac': {'text', 'twisted', 'python'},
     'tar': {'binary', 'tar'},
     'targets': {'text', 'xml', 'msbuild'},
-    'td': {'text','tablegen'},
+    'td': {'text', 'tablegen'},
     'templ': {'text', 'templ'},
     'tex': {'text', 'tex'},
     'textproto': {'text', 'textproto'},
