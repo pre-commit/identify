@@ -23,6 +23,7 @@ EXTENSIONS = {
     'bz2': {'binary', 'bzip2'},
     'bz3': {'binary', 'bzip3'},
     'bzl': {'text', 'bazel'},
+    'build': {'text', 'bazel'},  # e.g. package.BUILD / foo.build (#103)
     'c': {'text', 'c'},
     'c++': {'text', 'c++'},
     'c++m': {'text', 'c++'},
