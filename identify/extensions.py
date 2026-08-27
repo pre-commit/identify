@@ -376,6 +376,7 @@ NAMES = {
     '.npmignore': {'text', 'npmignore'},
     '.pdbrc': EXTENSIONS['py'] | {'pdbrc'},
     '.prettierignore': {'text', 'gitignore', 'prettierignore'},
+    '.profile': EXTENSIONS['sh'],
     '.pypirc': EXTENSIONS['ini'] | {'pypirc'},
     '.rstcheck.cfg': EXTENSIONS['ini'],
     '.salt-lint': EXTENSIONS['yaml'] | {'salt-lint'},
