@@ -40,6 +40,7 @@ def test_all_tags_contains_each_type():
     assert 'dockerfile' in identify.ALL_TAGS  # by file convention
     assert 'python3' in identify.ALL_TAGS  # by shebang
     assert 'php8' in identify.ALL_TAGS  # by shebang
+    assert 'nushell' in identify.ALL_TAGS
 
 
 def test_tags_from_path_does_not_exist(tmpdir):
@@ -153,6 +154,7 @@ def test_tags_from_path_plist_text(tmpdir):
     (
         ('.salt-lint', {'text', 'salt-lint', 'yaml'}),
         ('test.py', {'text', 'python'}),
+        ('test.nu', {'text', 'nushell'}),
         ('test.mk', {'text', 'makefile'}),
         ('Makefile', {'text', 'makefile'}),
         ('Containerfile', {'text', 'dockerfile'}),
@@ -211,6 +213,8 @@ def test_tags_from_filename(filename, expected):
         ('python3', {'python3', 'python'}),
         ('python3.5.2', {'python3', 'python'}),
         ('/usr/bin/python3.5.2', {'python3', 'python'}),
+        ('nu', {'nushell'}),
+        ('nushell', {'nushell'}),
         ('/usr/bin/herpderpderpderpderp', set()),
         ('something-random', set()),
         ('', set()),

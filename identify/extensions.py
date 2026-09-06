@@ -191,6 +191,7 @@ EXTENSIONS = {
     'nimble': {'text', 'nimble'},
     'nix': {'text', 'nix'},
     'njk': {'text', 'nunjucks'},
+    'nu': {'text', 'nushell'},
     'otf': {'binary', 'otf'},
     'p12': {'binary', 'p12'},
     'pas': {'text', 'pascal'},
