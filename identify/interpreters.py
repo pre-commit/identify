@@ -12,6 +12,8 @@ INTERPRETERS = {
     'ksh': {'shell', 'ksh'},
     'node': {'javascript'},
     'nodejs': {'javascript'},
+    'nu': {'nushell'},
+    'nushell': {'nushell'},
     'perl': {'perl'},
     'php': {'php'},
     'php7': {'php', 'php7'},
