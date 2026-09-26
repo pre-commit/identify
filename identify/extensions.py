@@ -331,6 +331,7 @@ EXTENSIONS = {
     'xsd': {'text', 'xml', 'xsd'},
     'xsl': {'text', 'xml', 'xsl'},
     'xslt': {'text', 'xml', 'xsl'},
+    'vala': {'text', 'vala'},
     'yaml': {'text', 'yaml'},
     'yamlld': {'text', 'yaml', 'yamlld'},
     'yang': {'text', 'yang'},
