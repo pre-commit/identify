@@ -20,6 +20,7 @@ def test_all_tags_includes_basic_ones():
     assert 'executable' in identify.ALL_TAGS
     assert 'text' in identify.ALL_TAGS
     assert 'socket' in identify.ALL_TAGS
+    assert 'fifo' in identify.ALL_TAGS
 
 
 @pytest.mark.parametrize(
@@ -108,6 +109,18 @@ def test_tags_from_path_file_with_shebang_executable(tmpdir):
     assert identify.tags_from_path(x.strpath) == {
         'file', 'text', 'executable', 'python',
     }
+
+
+@pytest.mark.skipif(not hasattr(os, 'mkfifo'), reason='requires os.mkfifo')
+@pytest.mark.parametrize('filename', ('pipe', 'pipe.py'))
+@pytest.mark.parametrize('mode', (0o600, 0o700))
+def test_tags_from_path_fifo(tmpdir, filename, mode):
+    path = str(tmpdir.join(filename))
+    os.mkfifo(path, mode)
+    # Reading a FIFO without a writer would block indefinitely.
+    error = AssertionError('opened FIFO')
+    with mock.patch('builtins.open', side_effect=error):
+        assert identify.tags_from_path(path) == {'fifo'}
 
 
 def test_tags_from_path_binary(tmpdir):
