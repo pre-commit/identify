@@ -198,6 +198,7 @@ EXTENSIONS = {
     'pas': {'text', 'pascal'},
     'patch': {'text', 'diff'},
     'pdf': {'binary', 'pdf'},
+    'pdfpc': {'text', 'pdfpc', 'json'},
     'pem': {'text', 'pem'},
     'php': {'text', 'php'},
     'php4': {'text', 'php'},
