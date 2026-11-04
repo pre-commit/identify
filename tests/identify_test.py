@@ -20,6 +20,7 @@ def test_all_tags_includes_basic_ones():
     assert 'executable' in identify.ALL_TAGS
     assert 'text' in identify.ALL_TAGS
     assert 'socket' in identify.ALL_TAGS
+    assert 'fifo' in identify.ALL_TAGS
 
 
 @pytest.mark.parametrize(
@@ -69,6 +70,17 @@ def test_tags_from_path_socket():
             tags = identify.tags_from_path(socket_path)
 
     assert tags == {'socket'}
+
+
+@pytest.mark.skipif(not hasattr(os, 'mkfifo'), reason='requires mkfifo')
+def test_tags_from_path_fifo(tmpdir):
+    fifo_path = tmpdir.join('pipe').strpath
+    os.mkfifo(fifo_path)
+
+    with mock.patch.object(builtins, 'open') as open_mock:
+        assert identify.tags_from_path(fifo_path) == {'fifo'}
+
+    open_mock.assert_not_called()
 
 
 def test_tags_from_path_broken_symlink(tmpdir):

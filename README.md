@@ -33,11 +33,13 @@ If you have an actual file on disk, you can get the most information possible
 {'directory'}
 >>> identify.tags_from_path('/path/to/symlink')
 {'symlink'}
+>>> identify.tags_from_path('/path/to/named-pipe')
+{'fifo'}
 ```
 
 When using a file on disk, the checks performed are:
 
-* File type (file, symlink, directory, socket)
+* File type (file, symlink, directory, socket, fifo)
 * Mode (is it executable?)
 * File name (mostly based on extension)
 * If executable, the shebang is read and the interpreter interpreted
@@ -123,7 +125,8 @@ licenses are sourced from [choosealicense.com].
 
 A call to `tags_from_path` does this:
 
-1. What is the type: file, symlink, directory? If it's not file, stop here.
+1. If the path is a directory, symlink, socket, or named pipe, return its type
+   tag immediately.
 2. Is it executable? Add the appropriate tag.
 3. Do we recognize the file extension? If so, add the appropriate tags, stop
    here. These tags would include binary/text.
