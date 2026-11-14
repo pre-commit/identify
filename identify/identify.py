@@ -20,13 +20,14 @@ printable = frozenset(string.printable)
 DIRECTORY = 'directory'
 SYMLINK = 'symlink'
 SOCKET = 'socket'
+FIFO = 'fifo'
 FILE = 'file'
 EXECUTABLE = 'executable'
 NON_EXECUTABLE = 'non-executable'
 TEXT = 'text'
 BINARY = 'binary'
 
-TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK, SOCKET))
+TYPE_TAGS = frozenset((DIRECTORY, FILE, SYMLINK, SOCKET, FIFO))
 MODE_TAGS = frozenset((EXECUTABLE, NON_EXECUTABLE))
 ENCODING_TAGS = frozenset((BINARY, TEXT))
 _ALL_TAGS = {*TYPE_TAGS, *MODE_TAGS, *ENCODING_TAGS}
@@ -50,6 +51,8 @@ def tags_from_path(path: str) -> set[str]:
         return {SYMLINK}
     if stat.S_ISSOCK(mode):
         return {SOCKET}
+    if stat.S_ISFIFO(mode):
+        return {FIFO}
 
     tags = {FILE}
 
