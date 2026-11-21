@@ -187,6 +187,8 @@ def test_tags_from_path_plist_text(tmpdir):
 
         # case of extension should be ignored
         ('f.JPG', {'binary', 'image', 'jpeg'}),
+        ('f.heic', {'binary', 'image', 'heic'}),
+        ('f.HEIF', {'binary', 'image', 'heif'}),
         # but case of name checks should still be honored
         ('dockerfile.py', {'text', 'python'}),
 

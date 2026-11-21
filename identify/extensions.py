@@ -106,6 +106,8 @@ EXTENSIONS = {
     'h': {'text', 'header', 'c', 'c++'},
     'hbs': {'text', 'handlebars'},
     'hcl': {'text', 'hcl'},
+    'heic': {'binary', 'image', 'heic'},
+    'heif': {'binary', 'image', 'heif'},
     'hlsl': {'text', 'hlsl'},
     'hlsli': {'text', 'hlsl'},
     'hh': {'text', 'header', 'c++'},
